@@ -1,0 +1,19 @@
+source_id: PLANTVILLAGE
+name: PlantVillage
+country: INT
+source_type: [dataset, vision]
+authority: research
+acquisition:
+  method: bulk_download
+  endpoint: https://github.com/spMohanty/PlantVillage-Dataset
+  schedule: on-demand
+  api_key_required: false
+  pagination: none
+domains: [vision, disease, crop]
+license:
+  type: CC0 / CC-BY (varies by subset)
+  url: https://plantvillage.psu.edu
+quality:
+  authority_score: 0.8
+  freshness_score: 0.5
+notes: ~54k healthy/diseased leaf images, 14 crop species. Bootstrap only (controlled backgrounds) — insufficient for Indian field deployment.

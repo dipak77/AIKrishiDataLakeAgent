@@ -1,0 +1,19 @@
+pesticide_id,name,type,target,class
+PESTC_CARBENDAZIM,Carbendazim,fungicide,"Broad-spectrum (anthracnose, rusts)",FRAC 1 (benzimidazole)
+PESTC_MANCOZEB,Mancozeb,fungicide,Broad-spectrum protectant,FRAC M3 (dithiocarbamate)
+PESTC_COC,Copper oxychloride,fungicide,Bacterial + fungal,FRAC M1 (inorganic)
+PESTC_HEXACONAZOLE,Hexaconazole,fungicide,"Powdery mildew, sheath blight, rust",FRAC 3 (triazole)
+PESTC_METALAXYL_MZ,Metalaxyl + Mancozeb,fungicide,"Oomycetes (downy mildew, late blight)",FRAC 4 + M3
+PESTC_CHLOROTHALONIL,Chlorothalonil,fungicide,Broad-spectrum protectant,FRAC M5
+PESTC_SULPHUR,Wettable sulphur,fungicide/acaricide,"Powdery mildew, mites",FRAC M2
+PESTC_IMIDACLOPRID,Imidacloprid,insecticide,"Sucking pests (whitefly, jassid, aphid)",IRAC 4A (neonicotinoid)
+PESTC_THIAMETHOXAM,Thiamethoxam,insecticide,Sucking pests,IRAC 4A (neonicotinoid)
+PESTC_ACEPHATE,Acephate,insecticide,Broad-spectrum,IRAC 1B (organophosphate)
+PESTC_CHLORPYRIFOS,Chlorpyrifos,insecticide,"Soil pests, termites, broad",IRAC 1B (organophosphate)
+PESTC_EMAMECTIN,Emamectin benzoate,insecticide,"Lepidoptera (FAW, bollworms, borers)",IRAC 6 (avermectin)
+PESTC_SPINOSAD,Spinosad,insecticide,"Lepidoptera, thrips",IRAC 5 (spinosyn)
+PESTC_CHLORANTRANILIPROLE,Chlorantraniliprole,insecticide,Lepidoptera,IRAC 28 (diamide)
+PESTC_FLUBENDIAMIDE,Flubendiamide,insecticide,Lepidoptera,IRAC 28 (diamide)
+PESTC_FIPRONIL,Fipronil,insecticide,"Broad (termite, stem borer)",IRAC 2B (phenylpyrazole)
+PESTC_CARTAP,Cartap hydrochloride,insecticide,Stem borers,IRAC 14 (nereistoxin)
+PESTC_DIMETHOATE,Dimethoate,insecticide,Sucking pests,IRAC 1B (organophosphate)

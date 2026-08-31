@@ -1,0 +1,10 @@
+biocontrol_id,name,type,target
+BC_TRICHODERMA,Trichoderma viride,fungus,"Soil-borne fungi (wilt, damping-off, root rot)"
+BC_PSEUDOMONAS,Pseudomonas fluorescens,bacterium,"Soil-borne + foliar pathogens, growth promotion"
+BC_BT,Bacillus thuringiensis (Bt),bacterium,"Lepidopteran larvae (bollworms, DBM, FAW)"
+BC_METARHIZIUM,Metarhizium anisopliae,fungus,"White grub, locust, termites"
+BC_BEAUVERIA,Beauveria bassiana,fungus,"Whitefly, hoppers, beetles"
+BC_NPV,NPV (Nuclear Polyhedrosis Virus),virus,"Helicoverpa, Spodoptera"
+BC_TRICHOGRAMMA,Trichogramma spp.,parasitoid,"Eggs of stem borers, bollworms"
+BC_CHRYSOPERLA,Chrysoperla (green lacewing),predator,"Aphids, whitefly, eggs, small larvae"
+BC_CRYPTOLAEMUS,Cryptolaemus montrouzieri,predator,Mealybugs

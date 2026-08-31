@@ -1,0 +1,13 @@
+stage_id,name,description
+STAGE_NURSERY,nursery,Seedling raising in nursery
+STAGE_SOWING,sowing,Seed sowing / planting
+STAGE_GERMINATION,germination,Seed germination / emergence
+STAGE_TRANSPLANTING,transplanting,Transplanting seedlings to main field
+STAGE_ESTABLISHMENT,establishment,Early establishment / tillering
+STAGE_VEGETATIVE,vegetative,Vegetative growth
+STAGE_FLOWERING,flowering,Flowering / anthesis
+STAGE_FRUIT_SET,fruit_set,Fruit / pod / boll set
+STAGE_GRAIN_FILL,grain_fill,Grain / fruit filling
+STAGE_MATURITY,maturity,Physiological maturity
+STAGE_HARVEST,harvest,Harvesting
+STAGE_POST_HARVEST,post_harvest,Post-harvest handling / storage

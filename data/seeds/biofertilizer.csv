@@ -1,0 +1,7 @@
+biofertilizer_id,name,target,function
+BIO_RHIZOBIUM,Rhizobium,"Legumes (pulses, groundnut, soybean)",Symbiotic N fixation in nodules
+BIO_AZOTOBACTER,Azotobacter,"Cereals, vegetables",Free-living N fixation
+BIO_AZOSPIRILLUM,Azospirillum,"Cereals, millets",Associative N fixation
+BIO_PSB,PSB (Phosphate solubilizing bacteria),All crops,Solubilizes fixed soil P
+BIO_KSB,KSB (Potash mobilizing bacteria),All crops,Mobilizes soil K
+BIO_VAM,Mycorrhiza (VAM),All crops,P/Zn uptake via fungal association

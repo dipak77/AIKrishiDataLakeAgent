@@ -1,0 +1,50 @@
+[
+  {
+    "record_id": "FAO-100-Rice, paddy-2023",
+    "source": "FAOSTAT",
+    "source_id": "FAO_FAOSTAT",
+    "country": "IN",
+    "faostat_item": "Rice, paddy",
+    "crop": "CROP_RICE",
+    "crop_canonical": "Rice",
+    "year": 2023,
+    "area_hectares": 47800000.0,
+    "production_tonnes": 137000000.0,
+    "yield_kg_ha": 2866.11,
+    "authority": "research",
+    "authority_level": "research",
+    "source_url": "https://www.fao.org/faostat/"
+  },
+  {
+    "record_id": "FAO-100-Wheat-2023",
+    "source": "FAOSTAT",
+    "source_id": "FAO_FAOSTAT",
+    "country": "IN",
+    "faostat_item": "Wheat",
+    "crop": "CROP_WHEAT",
+    "crop_canonical": "Wheat",
+    "year": 2023,
+    "area_hectares": 31000000.0,
+    "production_tonnes": 113000000.0,
+    "yield_kg_ha": 3645.16,
+    "authority": "research",
+    "authority_level": "research",
+    "source_url": "https://www.fao.org/faostat/"
+  },
+  {
+    "record_id": "FAO-100-Sugar cane-2023",
+    "source": "FAOSTAT",
+    "source_id": "FAO_FAOSTAT",
+    "country": "IN",
+    "faostat_item": "Sugar cane",
+    "crop": "CROP_SUGARCANE",
+    "crop_canonical": "Sugarcane",
+    "year": 2023,
+    "area_hectares": 5200000.0,
+    "production_tonnes": 490000000.0,
+    "yield_kg_ha": 94230.77,
+    "authority": "research",
+    "authority_level": "research",
+    "source_url": "https://www.fao.org/faostat/"
+  }
+]

@@ -1,0 +1,9 @@
+soil_id,name,characteristics,crops
+SOIL_ALLUVIAL,Alluvial,"Fertile, loamy, river-deposited; N/P low to medium, K high","Rice, wheat, sugarcane, oilseeds"
+SOIL_BLACK,Black (Regur),"Clayey, moisture-retentive, cracks on drying; high Ca/Mg, low N/P","Cotton, sorghum, soybean, pulses, sugarcane"
+SOIL_RED,Red,"Acidic, well-drained, low N/P/humus; Fe-rich","Millets, groundnut, pulses, horticulture"
+SOIL_LATERITE,Laterite,"Highly weathered, acidic, low fertility, high Fe/Al","Cashew, coconut, tea, rubber, coffee"
+SOIL_DESERT,Desert,"Sandy, low organic matter, low water holding","Bajra, guar, moth bean, pulses (irrigated)"
+SOIL_SALINE,Saline & Alkaline,"High salts / high pH, poor structure, low infiltration","Reclaim with gypsum; tolerant crops (barley, date palm)"
+SOIL_FOREST,Forest & Mountain,"Variable, often acidic, high organic matter in upper layer","Tea, spices, horticulture, apple"
+SOIL_PEATY,Peaty & Marshy,"High organic matter, waterlogged, acidic","Rice (after drainage), jute"

@@ -1,0 +1,19 @@
+source_id: FAO_FAOSTAT
+name: FAOSTAT
+country: INT
+source_type: [dataset, statistics]
+authority: research
+acquisition:
+  method: api
+  endpoint: https://fenixservices.fao.org/faostat/api/v1/en/data/QCL
+  schedule: monthly
+  api_key_required: false
+  pagination: none
+domains: [production, yield, fertilizer, land, trade]
+license:
+  type: CC-BY (FAO terms)
+  url: https://www.fao.org/contact-us/terms/en/
+quality:
+  authority_score: 0.95
+  freshness_score: 0.8
+notes: Global baseline since 1961 (245+ countries). Use for India-vs-world comparison and yield benchmarking, NOT as agronomy advice.

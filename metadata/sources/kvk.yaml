@@ -1,0 +1,19 @@
+source_id: KVK
+name: Krishi Vigyan Kendras
+country: IN
+source_type: [extension, qa, advisory]
+authority: government_extension
+acquisition:
+  method: crawl
+  endpoint: https://kvk.icar.gov.in
+  schedule: weekly
+  api_key_required: false
+  pagination: none
+domains: [practice, advisory, farmer_qa]
+license:
+  type: institutional (per-page terms)
+  url: https://kvk.icar.gov.in
+quality:
+  authority_score: 0.90
+  freshness_score: 0.85
+notes: Extension manuals, package-of-practices, FAQs. Crawl through license_checker (ALLOW/REVIEW/BLOCK).

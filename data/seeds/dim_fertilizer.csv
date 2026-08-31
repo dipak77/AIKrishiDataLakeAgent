@@ -1,0 +1,19 @@
+fertilizer_id,name,category,composition,notes
+FERT_UREA,Urea,chemical,N 46%,Broadcast + immediate incorporation; avoid excess (lodging/pests)
+FERT_DAP,DAP,chemical,"N 18%, P2O5 46%",Basal phosphorus source
+FERT_MOP,MOP (Muriate of potash),chemical,K2O 60%,Chloride form; avoid in chloride-sensitive crops
+FERT_SSP,SSP (Single super phosphate),chemical,"P2O5 16%, Ca, S 11%",Good in sulphur-deficient soils
+FERT_AS,Ammonium sulphate,chemical,"N 21%, S 24%",Acidifying; N+S source
+FERT_NPK_102626,NPK 10:26:26,chemical,"N 10%, P2O5 26%, K2O 26%",Complex fertilizer
+FERT_NPK_123216,NPK 12:32:16,chemical,"N 12%, P2O5 32%, K2O 16%",Complex fertilizer
+FERT_NPK_171717,NPK 17:17:17,chemical,"N 17%, P2O5 17%, K2O 17%",Balanced complex
+FERT_NPK_202000,NPK 20:20:0,chemical,"N 20%, P2O5 20%",No K
+FERT_ZNSO4,Zinc sulphate,chemical,"Zn 21%, S 10%",Micronutrient (soil/foliar)
+FERT_BORAX,Borax,chemical,B 10.5%,Boron source
+FERT_FESO4,Ferrous sulphate,chemical,"Fe 19%, S 11%",Iron source
+FERT_CAN,Calcium ammonium nitrate,chemical,"N 25%, Ca","Nitrate N, less volatilization"
+FERT_GYPSUM,Gypsum,chemical,"Ca 23%, S 18%",Sodic soil reclamation + S source
+FERT_FYM,Farm yard manure (FYM),organic,Organic matter + NPK (low),Soil structure + slow nutrient release
+FERT_COMPOST,Compost,organic,Organic matter + nutrients,Well-rotted before use
+FERT_VERMI,Vermicompost,organic,Organic matter + nutrients + humus,Earthworm-processed compost
+FERT_GREEN_MANURE,Green manure,organic,"N fixation + biomass (e.g. dhaincha, sunn hemp)",Incorporate at flowering

@@ -1,0 +1,13 @@
+nutrient_id,symbol,name,role,deficiency_symptoms
+NUT_N,N,Nitrogen,"Protein, chlorophyll, vegetative growth","Stunted growth, pale yellow older leaves"
+NUT_P,P,Phosphorus,"Energy (ATP), root development, flowering","Purple leaves, poor tillering, delayed maturity"
+NUT_K,K,Potassium,"Water regulation, stomata, disease resistance","Scorched leaf margins, weak stem, lodging"
+NUT_S,S,Sulphur,"Amino acids, oil synthesis",Uniform yellowing of young leaves
+NUT_ZN,Zn,Zinc,"Enzyme co-factor, auxin","Khaira in rice (white bud), small leaves, interveinal chlorosis"
+NUT_FE,Fe,Iron,Chlorophyll synthesis,Interveinal chlorosis of young leaves
+NUT_CU,Cu,Copper,"Enzyme co-factor, lignin","Die-back of shoots, leaf tip necrosis"
+NUT_MN,Mn,Manganese,Photosynthesis (O2 evolution),Interveinal chlorosis with grey specks
+NUT_B,B,Boron,"Cell wall, pollen tube growth","Distorted growth, hollow stem, fruit cracking"
+NUT_MO,Mo,Molybdenum,"N fixation, nitrate reduction","Whiptail in cauliflower, N-deficiency symptoms"
+NUT_CA,Ca,Calcium,"Cell wall, membrane","Blossom-end rot (tomato), tip burn"
+NUT_MG,Mg,Magnesium,Chlorophyll core,Interveinal chlorosis of older leaves

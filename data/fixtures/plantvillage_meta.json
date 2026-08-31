@@ -1,0 +1,24 @@
+[
+  {
+    "image_id": "PV-TOMATO-EARLYBLIGHT-0001",
+    "dataset": "PlantVillage",
+    "crop": "CROP_TOMATO",
+    "crop_canonical": "Tomato",
+    "label": "early blight",
+    "label_type": "disease",
+    "split": "train",
+    "license_tier": "A",
+    "file_path": "plantvillage/tomato/early_blight/0001.jpg"
+  },
+  {
+    "image_id": "PV-TOMATO-HEALTHY-0001",
+    "dataset": "PlantVillage",
+    "crop": "CROP_TOMATO",
+    "crop_canonical": "Tomato",
+    "label": "healthy",
+    "label_type": "healthy",
+    "split": "train",
+    "license_tier": "A",
+    "file_path": "plantvillage/tomato/healthy/0001.jpg"
+  }
+]

@@ -1,0 +1,19 @@
+source_id: GOI_SHC
+name: Soil Health Card
+country: IN
+source_type: [dataset]
+authority: government
+acquisition:
+  method: bulk_download
+  endpoint: https://soilhealth.dac.gov.in
+  schedule: weekly
+  api_key_required: false
+  pagination: none
+domains: [soil, fertilizer]
+license:
+  type: GODL-India
+  url: https://data.gov.in/government-open-data-license-india
+quality:
+  authority_score: 1.0
+  freshness_score: 0.9
+notes: Soil status (N P K S Zn Fe Cu Mn B pH EC OC) + crop-specific fertilizer recommendations. Preserve contextual fields (previous crop, soil type, drainage, water source, target yield).

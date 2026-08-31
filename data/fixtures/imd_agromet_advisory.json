@@ -1,0 +1,52 @@
+[
+  {
+    "state": "Maharashtra",
+    "district": "Pune",
+    "valid_from": "2026-08-31",
+    "valid_to": "2026-09-04",
+    "weather": {
+      "rainfall": "Light to moderate rain expected",
+      "temp_max": 29,
+      "temp_min": 21,
+      "humidity": 78,
+      "wind": 12
+    },
+    "crop_advisories": [
+      {
+        "crop": "soybean",
+        "growth_stage": "flowering",
+        "risk": "fungal disease (rust)",
+        "action": "Monitor for soybean rust; avoid water stagnation; spray propiconazole only if symptoms appear."
+      },
+      {
+        "crop": "tomato",
+        "growth_stage": "vegetative",
+        "risk": "early blight",
+        "action": "Remove infected lower leaves; spray mancozeb 2.5 g/L during dry spells."
+      }
+    ],
+    "source_url": "https://mausam.imd.gov.in"
+  },
+  {
+    "state": "Maharashtra",
+    "district": "Nagpur",
+    "valid_from": "2026-08-31",
+    "valid_to": "2026-09-04",
+    "weather": {
+      "rainfall": "Scattered showers",
+      "temp_max": 32,
+      "temp_min": 23,
+      "humidity": 72,
+      "wind": 10
+    },
+    "crop_advisories": [
+      {
+        "crop": "orange",
+        "growth_stage": "fruit development",
+        "risk": "fruit drop / citrus canker",
+        "action": "Maintain orchard sanitation; avoid waterlogging; apply copper sprays if canker lesions appear."
+      }
+    ],
+    "source_url": "https://mausam.imd.gov.in"
+  }
+]

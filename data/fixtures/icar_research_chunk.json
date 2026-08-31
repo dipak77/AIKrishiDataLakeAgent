@@ -1,0 +1,30 @@
+[
+  {
+    "chunk_id": "icar-cotton-pbw-001",
+    "document": "Integrated Pest Management for Pink Bollworm in Cotton",
+    "institution": "ICAR-CICR",
+    "year": 2025,
+    "crop": ["CROP_COTTON"],
+    "topics": ["pink bollworm", "IPM"],
+    "section": "management",
+    "page": 43,
+    "text": "Pink bollworm (Pectinophora gossypiella) is managed through a season-long IPM ladder: timely sowing, destruction of cotton crop residues, use of PBKnot pheromone traps for monitoring, and release of Trichogramma bactrae egg parasitoids. Insecticide intervention with chlorantraniliprole is recommended only when infestation crosses the economic threshold level.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://cicr.org.in"
+  },
+  {
+    "chunk_id": "icar-soybean-rust-002",
+    "document": "Soybean Disease Management Guide",
+    "institution": "ICAR-IISR",
+    "year": 2024,
+    "crop": ["CROP_SOYBEAN"],
+    "topics": ["soybean rust", "fungicide"],
+    "section": "management",
+    "page": 21,
+    "text": "Soybean rust (Phakopsora pachyrhizi) causes premature defoliation and yield loss. Monitoring from flowering onward, coupled with a protectant spray of propiconazole or tebuconazole at first symptom, limits spread. Avoid prolonged leaf wetness through wider spacing and drain management.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://iisr.icar.gov.in"
+  }
+]
