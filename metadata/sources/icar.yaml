@@ -1,0 +1,19 @@
+source_id: ICAR
+name: ICAR / IARI
+country: IN
+source_type: [research, document]
+authority: research
+acquisition:
+  method: bulk_download
+  endpoint: https://icar.gov.in
+  schedule: weekly
+  api_key_required: false
+  pagination: none
+domains: [research, practice, variety]
+license:
+  type: institutional (per-document terms)
+  url: https://icar.gov.in
+quality:
+  authority_score: 1.0
+  freshness_score: 0.8
+notes: Run documents through the research_pdf pipeline (sections, tables, references, semantic chunks). Authority 1.00.

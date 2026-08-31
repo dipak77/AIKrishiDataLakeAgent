@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agrilake"
+version = "0.1.0"
+description = "Krushiverse / Agri Intelligence Lake - India-first agriculture data lake foundation (medallion architecture, ontologies, source registry, quality scoring)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "AIKrishiDataLakeAgent" }]
+keywords = ["agriculture", "india", "data-lake", "ontology", "rag", "farmer-qa"]
+dependencies = [
+    "pydantic>=2.5",
+    "pyyaml>=6.0",
+    "requests>=2.31",
+    "duckdb>=1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+agrilake-seed = "scripts.seed_lake:main"
+agrilake-ingest = "scripts.ingest_live:main"
+agrilake-validate = "scripts.validate:main"
+agrilake-build-gold = "scripts.build_gold:main"
+agrilake-gen-schema = "scripts.gen_json_schema:main"
+agrilake-build-graph = "scripts.build_graph:main"
+
+[tool.setuptools]
+packages = [
+    "connectors",
+    "connectors.government",
+    "connectors.research",
+    "connectors.web",
+    "connectors.vision",
+    "pipelines",
+    "domain",
+    "ontology",
+    "knowledge_graph",
+    "schemas",
+    "scripts",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

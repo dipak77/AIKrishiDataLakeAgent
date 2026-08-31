@@ -1,0 +1,6 @@
+season_id,name,months,description
+SEASON_KHARIF,Kharif,Jun-Oct,Monsoon / south-west monsoon crop
+SEASON_RABI,Rabi,Oct-Mar,Winter / post-monsoon crop
+SEASON_ZAID,Zaid,Mar-Jun,Short summer crop between rabi and kharif
+SEASON_SUMMER,Summer,Feb-May,Irrigated summer season (horticulture emphasis)
+SEASON_WHOLE_YEAR,Whole Year,Jan-Dec,Perennial / plantation crops

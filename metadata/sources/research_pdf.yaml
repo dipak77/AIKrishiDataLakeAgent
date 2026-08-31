@@ -1,0 +1,19 @@
+source_id: RESEARCH_PDF
+name: Generic research PDF pipeline
+country: INT
+source_type: [research, document]
+authority: research
+acquisition:
+  method: bulk_download
+  endpoint: null
+  schedule: on-demand
+  api_key_required: false
+  pagination: none
+domains: [research]
+license:
+  type: per-document
+  url: null
+quality:
+  authority_score: 0.95
+  freshness_score: 0.8
+notes: PDF -> structure -> sections -> tables -> figures -> references -> semantic chunks.

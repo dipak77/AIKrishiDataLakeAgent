@@ -1,0 +1,117 @@
+crop_id,canonical_en,scientific_name,family,type,group
+CROP_RICE,Rice,Oryza sativa,Poaceae,cereal,Cereals
+CROP_WHEAT,Wheat,Triticum aestivum,Poaceae,cereal,Cereals
+CROP_MAIZE,Maize,Zea mays,Poaceae,cereal,Cereals
+CROP_BARLEY,Barley,Hordeum vulgare,Poaceae,cereal,Cereals
+CROP_JOWAR,Sorghum (Jowar),Sorghum bicolor,Poaceae,millet,Millets
+CROP_BAJRA,Pearl millet (Bajra),Pennisetum glaucum,Poaceae,millet,Millets
+CROP_RAGI,Finger millet (Ragi),Eleusine coracana,Poaceae,millet,Millets
+CROP_KODO_MILLET,Kodo millet,Paspalum scrobiculatum,Poaceae,millet,Millets
+CROP_LITTLE_MILLET,Little millet,Panicum sumatrense,Poaceae,millet,Millets
+CROP_FOXTAIL_MILLET,Foxtail millet,Setaria italica,Poaceae,millet,Millets
+CROP_PROSO_MILLET,Proso millet,Panicum miliaceum,Poaceae,millet,Millets
+CROP_BARNYARD_MILLET,Barnyard millet,Echinochloa frumentacea,Poaceae,millet,Millets
+CROP_PIGEONPEA,Pigeon pea (Tur),Cajanus cajan,Fabaceae,pulse,Pulses
+CROP_CHICKPEA,Chickpea (Gram),Cicer arietinum,Fabaceae,pulse,Pulses
+CROP_GREENGRAM,Green gram (Moong),Vigna radiata,Fabaceae,pulse,Pulses
+CROP_BLACKGRAM,Black gram (Urad),Vigna mungo,Fabaceae,pulse,Pulses
+CROP_LENTIL,Lentil (Masoor),Lens culinaris,Fabaceae,pulse,Pulses
+CROP_FIELD_PEA,Field pea,Pisum sativum,Fabaceae,pulse,Pulses
+CROP_COWPEA,Cowpea (Lobia),Vigna unguiculata,Fabaceae,pulse,Pulses
+CROP_MOTH_BEAN,Moth bean,Vigna aconitifolia,Fabaceae,pulse,Pulses
+CROP_HORSE_GRAM,Horse gram,Macrotyloma uniflorum,Fabaceae,pulse,Pulses
+CROP_LABLAB,Lablab (Field bean),Lablab purpureus,Fabaceae,pulse,Pulses
+CROP_CLUSTER_BEAN,Cluster bean (Guar),Cyamopsis tetragonoloba,Fabaceae,pulse,Pulses
+CROP_SOYBEAN,Soybean,Glycine max,Fabaceae,oilseed,Oilseeds
+CROP_GROUNDNUT,Groundnut,Arachis hypogaea,Fabaceae,oilseed,Oilseeds
+CROP_MUSTARD,Mustard (Rapeseed),Brassica juncea,Brassicaceae,oilseed,Oilseeds
+CROP_SESAME,Sesame (Til),Sesamum indicum,Pedaliaceae,oilseed,Oilseeds
+CROP_SUNFLOWER,Sunflower,Helianthus annuus,Asteraceae,oilseed,Oilseeds
+CROP_SAFFLOWER,Safflower,Carthamus tinctorius,Asteraceae,oilseed,Oilseeds
+CROP_LINSEED,Linseed (Flax),Linum usitatissimum,Linaceae,oilseed,Oilseeds
+CROP_CASTOR,Castor,Ricinus communis,Euphorbiaceae,oilseed,Oilseeds
+CROP_NIGER,Niger,Guizotia abyssinica,Asteraceae,oilseed,Oilseeds
+CROP_COTTON,Cotton,Gossypium hirsutum,Malvaceae,fibre,Fibre crops
+CROP_JUTE,Jute,Corchorus olitorius,Malvaceae,fibre,Fibre crops
+CROP_MESTA,Mesta (Kenaf),Hibiscus spp.,Malvaceae,fibre,Fibre crops
+CROP_SUGARCANE,Sugarcane,Saccharum officinarum,Poaceae,sugar,Sugar crops
+CROP_SUGARBEET,Sugar beet,Beta vulgaris,Amaranthaceae,sugar,Sugar crops
+CROP_ONION,Onion,Allium cepa,Amaryllidaceae,vegetable,Vegetables
+CROP_TOMATO,Tomato,Solanum lycopersicum,Solanaceae,vegetable,Vegetables
+CROP_POTATO,Potato,Solanum tuberosum,Solanaceae,vegetable,Vegetables
+CROP_CHILLI,Chilli,Capsicum annuum,Solanaceae,vegetable,Vegetables
+CROP_BRINJAL,Brinjal (Eggplant),Solanum melongena,Solanaceae,vegetable,Vegetables
+CROP_OKRA,Okra (Bhindi),Abelmoschus esculentus,Malvaceae,vegetable,Vegetables
+CROP_CAULIFLOWER,Cauliflower,Brassica oleracea var. botrytis,Brassicaceae,vegetable,Vegetables
+CROP_CABBAGE,Cabbage,Brassica oleracea var. capitata,Brassicaceae,vegetable,Vegetables
+CROP_CUCUMBER,Cucumber,Cucumis sativus,Cucurbitaceae,vegetable,Vegetables
+CROP_BITTER_GOURD,Bitter gourd,Momordica charantia,Cucurbitaceae,vegetable,Vegetables
+CROP_BOTTLE_GOURD,Bottle gourd,Lagenaria siceraria,Cucurbitaceae,vegetable,Vegetables
+CROP_RIDGE_GOURD,Ridge gourd,Luffa acutangula,Cucurbitaceae,vegetable,Vegetables
+CROP_PUMPKIN,Pumpkin,Cucurbita moschata,Cucurbitaceae,vegetable,Vegetables
+CROP_DRUMSTICK,Drumstick (Moringa),Moringa oleifera,Moringaceae,vegetable,Vegetables
+CROP_SPINACH,Spinach (Palak),Spinacia oleracea,Amaranthaceae,leafy_vegetable,Leafy vegetables
+CROP_AMARANTH,Amaranth,Amaranthus spp.,Amaranthaceae,leafy_vegetable,Leafy vegetables
+CROP_FENUGREEK,Fenugreek (Methi),Trigonella foenum-graecum,Fabaceae,leafy_vegetable,Leafy vegetables
+CROP_MINT,Mint (Pudina),Mentha spicata,Lamiaceae,leafy_vegetable,Leafy vegetables
+CROP_CARROT,Carrot,Daucus carota,Apiaceae,root_vegetable,Root vegetables
+CROP_RADISH,Radish,Raphanus sativus,Brassicaceae,root_vegetable,Root vegetables
+CROP_SWEET_POTATO,Sweet potato,Ipomoea batatas,Convolvulaceae,root_vegetable,Root vegetables
+CROP_TARO,Taro (Arbi),Colocasia esculenta,Araceae,root_vegetable,Root vegetables
+CROP_CASSAVA,Cassava (Tapioca),Manihot esculenta,Euphorbiaceae,root_vegetable,Root vegetables
+CROP_YAM,Yam,Dioscorea spp.,Dioscoreaceae,root_vegetable,Root vegetables
+CROP_BANANA,Banana,Musa paradisiaca,Musaceae,fruit,Fruits
+CROP_MANGO,Mango,Mangifera indica,Anacardiaceae,fruit,Fruits
+CROP_ORANGE,Orange,Citrus sinensis,Rutaceae,fruit,Fruits
+CROP_LEMON,Lemon,Citrus limon,Rutaceae,fruit,Fruits
+CROP_POMEGRANATE,Pomegranate,Punica granatum,Lythraceae,fruit,Fruits
+CROP_GRAPES,Grapes,Vitis vinifera,Vitaceae,fruit,Fruits
+CROP_GUAVA,Guava,Psidium guajava,Myrtaceae,fruit,Fruits
+CROP_PAPAYA,Papaya,Carica papaya,Caricaceae,fruit,Fruits
+CROP_APPLE,Apple,Malus domestica,Rosaceae,fruit,Fruits
+CROP_SAPOTA,Sapota (Chikoo),Manilkara zapota,Sapotaceae,fruit,Fruits
+CROP_CUSTARD_APPLE,Custard apple,Annona squamosa,Annonaceae,fruit,Fruits
+CROP_JACKFRUIT,Jackfruit,Artocarpus heterophyllus,Moraceae,fruit,Fruits
+CROP_PINEAPPLE,Pineapple,Ananas comosus,Bromeliaceae,fruit,Fruits
+CROP_BER,Ber (Indian jujube),Ziziphus mauritiana,Rhamnaceae,fruit,Fruits
+CROP_AMLA,Amla (Gooseberry),Phyllanthus emblica,Phyllanthaceae,fruit,Fruits
+CROP_DATE_PALM,Date palm,Phoenix dactylifera,Arecaceae,fruit,Fruits
+CROP_MUSKMELON,Muskmelon,Cucumis melo,Cucurbitaceae,fruit,Fruits
+CROP_WATERMELON,Watermelon,Citrullus lanatus,Cucurbitaceae,fruit,Fruits
+CROP_MARIGOLD,Marigold,Tagetes erecta,Asteraceae,flower,Flowers
+CROP_ROSE,Rose,Rosa spp.,Rosaceae,flower,Flowers
+CROP_JASMINE,Jasmine,Jasminum spp.,Oleaceae,flower,Flowers
+CROP_TURMERIC,Turmeric,Curcuma longa,Zingiberaceae,spice,Spices
+CROP_GINGER,Ginger,Zingiber officinale,Zingiberaceae,spice,Spices
+CROP_GARLIC,Garlic,Allium sativum,Amaryllidaceae,spice,Spices
+CROP_CORIANDER,Coriander,Coriandrum sativum,Apiaceae,spice,Spices
+CROP_CUMIN,Cumin,Cuminum cyminum,Apiaceae,spice,Spices
+CROP_FENNEL,Fennel,Foeniculum vulgare,Apiaceae,spice,Spices
+CROP_BLACK_PEPPER,Black pepper,Piper nigrum,Piperaceae,spice,Spices
+CROP_CARDAMOM,Cardamom,Elettaria cardamomum,Zingiberaceae,spice,Spices
+CROP_NUTMEG,Nutmeg,Myristica fragrans,Myristicaceae,spice,Spices
+CROP_CLOVE,Clove,Syzygium aromaticum,Myrtaceae,spice,Spices
+CROP_CINNAMON,Cinnamon,Cinnamomum verum,Lauraceae,spice,Spices
+CROP_SAFFRON,Saffron,Crocus sativus,Iridaceae,spice,Spices
+CROP_TEA,Tea,Camellia sinensis,Theaceae,plantation,Plantation crops
+CROP_COFFEE,Coffee,Coffea arabica,Rubiaceae,plantation,Plantation crops
+CROP_COCONUT,Coconut,Cocos nucifera,Arecaceae,plantation,Plantation crops
+CROP_ARECANUT,Arecanut,Areca catechu,Arecaceae,plantation,Plantation crops
+CROP_CASHEW,Cashew,Anacardium occidentale,Anacardiaceae,plantation,Plantation crops
+CROP_RUBBER,Rubber,Hevea brasiliensis,Euphorbiaceae,plantation,Plantation crops
+CROP_OIL_PALM,Oil palm,Elaeis guineensis,Arecaceae,plantation,Plantation crops
+CROP_COCOA,Cocoa,Theobroma cacao,Malvaceae,plantation,Plantation crops
+CROP_ASHWAGANDHA,Ashwagandha,Withania somnifera,Solanaceae,medicinal,Medicinal plants
+CROP_ALOEVERA,Aloe vera,Aloe barbadensis,Asphodelaceae,medicinal,Medicinal plants
+CROP_TULSI,Tulsi (Holy basil),Ocimum sanctum,Lamiaceae,medicinal,Medicinal plants
+CROP_ISABGOL,Isabgol,Plantago ovata,Plantaginaceae,medicinal,Medicinal plants
+CROP_LEMONGRASS,Lemongrass,Cymbopogon citratus,Poaceae,aromatic,Aromatic plants
+CROP_CITRONELLA,Citronella,Cymbopogon winterianus,Poaceae,aromatic,Aromatic plants
+CROP_BERSEEM,Berseem,Trifolium alexandrinum,Fabaceae,fodder,Fodder crops
+CROP_LUCERNE,Lucerne (Alfalfa),Medicago sativa,Fabaceae,fodder,Fodder crops
+CROP_NAPIER_GRASS,Napier grass,Pennisetum purpureum,Poaceae,fodder,Fodder crops
+CROP_OATS,Oats,Avena sativa,Poaceae,fodder,Fodder crops
+CROP_BAMBOO,Bamboo,Bambusa spp.,Poaceae,tree,Forest/Agroforestry species
+CROP_NEEM,Neem,Azadirachta indica,Meliaceae,tree,Forest/Agroforestry species
+CROP_POPLAR,Poplar,Populus spp.,Salicaceae,tree,Forest/Agroforestry species
+CROP_EUCALYPTUS,Eucalyptus,Eucalyptus spp.,Myrtaceae,tree,Forest/Agroforestry species

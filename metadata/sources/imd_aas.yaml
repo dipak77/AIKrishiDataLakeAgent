@@ -1,0 +1,19 @@
+source_id: IMD_AAS
+name: IMD Agromet Advisory Service
+country: IN
+source_type: [dataset, bulletin]
+authority: government
+acquisition:
+  method: bulk_download
+  endpoint: https://mausam.imd.gov.in
+  schedule: daily
+  api_key_required: false
+  pagination: none
+domains: [weather, advisory]
+license:
+  type: GODL-India
+  url: https://data.gov.in/government-open-data-license-india
+quality:
+  authority_score: 1.0
+  freshness_score: 1.0
+notes: District/block/state/national advisories + KALP/SANKALP. Convert bulletins to structured weather + crop_advisories, not raw PDFs.

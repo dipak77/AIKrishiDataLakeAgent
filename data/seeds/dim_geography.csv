@@ -1,0 +1,161 @@
+state_code,state_name,type,agroclimatic_zone,agroecological_region,district_code,district_name
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-ANANTAPUR,Anantapur
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-CHITTOOR,Chittoor
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-GUNTUR,Guntur
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-KRISHNA,Krishna
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-KURNOOL,Kurnool
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-WGODAVARI,West Godavari
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,,IN-AR-WKAMENG,West Kameng
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,,IN-AR-PAPUMPARE,Papum Pare
+IN-AS,Assam,state,Eastern Himalayan Region,,,
+IN-AS,Assam,state,Eastern Himalayan Region,,IN-AS-NAGAON,Nagaon
+IN-AS,Assam,state,Eastern Himalayan Region,,IN-AS-JORHAT,Jorhat
+IN-AS,Assam,state,Eastern Himalayan Region,,IN-AS-DIBRUGARH,Dibrugarh
+IN-AS,Assam,state,Eastern Himalayan Region,,IN-AS-BARPETA,Barpeta
+IN-BR,Bihar,state,Middle Gangetic Plains,,,
+IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-PATNA,Patna
+IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-MUZAFFARPUR,Muzaffarpur
+IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-SAMASTIPUR,Samastipur
+IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-PURNIA,Purnia
+IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-ROHTAS,Rohtas
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,IN-CT-RAIPUR,Raipur
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,IN-CT-DURG,Durg
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,IN-CT-RAJNANDGAON,Rajnandgaon
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,IN-CT-BASTAR,Bastar
+IN-GA,Goa,state,West Coast Plains and Ghats,,,
+IN-GA,Goa,state,West Coast Plains and Ghats,,IN-GA-NORTH,North Goa
+IN-GA,Goa,state,West Coast Plains and Ghats,,IN-GA-SOUTH,South Goa
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-AHMEDABAD,Ahmedabad
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-BANASKANTHA,Banaskantha
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-JUNAGADH,Junagadh
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-RAJKOT,Rajkot
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-MEHSANA,Mehsana
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-BHAVNAGAR,Bhavnagar
+IN-HR,Haryana,state,Trans-Gangetic Plains,,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-KARNAL,Karnal
+IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-HISAR,Hisar
+IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-SIRSA,Sirsa
+IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-KAITHAL,Kaithal
+IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-SONIPAT,Sonipat
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,,IN-HP-KANGRA,Kangra
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,,IN-HP-MANDI,Mandi
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,,IN-HP-SHIMLA,Shimla
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,,IN-JH-RANCHI,Ranchi
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,,IN-JH-HAZARIBAGH,Hazaribagh
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,,IN-JH-DUMKA,Dumka
+IN-KA,Karnataka,state,Southern Plateau and Hills,,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-BELAGAVI,Belagavi
+IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-MYSURU,Mysuru
+IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-HAVERI,Haveri
+IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-VIJAYAPURA,Vijayapura
+IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-TUMAKURU,Tumakuru
+IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-CHIKKAMAGALURU,Chikkamagaluru
+IN-KL,Kerala,state,West Coast Plains and Ghats,,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,,IN-KL-IDUKKI,Idukki
+IN-KL,Kerala,state,West Coast Plains and Ghats,,IN-KL-PALAKKAD,Palakkad
+IN-KL,Kerala,state,West Coast Plains and Ghats,,IN-KL-WAYANAD,Wayanad
+IN-KL,Kerala,state,West Coast Plains and Ghats,,IN-KL-THRISSUR,Thrissur
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-INDORE,Indore
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-UJJAIN,Ujjain
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-SEHORE,Sehore
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-CHHINDWARA,Chhindwara
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-MORENA,Morena
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-HOSHANGABAD,Hoshangabad
+IN-MH,Maharashtra,state,Western Plateau and Hills,,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-PUNE,Pune
+IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-NASHIK,Nashik
+IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-NAGPUR,Nagpur
+IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-SOLAPUR,Solapur
+IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-AHMEDNAGAR,Ahmednagar
+IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-JALGAON,Jalgaon
+IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-AURANGABAD,Aurangabad
+IN-MN,Manipur,state,Eastern Himalayan Region,,,
+IN-MN,Manipur,state,Eastern Himalayan Region,,IN-MN-IMPHAL_W,Imphal West
+IN-MN,Manipur,state,Eastern Himalayan Region,,IN-MN-BISHNUPUR,Bishnupur
+IN-ML,Meghalaya,state,Eastern Himalayan Region,,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,,IN-ML-EKH,East Khasi Hills
+IN-ML,Meghalaya,state,Eastern Himalayan Region,,IN-ML-WGH,West Garo Hills
+IN-MZ,Mizoram,state,Eastern Himalayan Region,,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,,IN-MZ-AIZAWL,Aizawl
+IN-NL,Nagaland,state,Eastern Himalayan Region,,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,,IN-NL-DIMAPUR,Dimapur
+IN-NL,Nagaland,state,Eastern Himalayan Region,,IN-NL-KOHIMA,Kohima
+IN-OD,Odisha,state,East Coast Plains and Hills,,,
+IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-BARGARH,Bargarh
+IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-CUTTACK,Cuttack
+IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-GANJAM,Ganjam
+IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-MAYURBHANJ,Mayurbhanj
+IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-PURI,Puri
+IN-PB,Punjab,state,Trans-Gangetic Plains,,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-LUDHIANA,Ludhiana
+IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-SANGRUR,Sangrur
+IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-FEROZEPUR,Ferozepur
+IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-BATHINDA,Bathinda
+IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-AMRITSAR,Amritsar
+IN-RJ,Rajasthan,state,Western Dry Region,,,
+IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-JAIPUR,Jaipur
+IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-JODHPUR,Jodhpur
+IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-KOTA,Kota
+IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-GANGANAGAR,Sri Ganganagar
+IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-ALWAR,Alwar
+IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-BARMER,Barmer
+IN-SK,Sikkim,state,Eastern Himalayan Region,,,
+IN-SK,Sikkim,state,Eastern Himalayan Region,,IN-SK-EAST,East Sikkim
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-THANJAVUR,Thanjavur
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-COIMBATORE,Coimbatore
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-ERODE,Erode
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-MADURAI,Madurai
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-VILLUPURAM,Villupuram
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-SALEM,Salem
+IN-TG,Telangana,state,Southern Plateau and Hills,,,
+IN-TG,Telangana,state,Southern Plateau and Hills,,IN-TG-NIZAMABAD,Nizamabad
+IN-TG,Telangana,state,Southern Plateau and Hills,,IN-TG-WARANGAL,Warangal
+IN-TG,Telangana,state,Southern Plateau and Hills,,IN-TG-KARIMNAGAR,Karimnagar
+IN-TG,Telangana,state,Southern Plateau and Hills,,IN-TG-MAHBUBNAGAR,Mahbubnagar
+IN-TR,Tripura,state,Eastern Himalayan Region,,,
+IN-TR,Tripura,state,Eastern Himalayan Region,,IN-TR-WEST,West Tripura
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-LUCKNOW,Lucknow
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-VARANASI,Varanasi
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-MEERUT,Meerut
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-GORAKHPUR,Gorakhpur
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-KANPUR,Kanpur Nagar
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-AGRA,Agra
+IN-UK,Uttarakhand,state,Western Himalayan Region,,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,,IN-UK-DEHRADUN,Dehradun
+IN-UK,Uttarakhand,state,Western Himalayan Region,,IN-UK-USNAGAR,Udham Singh Nagar
+IN-UK,Uttarakhand,state,Western Himalayan Region,,IN-UK-HARIDWAR,Haridwar
+IN-WB,West Bengal,state,Lower Gangetic Plains,,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-PBARDHAMAN,Purba Bardhaman
+IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-HOOGHLY,Hooghly
+IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-NADIA,Nadia
+IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-MURSHIDABAD,Murshidabad
+IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-PMEDINIPUR,Paschim Medinipur
+IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-JALPAIGURI,Jalpaiguri
+IN-AN,Andaman and Nicobar Islands,UT,The Islands Region,,,
+IN-AN,Andaman and Nicobar Islands,UT,The Islands Region,,IN-AN-SOUTH,South Andaman
+IN-CH,Chandigarh,UT,Trans-Gangetic Plains,,,
+IN-CH,Chandigarh,UT,Trans-Gangetic Plains,,IN-CH-CHANDIGARH,Chandigarh
+IN-DH,Dadra and Nagar Haveli and Daman and Diu,UT,Gujarat Plains and Hills,,,
+IN-DH,Dadra and Nagar Haveli and Daman and Diu,UT,Gujarat Plains and Hills,,IN-DH-DAMAN,Daman
+IN-DL,Delhi,UT,Trans-Gangetic Plains,,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,,IN-DL-NEWDELHI,New Delhi
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,,IN-JK-SRINAGAR,Srinagar
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,,IN-JK-JAMMU,Jammu
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,,IN-JK-ANANTNAG,Anantnag
+IN-LA,Ladakh,UT,Western Himalayan Region,,,
+IN-LA,Ladakh,UT,Western Himalayan Region,,IN-LA-LEH,Leh
+IN-LD,Lakshadweep,UT,The Islands Region,,,
+IN-LD,Lakshadweep,UT,The Islands Region,,IN-LD-LAKSHADWEEP,Lakshadweep
+IN-PY,Puducherry,UT,East Coast Plains and Hills,,,
+IN-PY,Puducherry,UT,East Coast Plains and Hills,,IN-PY-PUDUCHERRY,Puducherry
+IN-PY,Puducherry,UT,East Coast Plains and Hills,,IN-PY-KARAIKAL,Karaikal

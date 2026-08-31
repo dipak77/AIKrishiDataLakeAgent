@@ -1,0 +1,9 @@
+key,name,score
+government,Government / ICAR / SAU,1.0
+research,Peer-reviewed research,0.95
+government_extension,KVK / government extension,0.9
+institution,Recognised agriculture institution,0.8
+specialist,Verified domain specialist,0.65
+blog,Agriculture blog,0.5
+farmer,Farmer anecdote,0.35
+social,Anonymous social-media claim,0.2

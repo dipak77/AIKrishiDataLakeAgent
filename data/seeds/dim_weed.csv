@@ -1,0 +1,9 @@
+weed_id,name,scientific_name,hosts,management
+WEED_PARTHENIUM,Parthenium (Congress grass),Parthenium hysterophorus,"Upland, wastelands","Manual uprooting before flowering, competitive crops, biocontrol (Zygogramma)"
+WEED_ECHINOCHLOA,Jungle rice,Echinochloa colona,Rice,"Puddling, stale seedbed, pre-emergence herbicides"
+WEED_CYPERUS,Purple nutsedge (Motha),Cyperus rotundus,All crops,"Deep ploughing, clean seed, sulfonylurea herbicides"
+WEED_PHALARIS,Littleseed canarygrass,Phalaris minor,Wheat,"Early sowing, clodinafop/sulfosulfuron (rotate modes of action)"
+WEED_AVENA,Wild oats,Avena fatua,Wheat,"Clean seed, crop rotation, post-emergence graminicides"
+WEED_CYNODON,Bermuda grass (Doob),Cynodon dactylon,All crops,"Repeated cultivation, mulch, glyphosate on fallow"
+WEED_CONVOLVULUS,Field bindweed,Convolvulus arvensis,Cereals|Vegetables,"Deep tillage, cover crops, 2,4-D + glyphosate"
+WEED_STRIGA,Witchweed,Striga spp.,Sorghum|Maize|Sugarcane,"Trap crops, resistant varieties, avoid contaminated seed"
