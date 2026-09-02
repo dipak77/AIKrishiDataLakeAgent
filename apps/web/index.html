@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Krushi Mitra — India-First Agriculture Intelligence Lakehouse &amp; Multimodal Advisory Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #09130d;
+    --bg-secondary: #112217;
+    --bg-card: rgba(18, 38, 26, 0.75);
+    --bg-card-hover: rgba(24, 48, 34, 0.9);
+    --bg-input: rgba(8, 20, 13, 0.85);
+    --border: rgba(52, 211, 153, 0.18);
+    --border-focus: #10b981;
+    --text-main: #f0fdf4;
+    --text-muted: #86efac;
+    --text-dim: #6ee7b7;
+    --text-sub: #94a3b8;
+    --emerald: #10b981;
+    --emerald-dark: #064e3b;
+    --emerald-glow: rgba(16, 185, 129, 0.35);
+    --amber: #f59e0b;
+    --amber-dark: #78350f;
+    --amber-glow: rgba(245, 158, 11, 0.3);
+    --cyan: #06b6d4;
+    --rose: #f43f5e;
+    --purple: #a855f7;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border);
+    --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-theme="light"] {
+    --bg-primary: #f4fbf6;
+    --bg-secondary: #e6f6ec;
+    --bg-card: rgba(255, 255, 255, 0.88);
+    --bg-card-hover: #ffffff;
+    --bg-input: #ffffff;
+    --border: rgba(16, 185, 129, 0.22);
+    --border-focus: #059669;
+    --text-main: #064e3b;
+    --text-muted: #047857;
+    --text-dim: #065f46;
+    --text-sub: #64748b;
+    --emerald: #059669;
+    --emerald-dark: #d1fae5;
+    --emerald-glow: rgba(5, 150, 105, 0.2);
+    --shadow-card: 0 10px 25px -5px rgba(6, 78, 59, 0.08), 0 0 0 1px var(--border);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: radial-gradient(circle at 50% 0%, var(--bg-secondary) 0%, var(--bg-primary) 75%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    line-height: 1.5;
+  }
+
+  /* Header */
+  header {
+    background: rgba(9, 19, 13, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .logo-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10b981, #047857);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 0 20px var(--emerald-glow);
+  }
+  .brand-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    background: linear-gradient(120deg, #34d399, #10b981, #a7f3d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .brand-sub {
+    font-size: 11.5px;
+    color: var(--text-sub);
+    font-weight: 500;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--emerald);
+    box-shadow: 0 0 10px var(--emerald);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .btn-theme {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 7px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: var(--transition);
+  }
+  .btn-theme:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: var(--emerald);
+  }
+
+  /* Nav Tabs */
+  .nav-tabs {
+    display: flex;
+    gap: 6px;
+    background: rgba(17, 34, 23, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 8px 24px;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-sub);
+    font-family: 'Outfit', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    transition: var(--transition);
+  }
+  .tab-btn:hover {
+    color: var(--text-main);
+    background: rgba(16, 185, 129, 0.1);
+  }
+  .tab-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, #059669, #10b981);
+    box-shadow: 0 4px 14px var(--emerald-glow);
+  }
+
+  /* Main Container */
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+  }
+
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .tab-content.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Card Grid */
+  .card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    margin-bottom: 20px;
+    transition: var(--transition);
+  }
+  .card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(52, 211, 153, 0.35);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+  @media (max-width: 860px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  /* Form Elements */
+  .form-group {
+    margin-bottom: 16px;
+  }
+  label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  input[type="text"], input[type="number"], select, textarea {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: var(--transition);
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #059669, #10b981);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 12px 22px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px var(--emerald-glow);
+    transition: var(--transition);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px var(--emerald-glow);
+  }
+  .btn-primary:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 18px;
+    font-weight: 600;
+    font-size: 13.5px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--emerald);
+  }
+
+  /* Chat Module */
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+    min-height: 280px;
+  }
+  .msg-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    box-shadow: var(--shadow-card);
+    animation: fadeIn 0.25s ease;
+  }
+  .msg-card.user {
+    background: linear-gradient(135deg, #064e3b, #047857);
+    color: #fff;
+    align-self: flex-end;
+    max-width: 80%;
+    border-bottom-right-radius: 4px;
+    border: none;
+  }
+  .msg-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .badge-intent { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+  .badge-lang { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+  .badge-engine { background: rgba(6, 182, 212, 0.2); color: #38bdf8; border: 1px solid rgba(6, 182, 212, 0.4); }
+  .badge-score { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+  .msg-body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+  .citation-box {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--emerald);
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .chip {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .chip:hover {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: var(--emerald);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .chat-bar {
+    position: sticky;
+    bottom: 12px;
+    background: rgba(9, 19, 13, 0.92);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  .chat-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 15px;
+    padding: 8px 12px;
+    outline: none;
+  }
+
+  /* Vision Upload */
+  .drop-zone {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-md);
+    padding: 36px 20px;
+    text-align: center;
+    background: rgba(16, 185, 129, 0.04);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .drop-zone:hover, .drop-zone.dragover {
+    border-color: var(--emerald);
+    background: rgba(16, 185, 129, 0.1);
+  }
+  .drop-icon { font-size: 40px; margin-bottom: 10px; }
+  .spectrum-bar {
+    display: flex;
+    height: 18px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 10px;
+    background: #1e293b;
+  }
+  .spectrum-segment {
+    height: 100%;
+    transition: width 0.4s ease;
+  }
+
+  /* Tables */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin-top: 10px;
+  }
+  .data-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--text-muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .data-table tr:hover td {
+    background: rgba(16, 185, 129, 0.06);
+  }
+
+  /* Metric Stat Cards */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--emerald);
+    margin: 4px 0;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-sub);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Utilities */
+  .code-block {
+    background: #020c06;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: #a7f3d0;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #064e3b;
+    border: 1px solid var(--emerald);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    font-weight: 600;
+    font-size: 14px;
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="brand">
+    <div class="logo-icon">🌾</div>
+    <div>
+      <div class="brand-title">Krushi Mitra</div>
+      <div class="brand-sub">India-First Agriculture Intelligence Lakehouse &amp; Agent</div>
+    </div>
+  </a>
+  <div class="header-actions">
+    <div class="status-pill" id="lake-status">
+      <div class="pulse-dot"></div>
+      <span id="lake-status-text">Lake Ready</span>
+    </div>
+    <button class="btn-theme" id="theme-toggle" title="Toggle Light/Dark Theme">🌓 Theme</button>
+  </div>
+</header>
+
+<nav class="nav-tabs" id="nav-tabs">
+  <button class="tab-btn active" data-tab="tab-chat">💬 AI Assistant</button>
+  <button class="tab-btn" data-tab="tab-vision">📸 Vision Crop Doctor</button>
+  <button class="tab-btn" data-tab="tab-fertilizer">🌱 Fertilizer Calculator</button>
+  <button class="tab-btn" data-tab="tab-mandi">📈 Mandi Live Rates</button>
+  <button class="tab-btn" data-tab="tab-weather">⛅ Agromet Weather</button>
+  <button class="tab-btn" data-tab="tab-calendar">📅 Crop Sowing Planner</button>
+  <button class="tab-btn" data-tab="tab-graph">🧠 Knowledge Graph</button>
+  <button class="tab-btn" data-tab="tab-evidence">📚 Research Evidence</button>
+  <button class="tab-btn" data-tab="tab-gateway">⚡ DECG Workbench</button>
+  <button class="tab-btn" data-tab="tab-metrics">📊 Lakehouse Metrics</button>
+</nav>
+
+<main>
+  <!-- TAB 1: AI ASSISTANT -->
+  <section id="tab-chat" class="tab-content active">
+    <div class="chips-row" id="chat-chips"></div>
+    <div class="chat-box" id="chat-stream"></div>
+    <form class="chat-bar" id="chat-form">
+      <input type="text" id="chat-input" class="chat-input" placeholder="Ask about diseases, fertilizers, mandi prices, weather, or crop planning in English, हिंदी, मराठी, தமிழ், తెలుగు…" autocomplete="off" />
+      <button type="button" class="btn-secondary" id="tts-toggle" title="Toggle Audio Reading">🔊 Voice</button>
+      <button type="submit" class="btn-primary" id="chat-send">
+        <span>Ask</span>
+      </button>
+    </form>
+  </section>
+
+  <!-- TAB 2: VISION CROP DOCTOR -->
+  <section id="tab-vision" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">📸 Crop Leaf Image Diagnosis</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">Upload a crop leaf photograph to trigger real-time color spectrum pixel decomposition, symptom extraction, and ICAR seed ontology ranking.</p>
+      
+      <div class="drop-zone" id="vision-dropzone">
+        <div class="drop-icon">🍃</div>
+        <div style="font-weight:700; font-size:16px;">Drag &amp; Drop leaf image here or click to browse</div>
+        <div style="font-size:12.5px; color:var(--text-sub); margin-top:4px;">Supports PNG, JPG, WebP</div>
+        <input type="file" id="vision-file-input" accept="image/*" style="display:none;" />
+      </div>
+
+      <div class="grid-2" style="margin-top:18px;">
+        <div class="form-group">
+          <label>Crop Context (Optional)</label>
+          <input type="text" id="vision-crop" placeholder="e.g. Tomato, Rice, Wheat, Cotton" />
+        </div>
+        <div class="form-group">
+          <label>Inference Backend</label>
+          <select id="vision-backend">
+            <option value="auto">Auto (Deterministic Heuristic)</option>
+            <option value="onnx">ONNX Runtime (Opt-in)</option>
+            <option value="tflite">TFLite Runtime (Opt-in)</option>
+            <option value="transformers">Transformers ViT (Opt-in)</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" id="vision-analyze-btn">Analyze Leaf Image</button>
+    </div>
+
+    <div id="vision-results-card" class="card" style="display:none;">
+      <h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:12px;">Diagnostic Spectrum &amp; Findings</h3>
+      <div class="stat-grid" id="vision-stats"></div>
+      
+      <label style="margin-top:14px;">HSV Color Distribution</label>
+      <div class="spectrum-bar" id="vision-spectrum"></div>
+      <div id="spectrum-legend" style="display:flex; gap:12px; font-size:12px; margin-top:6px; flex-wrap:wrap;"></div>
+
+      <h4 style="margin-top:20px; font-size:15px;">Ranked Disease &amp; Pest Candidates</h4>
+      <table class="data-table" id="vision-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Candidate Entity</th>
+            <th>Type</th>
+            <th>Match Score</th>
+            <th>Matched Symptoms</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="vision-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- TAB 3: FERTILIZER CALCULATOR -->
+  <section id="tab-fertilizer" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">🌱 Precision Fertilizer Advisory Engine</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">Compute scientific NPK nutrient requirements, soil-test corrections, and balanced fertilizer product mixes (Urea, DAP, MOP, SSP) with split timing.</p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Target Crop</label>
+          <input type="text" id="fert-crop" value="Tomato" placeholder="e.g. Tomato, Wheat, Rice, Cotton, Onion" />
+        </div>
+        <div class="form-group">
+          <label>Growth Stage</label>
+          <select id="fert-stage">
+            <option value="">All Stages (Full Crop Cycle)</option>
+            <option value="basal">Basal / Sowing</option>
+            <option value="vegetative">Vegetative / Tillering</option>
+            <option value="reproductive">Reproductive / Flowering / Fruiting</option>
+          </select>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Outfit'; font-size:15px; margin:16px 0 10px; color:var(--text-muted);">Soil Test Parameters (Optional)</h3>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Soil pH</label>
+          <input type="number" step="0.1" id="soil-ph" placeholder="e.g. 6.5 (6.0 - 8.5)" />
+        </div>
+        <div class="form-group">
+          <label>Organic Carbon (%)</label>
+          <input type="number" step="0.01" id="soil-oc" placeholder="e.g. 0.55 %" />
+        </div>
+        <div class="form-group">
+          <label>Available Nitrogen (kg/ha)</label>
+          <input type="number" id="soil-n" placeholder="e.g. 240 kg/ha" />
+        </div>
+        <div class="form-group">
+          <label>Available P2O5 (kg/ha)</label>
+          <input type="number" id="soil-p" placeholder="e.g. 18 kg/ha" />
+        </div>
+        <div class="form-group">
+          <label>Available K2O (kg/ha)</label>
+          <input type="number" id="soil-k" placeholder="e.g. 160 kg/ha" />
+        </div>
+        <div class="form-group">
+          <label>Zinc (Zn ppm)</label>
+          <input type="number" step="0.1" id="soil-zn" placeholder="e.g. 0.5 ppm" />
+        </div>
+      </div>
+      <button class="btn-primary" id="fert-calculate-btn">Calculate Fertilizer Recommendation</button>
+    </div>
+
+    <div id="fert-results-card" class="card" style="display:none;"></div>
+  </section>
+
+  <!-- TAB 4: MANDI LIVE RATES -->
+  <section id="tab-mandi" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">📈 Agmarknet Mandi Price Intelligence</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">Live APMC modal rates, min/max price spreads, volatility indicators, and crop calendar supply signals.</p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Commodity</label>
+          <input type="text" id="mandi-commodity" value="Onion" placeholder="e.g. Onion, Tomato, Wheat, Rice, Cotton, Potato" />
+        </div>
+        <div class="form-group">
+          <label>Specific Market / APMC (Optional)</label>
+          <input type="text" id="mandi-market" placeholder="e.g. Lasalgaon, Pune, Nagpur, Azadpur" />
+        </div>
+      </div>
+      <button class="btn-primary" id="mandi-fetch-btn">Fetch Mandi Intelligence</button>
+    </div>
+
+    <div id="mandi-results-card" class="card" style="display:none;"></div>
+  </section>
+
+  <!-- TAB 5: AGROMET WEATHER -->
+  <section id="tab-weather" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">⛅ IMD Agromet Weather Advisory</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">District weather bulletins, heat/frost/waterlogging risk triggers, and crop water requirement balance.</p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>District</label>
+          <input type="text" id="weather-district" value="Pune" placeholder="e.g. Pune, Nashik, Nagpur, Kanpur, Ludhiana" />
+        </div>
+        <div class="form-group">
+          <label>Specific Crop (Optional)</label>
+          <input type="text" id="weather-crop" placeholder="e.g. Tomato, Sugarcane, Wheat, Cotton" />
+        </div>
+      </div>
+      <button class="btn-primary" id="weather-fetch-btn">Fetch Agromet Advisory</button>
+    </div>
+
+    <div id="weather-results-card" class="card" style="display:none;"></div>
+  </section>
+
+  <!-- TAB 6: CROP SOWING PLANNER -->
+  <section id="tab-calendar" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">📅 Crop Calendar &amp; Sowing Planner</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">Explore what to sow by month or look up crop lifecycle sowing/harvesting windows with state/district overrides.</p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Month to Sow</label>
+          <select id="cal-month">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6" selected>June (Kharif Onset)</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October (Rabi Onset)</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>State Filter (Optional)</label>
+          <input type="text" id="cal-state" placeholder="e.g. Maharashtra, Punjab, Uttar Pradesh" />
+        </div>
+      </div>
+      <button class="btn-primary" id="cal-sow-btn">Find Crops to Sow</button>
+    </div>
+
+    <div id="calendar-results-card" class="card" style="display:none;"></div>
+  </section>
+
+  <!-- TAB 7: KNOWLEDGE GRAPH -->
+  <section id="tab-graph" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">🧠 Graph-Native Agriculture Knowledge Explorer</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">Traverse 1,480+ nodes and 1,700+ edges linking crops, diseases, pests, nutrients, and symptoms using DuckDB recursive CTEs.</p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Crop Health Map Query</label>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="graph-crop" value="Tomato" placeholder="e.g. Tomato, Wheat, Cotton, Rice" />
+            <button class="btn-primary" id="graph-health-btn">Map</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Shortest Path Finder</label>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="graph-src" value="CROP_TOMATO" placeholder="Source Node ID" />
+            <input type="text" id="graph-dst" value="PATHOGEN:alternaria solani" placeholder="Target Node ID" />
+            <button class="btn-secondary" id="graph-path-btn">Path</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="graph-results-card" class="card" style="display:none;"></div>
+  </section>
+
+  <!-- TAB 8: RESEARCH EVIDENCE -->
+  <section id="tab-evidence" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">📚 ICAR / FAO Research Evidence Corpus</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">Search across verified agricultural research chunks using hybrid BM25 + dense neural embedding retrieval.</p>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Search Query</label>
+          <input type="text" id="ev-query" value="early blight control" placeholder="e.g. pink bollworm management, zinc deficiency" />
+        </div>
+        <div class="form-group">
+          <label>Crop Filter (Optional)</label>
+          <input type="text" id="ev-crop" placeholder="e.g. Tomato, Cotton, Rice" />
+        </div>
+      </div>
+      <button class="btn-primary" id="ev-search-btn">Search Research Evidence</button>
+    </div>
+
+    <div id="evidence-results-card" class="card" style="display:none;"></div>
+  </section>
+
+  <!-- TAB 9: DECG WORKBENCH -->
+  <section id="tab-gateway" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">⚡ Dual-Engine Context Gateway (DECG) Workbench</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">Benchmark and debug the orchestration layer: multi-query planning, Reciprocal Rank Fusion, reranking, and guardrail enforcement.</p>
+
+      <div class="form-group">
+        <label>Benchmark Farmer Query</label>
+        <input type="text" id="decg-query" value="tomato lower leaves have yellowing and concentric black rings" />
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Crop Hint (Optional)</label>
+          <input type="text" id="decg-crop" placeholder="e.g. Tomato" />
+        </div>
+        <div class="form-group">
+          <label>Top K Segments</label>
+          <input type="number" id="decg-topk" value="5" min="1" max="20" />
+        </div>
+      </div>
+      <button class="btn-primary" id="decg-run-btn">Execute DECG Gateway</button>
+    </div>
+
+    <div id="decg-results-card" class="card" style="display:none;"></div>
+  </section>
+
+  <!-- TAB 10: LAKEHOUSE METRICS -->
+  <section id="tab-metrics" class="tab-content">
+    <div class="card">
+      <h2 style="font-family:'Outfit'; font-size:20px; margin-bottom:8px;">📊 Medallion Lakehouse Observability &amp; Data Quality</h2>
+      <p style="color:var(--text-sub); font-size:13.5px; margin-bottom:18px;">Inspect persistent DuckDB gold tables, row volume, node taxonomies, and authority quality scores.</p>
+      <button class="btn-primary" id="metrics-refresh-btn">Refresh Metrics</button>
+    </div>
+
+    <div class="stat-grid" id="metrics-stat-grid"></div>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="font-family:'Outfit'; font-size:16px; margin-bottom:12px;">Persistent Gold Tables</h3>
+        <table class="data-table">
+          <thead><tr><th>Table Name</th><th>Record Count</th></tr></thead>
+          <tbody id="metrics-tables-tbody"></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3 style="font-family:'Outfit'; font-size:16px; margin-bottom:12px;">Knowledge Graph Node Taxonomy</h3>
+        <table class="data-table">
+          <thead><tr><th>Node Type</th><th>Count</th></tr></thead>
+          <tbody id="metrics-graph-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+// ── App State & Utilities ───────────────────────────────────────────────────
+const API_BASE = "";
+let speechEnabled = false;
+
+function showToast(msg) {
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2600);
+}
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function speakText(text) {
+  if (!speechEnabled || !window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.rate = 1.0;
+  window.speechSynthesis.speak(utt);
+}
+
+// ── Theme Switcher ──────────────────────────────────────────────────────────
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.onclick = () => {
+  const isLight = document.body.getAttribute("data-theme") === "light";
+  document.body.setAttribute("data-theme", isLight ? "dark" : "light");
+  localStorage.setItem("krushi-theme", isLight ? "dark" : "light");
+};
+if (localStorage.getItem("krushi-theme") === "light") {
+  document.body.setAttribute("data-theme", "light");
+}
+
+// ── Tab Switching ───────────────────────────────────────────────────────────
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    const target = document.getElementById(btn.dataset.tab);
+    if (target) target.classList.add("active");
+    if (btn.dataset.tab === "tab-metrics") loadMetrics();
+  };
+});
+
+// ── Chat & Assistant Module ─────────────────────────────────────────────────
+const CHAT_EXAMPLES = [
+  "My tomato leaves have dark brown concentric spots and yellowing",
+  "टोमॅटोवर काळे डाग आहेत आणि पाने पिवळी पडत आहेत",
+  "धान में भूरे धब्बे और सफेद कली की समस्या",
+  "தக்காளியில் கருப்பு புள்ளிகள்",
+  "What is the price of onion in Lasalgaon mandi?",
+  "How much Urea, DAP and MOP for wheat crop?",
+  "When should I sow wheat in Punjab?",
+  "Weather advisory for Pune district this week",
+];
+
+const chipsContainer = document.getElementById("chat-chips");
+CHAT_EXAMPLES.forEach(ex => {
+  const chip = document.createElement("button");
+  chip.className = "chip";
+  chip.type = "button";
+  chip.textContent = ex;
+  chip.onclick = () => {
+    document.getElementById("chat-input").value = ex;
+    document.getElementById("chat-form").requestSubmit();
+  };
+  chipsContainer.appendChild(chip);
+});
+
+const ttsToggle = document.getElementById("tts-toggle");
+ttsToggle.onclick = () => {
+  speechEnabled = !speechEnabled;
+  ttsToggle.textContent = speechEnabled ? "🔊 Voice: ON" : "🔈 Voice: OFF";
+  ttsToggle.style.borderColor = speechEnabled ? "var(--emerald)" : "var(--border)";
+};
+
+const chatStream = document.getElementById("chat-stream");
+const chatForm = document.getElementById("chat-form");
+const chatInput = document.getElementById("chat-input");
+const chatSend = document.getElementById("chat-send");
+
+function renderAssistantMessage(resp) {
+  const card = document.createElement("div");
+  card.className = "msg-card";
+  
+  let headerHtml = '<div class="msg-header">';
+  if (resp.intent) headerHtml += `<span class="badge badge-intent">${esc(resp.intent)}</span>`;
+  if (resp.language) headerHtml += `<span class="badge badge-lang">Lang: ${esc(resp.language.toUpperCase())} (${Math.round((resp.language_confidence||1)*100)}%)</span>`;
+  if (resp.nlu_model) headerHtml += `<span class="badge badge-engine">NLU: ${esc(resp.nlu_model)}</span>`;
+  headerHtml += '</div>';
+
+  let bodyHtml = '';
+  const ent = resp.entities || {};
+  const ents = [ent.crop, ent.district, ent.stage].filter(Boolean);
+  if (ents.length) {
+    bodyHtml += `<div style="font-size:12.5px; color:var(--text-muted); margin-bottom:10px;">Entities: <strong>${esc(ents.join(' · '))}</strong></div>`;
+  }
+
+  let fullSpeech = "";
+  (resp.answers || []).forEach(ans => {
+    bodyHtml += `<div style="margin-top:12px; border-top:1px dashed var(--border); padding-top:12px;">
+      <div style="font-size:11px; color:var(--text-sub); text-transform:uppercase; font-weight:700;">${esc(ans.engine)}</div>
+      <h3 style="font-size:16px; margin:2px 0 8px;">${esc(ans.title)}</h3>
+      <div class="msg-body">${esc((ans.body || []).join("\n"))}</div>`;
+    
+    fullSpeech += (ans.body || []).join(". ") + ". ";
+
+    if (ans.citations && ans.citations.length) {
+      bodyHtml += `<div class="citation-box"><strong>Evidence:</strong><br/>`;
+      ans.citations.forEach(c => {
+        const src = c.source || c.authority || "Seed Ontology";
+        const sc = c.score != null ? ` (Score: ${c.score})` : '';
+        bodyHtml += `<div>• ${esc(src)}${sc}</div>`;
+      });
+      bodyHtml += `</div>`;
+    }
+    bodyHtml += `</div>`;
+  });
+
+  card.innerHTML = headerHtml + bodyHtml;
+  chatStream.appendChild(card);
+  card.scrollIntoView({ behavior: 'smooth' });
+  speakText(fullSpeech);
+}
+
+chatForm.onsubmit = async (e) => {
+  e.preventDefault();
+  const q = chatInput.value.trim();
+  if (!q) return;
+
+  const userCard = document.createElement("div");
+  userCard.className = "msg-card user";
+  userCard.textContent = q;
+  chatStream.appendChild(userCard);
+  chatInput.value = "";
+  chatSend.disabled = true;
+  chatSend.innerHTML = '<span class="spinner"></span>';
+
+  try {
+    const res = await fetch(`${API_BASE}/api/query`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: q }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Query execution failed");
+    renderAssistantMessage(data);
+  } catch (err) {
+    const errCard = document.createElement("div");
+    errCard.className = "msg-card";
+    errCard.innerHTML = `<span class="badge badge-intent">Error</span><div class="msg-body" style="color:var(--rose); margin-top:8px;">${esc(err.message)}</div>`;
+    chatStream.appendChild(errCard);
+  } finally {
+    chatSend.disabled = false;
+    chatSend.textContent = "Ask";
+  }
+};
+
+// ── Vision Module ───────────────────────────────────────────────────────────
+const dropzone = document.getElementById("vision-dropzone");
+const fileInput = document.getElementById("vision-file-input");
+let selectedVisionBase64 = null;
+
+dropzone.onclick = () => fileInput.click();
+dropzone.ondragover = (e) => { e.preventDefault(); dropzone.classList.add("dragover"); };
+dropzone.ondragleave = () => dropzone.classList.remove("dragover");
+dropzone.ondrop = (e) => {
+  e.preventDefault();
+  dropzone.classList.remove("dragover");
+  if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+    handleVisionFile(e.dataTransfer.files[0]);
+  }
+};
+fileInput.onchange = () => {
+  if (fileInput.files && fileInput.files[0]) handleVisionFile(fileInput.files[0]);
+};
+
+function handleVisionFile(file) {
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const img = new Image();
+    img.onload = () => {
+      // Draw to canvas and get PNG base64
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0);
+      selectedVisionBase64 = canvas.toDataURL("image/png");
+      dropzone.innerHTML = `<div class="drop-icon">✅</div><div style="font-weight:700;">Loaded: ${esc(file.name)} (${img.width}x${img.height}px)</div>`;
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+document.getElementById("vision-analyze-btn").onclick = async () => {
+  if (!selectedVisionBase64) {
+    showToast("Please drop or select a leaf image first!");
+    return;
+  }
+  const btn = document.getElementById("vision-analyze-btn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Analyzing...';
+
+  try {
+    const res = await fetch(`${API_BASE}/api/vision`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        image_base64: selectedVisionBase64,
+        crop: document.getElementById("vision-crop").value.trim() || null,
+        backend: document.getElementById("vision-backend").value,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Vision analysis failed");
+    renderVisionResults(data);
+  } catch (err) {
+    showToast(`Error: ${err.message}`);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Analyze Leaf Image";
+  }
+};
+
+function renderVisionResults(data) {
+  const card = document.getElementById("vision-results-card");
+  card.style.display = "block";
+  
+  // Stat grid
+  const stats = document.getElementById("vision-stats");
+  stats.innerHTML = `
+    <div class="stat-card"><div class="stat-label">Verdict</div><div class="stat-value" style="color:${data.verdict==='healthy'?'var(--emerald)':'var(--rose)'}">${esc(data.verdict.toUpperCase())}</div></div>
+    <div class="stat-card"><div class="stat-label">Resolution</div><div class="stat-value">${data.width}x${data.height}</div></div>
+    <div class="stat-card"><div class="stat-label">Backend</div><div class="stat-value" style="font-size:18px; color:var(--cyan);">${esc(data.backend)}</div></div>
+    <div class="stat-card"><div class="stat-label">Candidates</div><div class="stat-value">${data.candidates ? data.candidates.length : 0}</div></div>
+  `;
+
+  // Color Spectrum
+  const spec = document.getElementById("vision-spectrum");
+  const legend = document.getElementById("spectrum-legend");
+  spec.innerHTML = "";
+  legend.innerHTML = "";
+
+  const colorMap = {
+    green: "#10b981", yellow: "#f59e0b", brown: "#92400e", black: "#0f172a", white: "#f8fafc", red: "#ef4444"
+  };
+  const d = data.descriptor || {};
+  for (const [col, pct] of Object.entries(d)) {
+    if (pct > 0.005 && colorMap[col]) {
+      const seg = document.createElement("div");
+      seg.className = "spectrum-segment";
+      seg.style.width = (pct * 100) + "%";
+      seg.style.backgroundColor = colorMap[col];
+      seg.title = `${col}: ${(pct*100).toFixed(1)}%`;
+      spec.appendChild(seg);
+
+      legend.innerHTML += `<span style="display:flex; align-items:center; gap:4px;"><span style="width:10px; height:10px; border-radius:50%; background:${colorMap[col]}"></span> ${col}: ${(pct*100).toFixed(1)}%</span>`;
+    }
+  }
+
+  // Candidates Table
+  const tbody = document.getElementById("vision-tbody");
+  tbody.innerHTML = "";
+  (data.candidates || []).forEach((c, idx) => {
+    tbody.innerHTML += `
+      <tr>
+        <td><strong>#${idx + 1}</strong></td>
+        <td><strong>${esc(c.name)}</strong><br/><small style="color:var(--text-sub);">${esc(c.entity_id)}</small></td>
+        <td><span class="badge badge-intent">${esc(c.entity_type)}</span></td>
+        <td><strong style="color:var(--emerald);">${c.score}</strong></td>
+        <td>${esc((c.matched || []).join(', ') || '-')}</td>
+        <td style="font-size:12px; color:var(--text-sub);">${esc(c.source)}</td>
+      </tr>
+    `;
+  });
+  card.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Fertilizer Module ───────────────────────────────────────────────────────
+document.getElementById("fert-calculate-btn").onclick = async () => {
+  const crop = document.getElementById("fert-crop").value.trim();
+  if (!crop) { showToast("Enter a crop name!"); return; }
+
+  const soil = {};
+  ["ph", "oc", "n", "p", "k", "zn"].forEach(k => {
+    const val = document.getElementById(`soil-${k}`).value;
+    if (val) soil[k === "n" ? "available_n" : (k === "p" ? "available_p" : (k === "k" ? "available_k" : k))] = parseFloat(val);
+  });
+
+  const btn = document.getElementById("fert-calculate-btn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Calculating...';
+
+  try {
+    const res = await fetch(`${API_BASE}/api/fertilizer`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        crop,
+        stage: document.getElementById("fert-stage").value || null,
+        soil: Object.keys(soil).length ? soil : null,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Fertilizer calculation failed");
+    renderFertilizerResults(data);
+  } catch (err) {
+    showToast(`Error: ${err.message}`);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Calculate Fertilizer Recommendation";
+  }
+};
+
+function renderFertilizerResults(data) {
+  const card = document.getElementById("fert-results-card");
+  card.style.display = "block";
+  let html = `
+    <h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:12px;">Fertilizer Plan for ${esc(data.crop)} (${esc(data.version)})</h3>
+  `;
+
+  if (data.soil_flags && data.soil_flags.length) {
+    html += `<div style="margin-bottom:14px;"><label>Soil Test Observations &amp; Flags</label><div class="chips-row">`;
+    data.soil_flags.forEach(f => {
+      const cls = f.status === 'optimal' || f.status === 'sufficient' ? 'badge-lang' : 'badge-intent';
+      html += `<span class="badge ${cls}">${esc(f.label)}: ${f.value} ${esc(f.unit)} (${esc(f.status)})</span>`;
+    });
+    html += `</div></div>`;
+  }
+
+  html += `<div class="card" style="background:rgba(0,0,0,0.2); border:1px solid var(--border);"><label>Nutrient Recommendations (per ha)</label><ul style="padding-left:18px; font-size:14px; line-height:1.7;">`;
+  (data.recommendations || []).forEach(r => html += `<li>${esc(r)}</li>`);
+  html += `</ul></div>`;
+
+  if (data.plan && data.plan.length) {
+    html += `<h4 style="margin:16px 0 8px; font-size:15px;">Application Split Schedule &amp; Product Mix</h4>
+      <table class="data-table">
+        <thead><tr><th>Split Timing</th><th>Nutrient Form</th><th>Nutrient (kg/ha)</th><th>Recommended Product</th><th>Product Quantity (kg/ha)</th></tr></thead>
+        <tbody>`;
+    data.plan.forEach(p => {
+      html += `<tr>
+        <td><strong>[${esc(p.timing.toUpperCase())}]</strong></td>
+        <td>${esc(p.nutrient_form)}</td>
+        <td>${p.kg_ha} kg</td>
+        <td><strong style="color:var(--emerald);">${esc(p.product_name)}</strong></td>
+        <td><strong>${p.product_kg_ha} kg/ha</strong></td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+  }
+
+  if (data.evidence) {
+    html += `<div class="citation-box" style="margin-top:14px;"><strong>Evidence Source:</strong> ${esc(data.evidence.source)} (${esc(data.evidence.authority)}, License: ${esc(data.evidence.license?.type || 'GODL-India')})</div>`;
+  }
+  card.innerHTML = html;
+  card.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Mandi Rates Module ──────────────────────────────────────────────────────
+document.getElementById("mandi-fetch-btn").onclick = async () => {
+  const comm = document.getElementById("mandi-commodity").value.trim();
+  const mkt = document.getElementById("mandi-market").value.trim();
+  if (!comm) { showToast("Enter commodity!"); return; }
+
+  const btn = document.getElementById("mandi-fetch-btn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Fetching...';
+
+  try {
+    const params = new URLSearchParams({ commodity: comm });
+    if (mkt) params.append("market", mkt);
+    const res = await fetch(`${API_BASE}/api/mandi?${params.toString()}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Mandi data fetch failed");
+    renderMandiResults(data);
+  } catch (err) {
+    showToast(`Error: ${err.message}`);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Fetch Mandi Intelligence";
+  }
+};
+
+function renderMandiResults(data) {
+  const card = document.getElementById("mandi-results-card");
+  card.style.display = "block";
+  let html = `
+    <h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:6px;">Mandi Intelligence — ${esc(data.commodity)}</h3>
+    <div style="font-size:13px; color:var(--text-muted); margin-bottom:14px;"><strong>Season Signal:</strong> [${esc(data.season_signal)}] ${esc(data.season_note)}</div>
+    <table class="data-table">
+      <thead><tr><th>APMC Market</th><th>Location</th><th>Latest Date</th><th>Modal Price (₹/q)</th><th>Min - Max Range</th><th>Spread</th><th>Volatility</th><th>Trend</th></tr></thead>
+      <tbody>`;
+  (data.stats || []).forEach(s => {
+    const trendCol = s.trend === 'rising' ? '#10b981' : (s.trend === 'falling' ? '#f43f5e' : '#94a3b8');
+    html += `<tr>
+      <td><strong>${esc(s.market)}</strong></td>
+      <td>${esc(s.district || s.state || '-')}</td>
+      <td>${esc(s.latest_date)}</td>
+      <td><strong style="color:var(--emerald); font-size:15px;">₹${s.latest_modal}</strong></td>
+      <td>₹${s.min_price} - ₹${s.max_price}</td>
+      <td>${s.spread_pct}%</td>
+      <td>±${s.volatility_pct}%</td>
+      <td><strong style="color:${trendCol}; text-transform:uppercase;">${esc(s.trend)}</strong></td>
+    </tr>`;
+  });
+  html += `</tbody></table>`;
+  card.innerHTML = html;
+  card.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Weather Module ──────────────────────────────────────────────────────────
+document.getElementById("weather-fetch-btn").onclick = async () => {
+  const dist = document.getElementById("weather-district").value.trim();
+  const crop = document.getElementById("weather-crop").value.trim();
+  if (!dist) { showToast("Enter district name!"); return; }
+
+  const btn = document.getElementById("weather-fetch-btn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Fetching...';
+
+  try {
+    const params = new URLSearchParams({ district: dist });
+    if (crop) params.append("crop", crop);
+    const res = await fetch(`${API_BASE}/api/weather?${params.toString()}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Weather data fetch failed");
+    renderWeatherResults(data);
+  } catch (err) {
+    showToast(`Error: ${err.message}`);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Fetch Agromet Advisory";
+  }
+};
+
+function renderWeatherResults(data) {
+  const card = document.getElementById("weather-results-card");
+  card.style.display = "block";
+  const w = data.weather || {};
+  let html = `
+    <h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:6px;">Agromet Advisory — ${esc(data.district)}, ${esc(data.state)}</h3>
+    <div style="font-size:12.5px; color:var(--text-sub); margin-bottom:14px;">Valid: ${esc(data.valid_from)} → ${esc(data.valid_to)}</div>
+    
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-label">Rainfall Forecast</div><div class="stat-value" style="font-size:18px;">${esc(w.rainfall || 'Dry')}</div></div>
+      <div class="stat-card"><div class="stat-label">Temperature</div><div class="stat-value">${w.temp_min}° - ${w.temp_max}°C</div></div>
+      <div class="stat-card"><div class="stat-label">Relative Humidity</div><div class="stat-value">${w.humidity}%</div></div>
+      <div class="stat-card"><div class="stat-label">Wind Speed</div><div class="stat-value">${w.wind} km/h</div></div>
+    </div>
+  `;
+
+  if (data.flags && data.flags.length) {
+    html += `<h4 style="margin:14px 0 8px; font-size:14.5px;">Triggered Agro-Weather Risk Flags</h4><div class="chips-row">`;
+    data.flags.forEach(f => {
+      html += `<span class="badge badge-intent">[${esc(f.flag)}] ${esc(f.note)}</span>`;
+    });
+    html += `</div>`;
+  }
+
+  if (data.crops && data.crops.length) {
+    html += `<h4 style="margin:16px 0 8px; font-size:14.5px;">Crop-Specific Field Actions</h4><table class="data-table">
+      <thead><tr><th>Crop</th><th>Stage</th><th>Risk Factor</th><th>Field Action</th></tr></thead><tbody>`;
+    data.crops.forEach(c => {
+      html += `<tr><td><strong>${esc(c.crop)}</strong></td><td>${esc(c.growth_stage || '-')}</td><td>${esc(c.risk || '-')}</td><td><strong style="color:var(--emerald);">${esc(c.action || '-')}</strong></td></tr>`;
+    });
+    html += `</tbody></table>`;
+  }
+  card.innerHTML = html;
+  card.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Crop Calendar Module ────────────────────────────────────────────────────
+document.getElementById("cal-sow-btn").onclick = async () => {
+  const m = document.getElementById("cal-month").value;
+  const st = document.getElementById("cal-state").value.trim();
+
+  const btn = document.getElementById("cal-sow-btn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Querying...';
+
+  try {
+    const params = new URLSearchParams({ month: m });
+    if (st) params.append("state", st);
+    const res = await fetch(`${API_BASE}/api/plan/sow?${params.toString()}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.detail || "Calendar query failed");
+    renderCalendarResults(data);
+  } catch (err) {
+    showToast(`Error: ${err.message}`);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Find Crops to Sow";
+  }
+};
+
+function renderCalendarResults(data) {
+  const card = document.getElementById("calendar-results-card");
+  card.style.display = "block";
+  let html = `<h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:12px;">Crops Recommended for Sowing (${data.length} found)</h3>
+    <table class="data-table">
+      <thead><tr><th>Crop</th><th>Season</th><th>Crop Type</th><th>Duration (Days)</th><th>Harvest Window</th><th>State Scope</th></tr></thead>
+      <tbody>`;
+  data.forEach(r => {
+    html += `<tr>
+      <td><strong style="color:var(--emerald); font-size:14.5px;">${esc(r.crop)}</strong></td>
+      <td><span class="badge badge-intent">${esc(r.season)}</span></td>
+      <td>${esc(r.category || '-')}</td>
+      <td>${r.duration_days || '-'} days</td>
+      <td>${esc(r.harvest_months || '-')}</td>
+      <td>${esc(r.state || 'All India')}</td>
+    </tr>`;
+  });
+  html += `</tbody></table>`;
+  card.innerHTML = html;
+  card.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Knowledge Graph Module ──────────────────────────────────────────────────
+document.getElementById("graph-health-btn").onclick = async () => {
+  const crop = document.getElementById("graph-crop").value.trim();
+  if (!crop) return;
+  const res = await fetch(`${API_BASE}/api/graph/health?crop=${encodeURIComponent(crop)}`);
+  const data = await res.json();
+  const card = document.getElementById("graph-results-card");
+  card.style.display = "block";
+  card.innerHTML = `<h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:10px;">Graph Health Map: ${esc(data.crop)} (${data.crop_id})</h3>
+    <div class="code-block">${esc(JSON.stringify(data, null, 2))}</div>`;
+  card.scrollIntoView({ behavior: 'smooth' });
+};
+
+document.getElementById("graph-path-btn").onclick = async () => {
+  const src = document.getElementById("graph-src").value.trim();
+  const dst = document.getElementById("graph-dst").value.trim();
+  if (!src || !dst) return;
+  const res = await fetch(`${API_BASE}/api/graph/path?src=${encodeURIComponent(src)}&dst=${encodeURIComponent(dst)}`);
+  const data = await res.json();
+  const card = document.getElementById("graph-results-card");
+  card.style.display = "block";
+  let html = `<h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:10px;">Shortest Path (${data.length} hops)</h3>`;
+  if (!data.length) html += `<p style="color:var(--rose);">No path found within depth limit.</p>`;
+  else {
+    html += `<div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:14px;">`;
+    data.forEach((node, i) => {
+      html += `<div style="background:var(--bg-card); border:1px solid var(--border); padding:8px 14px; border-radius:8px;">
+        <span class="badge badge-engine">${esc(node.type||'node')}</span> <strong>${esc(node.label)}</strong> <small style="color:var(--text-sub);">(${esc(node.id)})</small>
+      </div>`;
+      if (i < data.length - 1) html += `<span style="color:var(--emerald); font-size:18px;">→</span>`;
+    });
+    html += `</div>`;
+  }
+  card.innerHTML = html;
+  card.scrollIntoView({ behavior: 'smooth' });
+};
+
+// ── Research Evidence Module ────────────────────────────────────────────────
+document.getElementById("ev-search-btn").onclick = async () => {
+  const q = document.getElementById("ev-query").value.trim();
+  const crop = document.getElementById("ev-crop").value.trim();
+  if (!q) return;
+
+  const btn = document.getElementById("ev-search-btn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Searching...';
+
+  try {
+    const params = new URLSearchParams({ query: q, mode: "hybrid", top: 6 });
+    if (crop) params.append("crop", crop);
+    const res = await fetch(`${API_BASE}/api/evidence?${params.toString()}`);
+    const data = await res.json();
+    const card = document.getElementById("evidence-results-card");
+    card.style.display = "block";
+    let html = `<h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:12px;">Evidence Hits (${(data.hits||[]).length})</h3>`;
+    (data.hits || []).forEach(h => {
+      html += `<div class="msg-card" style="margin-bottom:12px;">
+        <div class="msg-header">
+          <span class="badge badge-score">Score: ${h.score.toFixed(3)}</span>
+          <span class="badge badge-engine">${esc(h.institution)} (${h.year || 'n/a'})</span>
+          <span class="badge badge-lang">${esc(h.document)}</span>
+        </div>
+        <div class="msg-body">${esc(h.text)}</div>
+        <div class="citation-box">Authority: ${esc(h.authority)} (${h.authority_score}) | Section: ${esc(h.section || 'General')} | Page: ${h.page || '-'} | License: ${esc(h.license?.type || 'Institutional')}</div>
+      </div>`;
+    });
+    card.innerHTML = html;
+    card.scrollIntoView({ behavior: 'smooth' });
+  } catch (err) {
+    showToast(`Error: ${err.message}`);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Search Research Evidence";
+  }
+};
+
+// ── DECG Gateway Workbench ──────────────────────────────────────────────────
+document.getElementById("decg-run-btn").onclick = async () => {
+  const q = document.getElementById("decg-query").value.trim();
+  const crop = document.getElementById("decg-crop").value.trim();
+  const top_k = parseInt(document.getElementById("decg-topk").value, 10) || 5;
+  if (!q) return;
+
+  const btn = document.getElementById("decg-run-btn");
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Orchestrating...';
+
+  try {
+    const res = await fetch(`${API_BASE}/api/gateway`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: q, crop: crop || null, top_k }),
+    });
+    const data = await res.json();
+    const card = document.getElementById("decg-results-card");
+    card.style.display = "block";
+    card.innerHTML = `
+      <h3 style="font-family:'Outfit'; font-size:18px; margin-bottom:12px;">DECG Execution Trace</h3>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Routing Path</div><div class="stat-value" style="color:var(--cyan); font-size:20px;">${esc((data.routing_path||'').toUpperCase())}</div></div>
+        <div class="stat-card"><div class="stat-label">Elapsed Latency</div><div class="stat-value">${data.stats?.elapsed_ms || 0} ms</div></div>
+        <div class="stat-card"><div class="stat-label">Graph Segments</div><div class="stat-value">${data.stats?.engine_contrib?.graph || 0}</div></div>
+        <div class="stat-card"><div class="stat-label">RAG Segments</div><div class="stat-value">${data.stats?.engine_contrib?.rag || 0}</div></div>
+      </div>
+      <div class="code-block">${esc(JSON.stringify(data, null, 2))}</div>
+    `;
+    card.scrollIntoView({ behavior: 'smooth' });
+  } catch (err) {
+    showToast(`Error: ${err.message}`);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Execute DECG Gateway";
+  }
+};
+
+// ── Metrics & Observability Module ──────────────────────────────────────────
+async function loadMetrics() {
+  try {
+    const res = await fetch(`${API_BASE}/api/metrics`);
+    const data = await res.json();
+    
+    document.getElementById("metrics-stat-grid").innerHTML = `
+      <div class="stat-card"><div class="stat-label">Status</div><div class="stat-value" style="color:var(--emerald);">HEALTHY</div></div>
+      <div class="stat-card"><div class="stat-label">Total Gold Records</div><div class="stat-value">${(data.total_gold_records || 0).toLocaleString()}</div></div>
+      <div class="stat-card"><div class="stat-label">Knowledge Nodes</div><div class="stat-value">${(data.graph?.nodes || 0).toLocaleString()}</div></div>
+      <div class="stat-card"><div class="stat-label">Knowledge Edges</div><div class="stat-value">${(data.graph?.edges || 0).toLocaleString()}</div></div>
+    `;
+
+    const tbodyT = document.getElementById("metrics-tables-tbody");
+    tbodyT.innerHTML = "";
+    for (const [tname, cnt] of Object.entries(data.gold_tables || {})) {
+      tbodyT.innerHTML += `<tr><td><strong>gold.${esc(tname)}</strong></td><td><strong style="color:var(--emerald);">${cnt.toLocaleString()}</strong> rows</td></tr>`;
+    }
+
+    const tbodyG = document.getElementById("metrics-graph-tbody");
+    tbodyG.innerHTML = "";
+    for (const [ntype, cnt] of Object.entries(data.graph?.node_types || {})) {
+      tbodyG.innerHTML += `<tr><td><span class="badge badge-engine">${esc(ntype)}</span></td><td><strong>${cnt.toLocaleString()}</strong> nodes</td></tr>`;
+    }
+  } catch (err) {
+    showToast(`Metrics load error: ${err.message}`);
+  }
+}
+document.getElementById("metrics-refresh-btn").onclick = loadMetrics;
+
+// ── Boot Initialization ─────────────────────────────────────────────────────
+(async function boot() {
+  try {
+    const r = await fetch(`${API_BASE}/health`);
+    const h = await r.json();
+    document.getElementById("lake-status-text").textContent = `Lake Ready · ${h.lake.nodes} Nodes · ${h.lake.edges} Edges`;
+  } catch {
+    document.getElementById("lake-status-text").textContent = "Offline / Booting";
+  }
+  renderAssistantMessage({
+    intent: "welcome",
+    language: "en",
+    nlu_model: "Krushi Mitra V1.0",
+    answers: [{
+      engine: "Krushi Mitra Core",
+      title: "Namaste 🙏 Welcome to Krushi Mitra Intelligence Platform",
+      body: [
+        "I am your India-first AI agricultural assistant, powered by the Agri Intelligence Lakehouse.",
+        "You can ask me questions about crop pest/disease diagnosis, precision fertilizer doses (NPK & soil testing), live APMC mandi prices, district agromet weather forecasts, or crop calendar sowing schedules.",
+        "You can also upload plant leaf photographs under the 'Vision Crop Doctor' tab for instant symptom analysis."
+      ],
+      citations: [{ source: "ICAR / IMD / Agmarknet / Seed Ontologies" }]
+    }]
+  });
+})();
+</script>
+</body>
+</html>

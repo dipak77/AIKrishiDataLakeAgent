@@ -8,6 +8,7 @@ and implement the six lifecycle methods.
 from __future__ import annotations
 
 import abc
+import json
 import logging
 from pathlib import Path
 from typing import Any, ClassVar, Optional
@@ -129,6 +130,30 @@ class AgricultureSourceConnector(abc.ABC):
             enriched.append(rec)
         return enriched
 
+    def persist_bronze(self, raw: Any, resource: dict[str, Any]) -> str | None:
+        """Write the immutable raw payload (bronze) + manifest; return path.
+
+        Fixture fallbacks (``raw is None``) carry no raw payload, so no bronze
+        artifact is written — the silver records still record their method.
+        """
+        from pipelines.storage import write_bronze
+
+        if raw is None:
+            return None
+        try:
+            payload = json.dumps(raw, ensure_ascii=False, default=str)
+        except (TypeError, ValueError):
+            payload = str(raw)
+        rid = resource.get("resource_id") or resource.get("id") or "default"
+        artifact, _manifest = write_bronze(
+            self.source_id,
+            rid,
+            payload,
+            f"{rid}.json",
+            meta={"ingestion_method": "live"},
+        )
+        return str(artifact)
+
     def persist(self, records: list[dict[str, Any]], resource: dict[str, Any]) -> list[str]:
         """Write silver records (jsonl) and return paths."""
         from pipelines.storage import write_jsonl, SILVER_DIR
@@ -145,6 +170,10 @@ class AgricultureSourceConnector(abc.ABC):
 
     # ── orchestration ──────────────────────────────────────────────────────
     def run(self, **kwargs: Any) -> dict[str, Any]:
+        from pipelines.config import load_settings
+        from pipelines.retry import retry_call
+
+        settings = load_settings()
         resources = self.discover()
         summary: dict[str, Any] = {
             "source_id": self.source_id,
@@ -154,14 +183,25 @@ class AgricultureSourceConnector(abc.ABC):
         for resource in resources:
             entry: dict[str, Any] = {"resource": resource, "status": "ok"}
             try:
-                raw = self.fetch(resource)
+                raw = retry_call(
+                    self.fetch,
+                    resource,
+                    retries=settings.http_retries,
+                    logger=logger,
+                )
                 method = resource.get("_method") or ("fixture" if raw is None else "live")
+                bronze_path = self.persist_bronze(raw, resource)
                 self.validate(raw)
                 records = self.normalize(raw, resource)
                 records = self.enrich(records)
                 paths = self.persist(records, resource)
                 entry.update(
-                    {"records": len(records), "paths": paths, "method": method}
+                    {
+                        "records": len(records),
+                        "paths": paths,
+                        "bronze": bronze_path,
+                        "method": method,
+                    }
                 )
             except Exception as exc:  # noqa: BLE001 - connectors must be resilient
                 entry.update({"status": "error", "error": f"{type(exc).__name__}: {exc}"})

@@ -1,161 +1,801 @@
-state_code,state_name,type,agroclimatic_zone,agroecological_region,district_code,district_name
-IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,,
-IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-ANANTAPUR,Anantapur
-IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-CHITTOOR,Chittoor
-IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-GUNTUR,Guntur
-IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-KRISHNA,Krishna
-IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-KURNOOL,Kurnool
-IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,,IN-AP-WGODAVARI,West Godavari
-IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,,,
-IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,,IN-AR-WKAMENG,West Kameng
-IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,,IN-AR-PAPUMPARE,Papum Pare
-IN-AS,Assam,state,Eastern Himalayan Region,,,
-IN-AS,Assam,state,Eastern Himalayan Region,,IN-AS-NAGAON,Nagaon
-IN-AS,Assam,state,Eastern Himalayan Region,,IN-AS-JORHAT,Jorhat
-IN-AS,Assam,state,Eastern Himalayan Region,,IN-AS-DIBRUGARH,Dibrugarh
-IN-AS,Assam,state,Eastern Himalayan Region,,IN-AS-BARPETA,Barpeta
-IN-BR,Bihar,state,Middle Gangetic Plains,,,
-IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-PATNA,Patna
-IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-MUZAFFARPUR,Muzaffarpur
-IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-SAMASTIPUR,Samastipur
-IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-PURNIA,Purnia
-IN-BR,Bihar,state,Middle Gangetic Plains,,IN-BR-ROHTAS,Rohtas
-IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,,
-IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,IN-CT-RAIPUR,Raipur
-IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,IN-CT-DURG,Durg
-IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,IN-CT-RAJNANDGAON,Rajnandgaon
-IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,,IN-CT-BASTAR,Bastar
-IN-GA,Goa,state,West Coast Plains and Ghats,,,
-IN-GA,Goa,state,West Coast Plains and Ghats,,IN-GA-NORTH,North Goa
-IN-GA,Goa,state,West Coast Plains and Ghats,,IN-GA-SOUTH,South Goa
-IN-GJ,Gujarat,state,Gujarat Plains and Hills,,,
-IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-AHMEDABAD,Ahmedabad
-IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-BANASKANTHA,Banaskantha
-IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-JUNAGADH,Junagadh
-IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-RAJKOT,Rajkot
-IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-MEHSANA,Mehsana
-IN-GJ,Gujarat,state,Gujarat Plains and Hills,,IN-GJ-BHAVNAGAR,Bhavnagar
-IN-HR,Haryana,state,Trans-Gangetic Plains,,,
-IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-KARNAL,Karnal
-IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-HISAR,Hisar
-IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-SIRSA,Sirsa
-IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-KAITHAL,Kaithal
-IN-HR,Haryana,state,Trans-Gangetic Plains,,IN-HR-SONIPAT,Sonipat
-IN-HP,Himachal Pradesh,state,Western Himalayan Region,,,
-IN-HP,Himachal Pradesh,state,Western Himalayan Region,,IN-HP-KANGRA,Kangra
-IN-HP,Himachal Pradesh,state,Western Himalayan Region,,IN-HP-MANDI,Mandi
-IN-HP,Himachal Pradesh,state,Western Himalayan Region,,IN-HP-SHIMLA,Shimla
-IN-JH,Jharkhand,state,Eastern Plateau and Hills,,,
-IN-JH,Jharkhand,state,Eastern Plateau and Hills,,IN-JH-RANCHI,Ranchi
-IN-JH,Jharkhand,state,Eastern Plateau and Hills,,IN-JH-HAZARIBAGH,Hazaribagh
-IN-JH,Jharkhand,state,Eastern Plateau and Hills,,IN-JH-DUMKA,Dumka
-IN-KA,Karnataka,state,Southern Plateau and Hills,,,
-IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-BELAGAVI,Belagavi
-IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-MYSURU,Mysuru
-IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-HAVERI,Haveri
-IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-VIJAYAPURA,Vijayapura
-IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-TUMAKURU,Tumakuru
-IN-KA,Karnataka,state,Southern Plateau and Hills,,IN-KA-CHIKKAMAGALURU,Chikkamagaluru
-IN-KL,Kerala,state,West Coast Plains and Ghats,,,
-IN-KL,Kerala,state,West Coast Plains and Ghats,,IN-KL-IDUKKI,Idukki
-IN-KL,Kerala,state,West Coast Plains and Ghats,,IN-KL-PALAKKAD,Palakkad
-IN-KL,Kerala,state,West Coast Plains and Ghats,,IN-KL-WAYANAD,Wayanad
-IN-KL,Kerala,state,West Coast Plains and Ghats,,IN-KL-THRISSUR,Thrissur
-IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,,
-IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-INDORE,Indore
-IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-UJJAIN,Ujjain
-IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-SEHORE,Sehore
-IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-CHHINDWARA,Chhindwara
-IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-MORENA,Morena
-IN-MP,Madhya Pradesh,state,Central Plateau and Hills,,IN-MP-HOSHANGABAD,Hoshangabad
-IN-MH,Maharashtra,state,Western Plateau and Hills,,,
-IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-PUNE,Pune
-IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-NASHIK,Nashik
-IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-NAGPUR,Nagpur
-IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-SOLAPUR,Solapur
-IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-AHMEDNAGAR,Ahmednagar
-IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-JALGAON,Jalgaon
-IN-MH,Maharashtra,state,Western Plateau and Hills,,IN-MH-AURANGABAD,Aurangabad
-IN-MN,Manipur,state,Eastern Himalayan Region,,,
-IN-MN,Manipur,state,Eastern Himalayan Region,,IN-MN-IMPHAL_W,Imphal West
-IN-MN,Manipur,state,Eastern Himalayan Region,,IN-MN-BISHNUPUR,Bishnupur
-IN-ML,Meghalaya,state,Eastern Himalayan Region,,,
-IN-ML,Meghalaya,state,Eastern Himalayan Region,,IN-ML-EKH,East Khasi Hills
-IN-ML,Meghalaya,state,Eastern Himalayan Region,,IN-ML-WGH,West Garo Hills
-IN-MZ,Mizoram,state,Eastern Himalayan Region,,,
-IN-MZ,Mizoram,state,Eastern Himalayan Region,,IN-MZ-AIZAWL,Aizawl
-IN-NL,Nagaland,state,Eastern Himalayan Region,,,
-IN-NL,Nagaland,state,Eastern Himalayan Region,,IN-NL-DIMAPUR,Dimapur
-IN-NL,Nagaland,state,Eastern Himalayan Region,,IN-NL-KOHIMA,Kohima
-IN-OD,Odisha,state,East Coast Plains and Hills,,,
-IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-BARGARH,Bargarh
-IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-CUTTACK,Cuttack
-IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-GANJAM,Ganjam
-IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-MAYURBHANJ,Mayurbhanj
-IN-OD,Odisha,state,East Coast Plains and Hills,,IN-OD-PURI,Puri
-IN-PB,Punjab,state,Trans-Gangetic Plains,,,
-IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-LUDHIANA,Ludhiana
-IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-SANGRUR,Sangrur
-IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-FEROZEPUR,Ferozepur
-IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-BATHINDA,Bathinda
-IN-PB,Punjab,state,Trans-Gangetic Plains,,IN-PB-AMRITSAR,Amritsar
-IN-RJ,Rajasthan,state,Western Dry Region,,,
-IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-JAIPUR,Jaipur
-IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-JODHPUR,Jodhpur
-IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-KOTA,Kota
-IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-GANGANAGAR,Sri Ganganagar
-IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-ALWAR,Alwar
-IN-RJ,Rajasthan,state,Western Dry Region,,IN-RJ-BARMER,Barmer
-IN-SK,Sikkim,state,Eastern Himalayan Region,,,
-IN-SK,Sikkim,state,Eastern Himalayan Region,,IN-SK-EAST,East Sikkim
-IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,,
-IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-THANJAVUR,Thanjavur
-IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-COIMBATORE,Coimbatore
-IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-ERODE,Erode
-IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-MADURAI,Madurai
-IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-VILLUPURAM,Villupuram
-IN-TN,Tamil Nadu,state,Southern Plateau and Hills,,IN-TN-SALEM,Salem
-IN-TG,Telangana,state,Southern Plateau and Hills,,,
-IN-TG,Telangana,state,Southern Plateau and Hills,,IN-TG-NIZAMABAD,Nizamabad
-IN-TG,Telangana,state,Southern Plateau and Hills,,IN-TG-WARANGAL,Warangal
-IN-TG,Telangana,state,Southern Plateau and Hills,,IN-TG-KARIMNAGAR,Karimnagar
-IN-TG,Telangana,state,Southern Plateau and Hills,,IN-TG-MAHBUBNAGAR,Mahbubnagar
-IN-TR,Tripura,state,Eastern Himalayan Region,,,
-IN-TR,Tripura,state,Eastern Himalayan Region,,IN-TR-WEST,West Tripura
-IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,,
-IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-LUCKNOW,Lucknow
-IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-VARANASI,Varanasi
-IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-MEERUT,Meerut
-IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-GORAKHPUR,Gorakhpur
-IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-KANPUR,Kanpur Nagar
-IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,,IN-UP-AGRA,Agra
-IN-UK,Uttarakhand,state,Western Himalayan Region,,,
-IN-UK,Uttarakhand,state,Western Himalayan Region,,IN-UK-DEHRADUN,Dehradun
-IN-UK,Uttarakhand,state,Western Himalayan Region,,IN-UK-USNAGAR,Udham Singh Nagar
-IN-UK,Uttarakhand,state,Western Himalayan Region,,IN-UK-HARIDWAR,Haridwar
-IN-WB,West Bengal,state,Lower Gangetic Plains,,,
-IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-PBARDHAMAN,Purba Bardhaman
-IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-HOOGHLY,Hooghly
-IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-NADIA,Nadia
-IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-MURSHIDABAD,Murshidabad
-IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-PMEDINIPUR,Paschim Medinipur
-IN-WB,West Bengal,state,Lower Gangetic Plains,,IN-WB-JALPAIGURI,Jalpaiguri
-IN-AN,Andaman and Nicobar Islands,UT,The Islands Region,,,
-IN-AN,Andaman and Nicobar Islands,UT,The Islands Region,,IN-AN-SOUTH,South Andaman
-IN-CH,Chandigarh,UT,Trans-Gangetic Plains,,,
-IN-CH,Chandigarh,UT,Trans-Gangetic Plains,,IN-CH-CHANDIGARH,Chandigarh
-IN-DH,Dadra and Nagar Haveli and Daman and Diu,UT,Gujarat Plains and Hills,,,
-IN-DH,Dadra and Nagar Haveli and Daman and Diu,UT,Gujarat Plains and Hills,,IN-DH-DAMAN,Daman
-IN-DL,Delhi,UT,Trans-Gangetic Plains,,,
-IN-DL,Delhi,UT,Trans-Gangetic Plains,,IN-DL-NEWDELHI,New Delhi
-IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,,,
-IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,,IN-JK-SRINAGAR,Srinagar
-IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,,IN-JK-JAMMU,Jammu
-IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,,IN-JK-ANANTNAG,Anantnag
-IN-LA,Ladakh,UT,Western Himalayan Region,,,
-IN-LA,Ladakh,UT,Western Himalayan Region,,IN-LA-LEH,Leh
-IN-LD,Lakshadweep,UT,The Islands Region,,,
-IN-LD,Lakshadweep,UT,The Islands Region,,IN-LD-LAKSHADWEEP,Lakshadweep
-IN-PY,Puducherry,UT,East Coast Plains and Hills,,,
-IN-PY,Puducherry,UT,East Coast Plains and Hills,,IN-PY-PUDUCHERRY,Puducherry
-IN-PY,Puducherry,UT,East Coast Plains and Hills,,IN-PY-KARAIKAL,Karaikal
+state_code,state_name,type,agroclimatic_zone,agroecological_region,district_code,district_name,latitude,longitude
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),,,16.51,80.52
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-ALLURISITHARAMARAJU,Alluri Sitharama Raju,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-ANAKAPALLI,Anakapalli,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-ANANTAPUR,Anantapur,14.68,77.6
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-ANNAMAYYA,Annamayya,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-BAPATLA,Bapatla,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-CHITTOOR,Chittoor,13.22,79.1
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-EASTGODAVARI,East Godavari,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-ELURU,Eluru,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-GUNTUR,Guntur,16.3,80.44
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-KADAPA,Kadapa,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-KAKINADA,Kakinada,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-KONASEEMA,Konaseema,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-KRISHNA,Krishna,16.5,80.64
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-KURNOOL,Kurnool,15.83,78.04
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-NANDYAL,Nandyal,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-NELLORE,Nellore,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-NTR,NTR,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-PALNADU,Palnadu,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-PARVATHIPURAMMANYAM,Parvathipuram Manyam,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-PRAKASAM,Prakasam,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-SRISATHYASAI,Sri Sathya Sai,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-SRIKAKULAM,Srikakulam,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-TIRUPATI,Tirupati,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-VISAKHAPATNAM,Visakhapatnam,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-VIZIANAGARAM,Vizianagaram,,
+IN-AP,Andhra Pradesh,state,East Coast Plains and Hills,Deccan Plateau (Hot Semi-arid),IN-AP-WESTGODAVARI,West Godavari,16.7,81.1
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),,,27.08,93.61
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-ANJAW,Anjaw,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-CHANGLANG,Changlang,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-DIBANGVALLEY,Dibang Valley,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-EASTKAMENG,East Kameng,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-EASTSIANG,East Siang,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-KAMLE,Kamle,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-KRADAADI,Kra Daadi,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-KURUNGKUMEY,Kurung Kumey,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-LEPARADA,Lepa Rada,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-LOHIT,Lohit,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-LONGDING,Longding,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-LOWERDIBANGVALLEY,Lower Dibang Valley,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-LOWERSIANG,Lower Siang,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-LOWERSUBANSIRI,Lower Subansiri,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-NAMSAI,Namsai,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-PAKKEKESSANG,Pakke-Kessang,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-PAPUMPARE,Papum Pare,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-SHIYOMI,Shi Yomi,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-SIANG,Siang,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-TAWANG,Tawang,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-TIRAP,Tirap,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-UPPERDIBANGVALLEY,Upper Dibang Valley,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-UPPERSIANG,Upper Siang,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-UPPERSUBANSIRI,Upper Subansiri,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-WESTKAMENG,West Kameng,,
+IN-AR,Arunachal Pradesh,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-AR-WESTSIANG,West Siang,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),,,26.14,91.79
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-BAKSA,Baksa,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-BARPETA,Barpeta,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-BISWANATH,Biswanath,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-BONGAIGAON,Bongaigaon,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-CACHAR,Cachar,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-CHARAIDEO,Charaideo,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-CHIRANG,Chirang,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-DARRANG,Darrang,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-DHEMAJI,Dhemaji,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-DHUBRI,Dhubri,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-DIBRUGARH,Dibrugarh,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-DIMAHASAO,Dima Hasao,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-GOALPARA,Goalpara,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-GOLAGHAT,Golaghat,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-HAILAKANDI,Hailakandi,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-HOJAI,Hojai,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-JORHAT,Jorhat,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-KAMRUP,Kamrup,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-KAMRUPMETROPOLITAN,Kamrup Metropolitan,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-KARBIANGLONG,Karbi Anglong,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-KARIMGANJ,Karimganj,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-KOKRAJHAR,Kokrajhar,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-LAKHIMPUR,Lakhimpur,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-MAJULI,Majuli,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-MORIGAON,Morigaon,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-NAGAON,Nagaon,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-NALBARI,Nalbari,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-SIVASAGAR,Sivasagar,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-SONITPUR,Sonitpur,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-SOUTHSALMARAMANKACHAR,South Salmara-Mankachar,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-TINSUKIA,Tinsukia,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-UDALGURI,Udalguri,,
+IN-AS,Assam,state,Eastern Himalayan Region,Assam & Bengal Plains (Hot Subhumid),IN-AS-WESTKARBIANGLONG,West Karbi Anglong,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),,,25.59,85.14
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-ARARIA,Araria,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-ARWAL,Arwal,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-AURANGABAD,Aurangabad,19.88,75.34
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-BANKA,Banka,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-BEGUSARAI,Begusarai,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-BHAGALPUR,Bhagalpur,25.24,86.98
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-BHOJPUR,Bhojpur,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-BUXAR,Buxar,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-DARBHANGA,Darbhanga,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-EASTCHAMPARAN,East Champaran,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-GAYA,Gaya,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-GOPALGANJ,Gopalganj,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-JAMUI,Jamui,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-JEHANABAD,Jehanabad,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-KAIMUR,Kaimur,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-KATIHAR,Katihar,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-KHAGARIA,Khagaria,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-KISHANGANJ,Kishanganj,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-LAKHISARAI,Lakhisarai,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-MADHEPURA,Madhepura,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-MADHUBANI,Madhubani,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-MUNGER,Munger,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-MUZAFFARPUR,Muzaffarpur,26.12,85.39
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-NALANDA,Nalanda,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-NAWADA,Nawada,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-PATNA,Patna,25.59,85.14
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-PURNIA,Purnia,25.78,87.47
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-ROHTAS,Rohtas,24.92,84.02
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-SAHARSA,Saharsa,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-SAMASTIPUR,Samastipur,25.86,85.78
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-SARAN,Saran,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-SHEIKHPURA,Sheikhpura,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-SHEOHAR,Sheohar,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-SITAMARHI,Sitamarhi,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-SIWAN,Siwan,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-SUPAUL,Supaul,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-VAISHALI,Vaishali,,
+IN-BR,Bihar,state,Middle Gangetic Plains,Eastern Plain (Hot Subhumid),IN-BR-WESTCHAMPARAN,West Champaran,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),,,21.25,81.63
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-BALOD,Balod,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-BALODABAZAR,Baloda Bazar,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-BALRAMPUR,Balrampur,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-BASTAR,Bastar,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-BEMETARA,Bemetara,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-BIJAPUR,Bijapur,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-BILASPUR,Bilaspur,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-DANTEWADA,Dantewada,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-DHAMTARI,Dhamtari,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-DURG,Durg,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-GARIABAND,Gariaband,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-GAURELAPENDRAMARWAHI,Gaurela-Pendra-Marwahi,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-JANJGIRCHAMPA,Janjgir-Champa,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-JASHPUR,Jashpur,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-KABIRDHAM,Kabirdham,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-KANKER,Kanker,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-KHAIRAGARH,Khairagarh,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-KONDAGAON,Kondagaon,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-KORBA,Korba,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-KORIYA,Koriya,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-MAHASAMUND,Mahasamund,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-MANENDRAGARH,Manendragarh,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-MOHLAMANPUR,Mohla-Manpur,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-MUNGELI,Mungeli,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-NARAYANPUR,Narayanpur,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-RAIGARH,Raigarh,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-RAIPUR,Raipur,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-RAJNANDGAON,Rajnandgaon,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-SARANGARHBILAIGARH,Sarangarh-Bilaigarh,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-SUKMA,Sukma,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-SURAJPUR,Surajpur,,
+IN-CT,Chhattisgarh,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-CT-SURGUJA,Surguja,,
+IN-GA,Goa,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),,,15.49,73.83
+IN-GA,Goa,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-GA-NORTHGOA,North Goa,,
+IN-GA,Goa,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-GA-SOUTHGOA,South Goa,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),,,23.22,72.65
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-AHMEDABAD,Ahmedabad,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-AMRELI,Amreli,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-ANAND,Anand,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-ARAVALLI,Aravalli,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-BANASKANTHA,Banaskantha,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-BHARUCH,Bharuch,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-BHAVNAGAR,Bhavnagar,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-BOTAD,Botad,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-CHHOTAUDAIPUR,Chhota Udaipur,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-DAHOD,Dahod,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-DANG,Dang,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-DEVBHOOMIDWARKA,Devbhoomi Dwarka,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-GANDHINAGAR,Gandhinagar,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-GIRSOMNATH,Gir Somnath,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-JAMNAGAR,Jamnagar,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-JUNAGADH,Junagadh,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-KHEDA,Kheda,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-KUTCH,Kutch,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-MAHISAGAR,Mahisagar,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-MEHSANA,Mehsana,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-MORBI,Morbi,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-NARMADA,Narmada,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-NAVSARI,Navsari,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-PANCHMAHAL,Panchmahal,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-PATAN,Patan,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-PORBANDAR,Porbandar,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-RAJKOT,Rajkot,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-SABARKANTHA,Sabarkantha,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-SURAT,Surat,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-SURENDRANAGAR,Surendranagar,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-TAPI,Tapi,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-VADODARA,Vadodara,,
+IN-GJ,Gujarat,state,Gujarat Plains and Hills,Gujarat Plains (Hot Semiarid),IN-GJ-VALSAD,Valsad,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),,,30.73,76.78
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-AMBALA,Ambala,30.38,76.78
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-BHIWANI,Bhiwani,28.8,76.13
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-CHARKHIDADRI,Charkhi Dadri,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-FARIDABAD,Faridabad,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-FATEHABAD,Fatehabad,29.51,75.45
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-GURUGRAM,Gurugram,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-HISAR,Hisar,29.15,75.72
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-JHAJJAR,Jhajjar,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-JIND,Jind,29.32,76.31
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-KAITHAL,Kaithal,29.8,76.4
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-KARNAL,Karnal,29.69,76.99
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-KURUKSHETRA,Kurukshetra,29.97,76.88
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-MAHENDRAGARH,Mahendragarh,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-NUH,Nuh,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-PALWAL,Palwal,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-PANCHKULA,Panchkula,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-PANIPAT,Panipat,29.39,76.96
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-REWARI,Rewari,,
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-ROHTAK,Rohtak,28.9,76.59
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-SIRSA,Sirsa,29.53,75.03
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-SONIPAT,Sonipat,28.99,77.02
+IN-HR,Haryana,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-HR-YAMUNANAGAR,Yamunanagar,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),,,31.1,77.17
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-BILASPUR,Bilaspur,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-CHAMBA,Chamba,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-HAMIRPUR,Hamirpur,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-KANGRA,Kangra,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-KINNAUR,Kinnaur,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-KULLU,Kullu,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-LAHAULANDSPITI,Lahaul and Spiti,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-MANDI,Mandi,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-SHIMLA,Shimla,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-SIRMAUR,Sirmaur,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-SOLAN,Solan,,
+IN-HP,Himachal Pradesh,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-HP-UNA,Una,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),,,23.34,85.31
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-BOKARO,Bokaro,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-CHATRA,Chatra,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-DEOGHAR,Deoghar,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-DHANBAD,Dhanbad,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-DUMKA,Dumka,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-EASTSINGHBHUM,East Singhbhum,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-GARHWA,Garhwa,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-GIRIDIH,Giridih,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-GODDA,Godda,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-GUMLA,Gumla,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-HAZARIBAGH,Hazaribagh,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-JAMTARA,Jamtara,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-KHUNTI,Khunti,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-KODERMA,Koderma,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-LATEHAR,Latehar,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-LOHARDAGA,Lohardaga,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-PAKUR,Pakur,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-PALAMU,Palamu,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-RAMGARH,Ramgarh,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-RANCHI,Ranchi,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-SAHEBGANJ,Sahebganj,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-SERAIKELAKHARSAWAN,Seraikela-Kharsawan,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-SIMDEGA,Simdega,,
+IN-JH,Jharkhand,state,Eastern Plateau and Hills,Eastern Plateau (Hot Subhumid),IN-JH-WESTSINGHBHUM,West Singhbhum,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),,,12.97,77.59
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-BAGALKOT,Bagalkot,16.18,75.7
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-BALLARI,Ballari,15.14,76.92
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-BELAGAVI,Belagavi,15.85,74.5
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-BENGALURURURAL,Bengaluru Rural,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-BENGALURUURBAN,Bengaluru Urban,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-BIDAR,Bidar,17.91,77.52
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-CHAMARAJANAGAR,Chamarajanagar,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-CHIKKABALLAPUR,Chikkaballapur,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-CHIKKAMAGALURU,Chikkamagaluru,13.32,75.77
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-CHITRADURGA,Chitradurga,14.23,76.4
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-DAKSHINAKANNADA,Dakshina Kannada,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-DAVANAGERE,Davanagere,14.47,75.92
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-DHARWAD,Dharwad,15.46,75.01
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-GADAG,Gadag,15.43,75.63
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-HASSAN,Hassan,13.0,76.1
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-HAVERI,Haveri,14.79,75.4
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-KALABURAGI,Kalaburagi,17.33,76.83
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-KODAGU,Kodagu,12.42,75.74
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-KOLAR,Kolar,13.13,78.13
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-KOPPAL,Koppal,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-MANDYA,Mandya,12.52,76.9
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-MYSURU,Mysuru,12.3,76.64
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-RAICHUR,Raichur,16.21,77.36
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-RAMANAGARA,Ramanagara,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-SHIVAMOGGA,Shivamogga,13.93,75.57
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-TUMAKURU,Tumakuru,13.34,77.1
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-UDUPI,Udupi,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-UTTARAKANNADA,Uttara Kannada,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-VIJAYANAGARA,Vijayanagara,,
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-VIJAYAPURA,Vijayapura,16.83,75.71
+IN-KA,Karnataka,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-KA-YADGIR,Yadgir,16.77,77.14
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),,,8.52,76.94
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-ALAPPUZHA,Alappuzha,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-ERNAKULAM,Ernakulam,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-IDUKKI,Idukki,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-KANNUR,Kannur,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-KASARAGOD,Kasaragod,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-KOLLAM,Kollam,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-KOTTAYAM,Kottayam,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-KOZHIKODE,Kozhikode,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-MALAPPURAM,Malappuram,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-PALAKKAD,Palakkad,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-PATHANAMTHITTA,Pathanamthitta,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-THIRUVANANTHAPURAM,Thiruvananthapuram,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-THRISSUR,Thrissur,,
+IN-KL,Kerala,state,West Coast Plains and Ghats,Western Ghats & Coastal Plain (Hot Humid),IN-KL-WAYANAD,Wayanad,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),,,23.26,77.41
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-AGARMALWA,Agar Malwa,23.71,76.02
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-ALIRAJPUR,Alirajpur,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-ANUPPUR,Anuppur,23.1,81.68
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-ASHOKNAGAR,Ashoknagar,24.58,77.73
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-BALAGHAT,Balaghat,21.81,80.18
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-BARWANI,Barwani,22.03,74.9
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-BETUL,Betul,21.9,77.9
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-BHIND,Bhind,26.56,78.79
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-BHOPAL,Bhopal,23.26,77.41
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-BURHANPUR,Burhanpur,21.31,76.23
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-CHHATARPUR,Chhatarpur,24.92,79.59
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-CHHINDWARA,Chhindwara,22.06,78.94
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-DAMOH,Damoh,23.84,79.44
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-DATIA,Datia,25.67,78.46
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-DEWAS,Dewas,22.96,76.06
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-DHAR,Dhar,22.6,75.3
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-DINDORI,Dindori,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-GUNA,Guna,24.65,77.31
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-GWALIOR,Gwalior,26.22,78.18
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-HARDA,Harda,22.34,77.1
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-HOSHANGABAD,Hoshangabad,22.75,77.72
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-INDORE,Indore,22.72,75.86
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-JABALPUR,Jabalpur,23.16,79.99
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-JHABUA,Jhabua,22.77,74.59
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-KATNI,Katni,23.83,80.39
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-KHANDWA,Khandwa,21.83,76.35
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-KHARGONE,Khargone,21.82,75.61
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-MAIHAR,Maihar,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-MANDLA,Mandla,22.6,80.37
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-MANDSAUR,Mandsaur,24.07,75.07
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-MORENA,Morena,26.5,78.0
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-NARSINGHPUR,Narsinghpur,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-NEEMUCH,Neemuch,24.48,74.87
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-NIWARI,Niwari,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-PANNA,Panna,24.72,80.19
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-RAISEN,Raisen,23.33,77.78
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-RAJGARH,Rajgarh,24.01,76.73
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-RATLAM,Ratlam,23.33,75.04
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-REWA,Rewa,24.54,81.3
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SAGAR,Sagar,23.84,78.74
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SATNA,Satna,24.58,80.83
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SEHORE,Sehore,23.2,77.08
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SEONI,Seoni,22.09,79.54
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SHAHDOL,Shahdol,23.29,81.35
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SHAJAPUR,Shajapur,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SHEOPUR,Sheopur,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SHIVPURI,Shivpuri,25.42,77.66
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SIDHI,Sidhi,24.4,81.88
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-SINGRAULI,Singrauli,24.2,82.67
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-TIKAMGARH,Tikamgarh,24.74,78.83
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-UJJAIN,Ujjain,23.18,75.79
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-UMARIA,Umaria,,
+IN-MP,Madhya Pradesh,state,Central Plateau and Hills,Central Highlands (Hot Semiarid),IN-MP-VIDISHA,Vidisha,23.52,77.81
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),,,19.08,72.88
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-AHMEDNAGAR,Ahmednagar,19.1,74.75
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-AKOLA,Akola,20.7,77.0
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-AMRAVATI,Amravati,20.93,77.76
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-AURANGABAD,Aurangabad,19.88,75.34
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-BEED,Beed,18.99,75.76
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-BHANDARA,Bhandara,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-BULDHANA,Buldhana,20.53,76.18
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-CHANDRAPUR,Chandrapur,19.97,79.3
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-DHULE,Dhule,20.9,74.77
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-GADCHIROLI,Gadchiroli,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-GONDIA,Gondia,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-HINGOLI,Hingoli,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-JALGAON,Jalgaon,21.0,75.56
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-JALNA,Jalna,19.84,75.89
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-KOLHAPUR,Kolhapur,16.7,74.24
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-LATUR,Latur,18.4,76.58
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-MUMBAICITY,Mumbai City,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-MUMBAISUBURBAN,Mumbai Suburban,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-NAGPUR,Nagpur,21.15,79.09
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-NANDED,Nanded,19.14,77.32
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-NANDURBAR,Nandurbar,21.37,74.24
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-NASHIK,Nashik,20.0,73.79
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-OSMANABAD,Osmanabad,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-PALGHAR,Palghar,19.7,72.77
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-PARBHANI,Parbhani,19.27,76.77
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-PUNE,Pune,18.52,73.86
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-RAIGAD,Raigad,18.52,73.18
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-RATNAGIRI,Ratnagiri,16.99,73.3
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-SANGLI,Sangli,16.85,74.58
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-SATARA,Satara,17.69,74.0
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-SINDHUDURG,Sindhudurg,16.13,73.69
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-SOLAPUR,Solapur,17.66,75.91
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-THANE,Thane,19.2,72.97
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-WARDHA,Wardha,20.74,78.6
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-WASHIM,Washim,,
+IN-MH,Maharashtra,state,Western Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-MH-YAVATMAL,Yavatmal,20.39,78.13
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),,,24.82,93.94
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-BISHNUPUR,Bishnupur,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-CHANDEL,Chandel,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-CHURACHANDPUR,Churachandpur,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-IMPHALEAST,Imphal East,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-IMPHALWEST,Imphal West,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-JIRIBAM,Jiribam,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-KAKCHING,Kakching,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-KAMJONG,Kamjong,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-KANGPOKPI,Kangpokpi,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-NONEY,Noney,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-PHERZAWL,Pherzawl,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-SENAPATI,Senapati,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-TAMENGLONG,Tamenglong,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-TENGNOUPAL,Tengnoupal,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-THOUBAL,Thoubal,,
+IN-MN,Manipur,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MN-UKHRUL,Ukhrul,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),,,25.58,91.89
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-EASTGAROHILLS,East Garo Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-EASTJAINTIAHILLS,East Jaintia Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-EASTKHASIHILLS,East Khasi Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-EASTERNWESTKHASIHILLS,Eastern West Khasi Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-NORTHGAROHILLS,North Garo Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-RIBHOI,Ri Bhoi,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-SOUTHGAROHILLS,South Garo Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-SOUTHWESTGAROHILLS,South West Garo Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-SOUTHWESTKHASIHILLS,South West Khasi Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-WESTGAROHILLS,West Garo Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-WESTJAINTIAHILLS,West Jaintia Hills,,
+IN-ML,Meghalaya,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-ML-WESTKHASIHILLS,West Khasi Hills,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),,,23.73,92.72
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-AIZAWL,Aizawl,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-CHAMPHAI,Champhai,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-HNAHTHIAL,Hnahthial,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-KHAWZAWL,Khawzawl,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-KOLASIB,Kolasib,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-LAWNGTLAI,Lawngtlai,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-LUNGLEI,Lunglei,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-MAMIT,Mamit,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-SAIHA,Saiha,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-SAITUAL,Saitual,,
+IN-MZ,Mizoram,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-MZ-SERCHHIP,Serchhip,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),,,25.67,94.11
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-CHUMOUKEDIMA,Chumoukedima,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-DIMAPUR,Dimapur,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-KIPHIRE,Kiphire,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-KOHIMA,Kohima,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-LONGLENG,Longleng,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-MOKOKCHUNG,Mokokchung,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-MON,Mon,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-NIULAND,Niuland,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-NOKLAK,Noklak,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-PEREN,Peren,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-PHEK,Phek,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-SHAMATOR,Shamator,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-TSEMINYU,Tseminyu,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-TUENSANG,Tuensang,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-WOKHA,Wokha,,
+IN-NL,Nagaland,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-NL-ZUNHEBOTO,Zunheboto,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),,,20.3,85.82
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-ANGUL,Angul,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-BALANGIR,Balangir,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-BALASORE,Balasore,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-BARGARH,Bargarh,21.33,83.62
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-BHADRAK,Bhadrak,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-BOUDH,Boudh,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-CUTTACK,Cuttack,20.46,85.88
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-DEOGARH,Deogarh,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-DHENKANAL,Dhenkanal,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-GAJAPATI,Gajapati,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-GANJAM,Ganjam,19.39,85.05
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-JAGATSINGHPUR,Jagatsinghpur,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-JAJPUR,Jajpur,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-JHARSUGUDA,Jharsuguda,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-KALAHANDI,Kalahandi,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-KANDHAMAL,Kandhamal,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-KENDRAPARA,Kendrapara,20.5,86.42
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-KENDUJHAR,Kendujhar,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-KHORDHA,Khordha,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-KORAPUT,Koraput,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-MALKANGIRI,Malkangiri,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-MAYURBHANJ,Mayurbhanj,21.93,86.73
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-NABARANGPUR,Nabarangpur,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-NAYAGARH,Nayagarh,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-NUAPADA,Nuapada,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-PURI,Puri,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-RAYAGADA,Rayagada,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-SAMBALPUR,Sambalpur,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-SUBARNAPUR,Subarnapur,,
+IN-OD,Odisha,state,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-OD-SUNDARGARH,Sundargarh,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),,,30.73,76.78
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-AMRITSAR,Amritsar,31.63,74.87
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-BARNALA,Barnala,30.37,75.55
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-BATHINDA,Bathinda,30.21,74.94
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-FARIDKOT,Faridkot,30.67,74.76
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-FATEHGARHSAHIB,Fatehgarh Sahib,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-FAZILKA,Fazilka,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-FEROZEPUR,Ferozepur,30.93,74.61
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-GURDASPUR,Gurdaspur,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-HOSHIARPUR,Hoshiarpur,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-JALANDHAR,Jalandhar,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-KAPURTHALA,Kapurthala,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-LUDHIANA,Ludhiana,30.9,75.86
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-MALERKOTLA,Malerkotla,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-MANSA,Mansa,29.99,75.4
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-MOGA,Moga,30.82,75.17
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-PATHANKOT,Pathankot,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-PATIALA,Patiala,30.34,76.39
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-RUPNAGAR,Rupnagar,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-SAHIBZADAAJITSINGHNAGAR,Sahibzada Ajit Singh Nagar,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-SANGRUR,Sangrur,30.25,75.84
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-SHAHIDBHAGATSINGHNAGAR,Shahid Bhagat Singh Nagar,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-SRIMUKTSARSAHIB,Sri Muktsar Sahib,,
+IN-PB,Punjab,state,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-PB-TARNTARAN,Tarn Taran,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),,,26.91,75.79
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-AJMER,Ajmer,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-ALWAR,Alwar,27.55,76.63
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-BANSWARA,Banswara,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-BARAN,Baran,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-BARMER,Barmer,25.75,71.4
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-BHARATPUR,Bharatpur,27.22,77.49
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-BHILWARA,Bhilwara,25.35,74.64
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-BIKANER,Bikaner,28.02,73.31
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-BUNDI,Bundi,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-CHITTORGARH,Chittorgarh,24.88,74.63
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-CHURU,Churu,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-DAUSA,Dausa,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-DHOLPUR,Dholpur,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-DUNGARPUR,Dungarpur,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-HANUMANGARH,Hanumangarh,29.58,74.32
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-JAIPUR,Jaipur,26.91,75.79
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-JAISALMER,Jaisalmer,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-JALORE,Jalore,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-JHALAWAR,Jhalawar,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-JHUNJHUNU,Jhunjhunu,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-JODHPUR,Jodhpur,26.28,73.02
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-KARAULI,Karauli,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-KOTA,Kota,25.21,75.86
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-NAGAUR,Nagaur,27.2,73.73
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-PALI,Pali,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-PRATAPGARH,Pratapgarh,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-RAJSAMAND,Rajsamand,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-SAWAIMADHOPUR,Sawai Madhopur,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-SIKAR,Sikar,27.61,75.14
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-SIROHI,Sirohi,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-SRIGANGANAGAR,Sri Ganganagar,29.9,73.88
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-TONK,Tonk,,
+IN-RJ,Rajasthan,state,Western Dry Region,Western Dry Region (Hot Arid),IN-RJ-UDAIPUR,Udaipur,24.58,73.69
+IN-SK,Sikkim,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),,,27.33,88.61
+IN-SK,Sikkim,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-SK-EASTSIKKIM,East Sikkim,,
+IN-SK,Sikkim,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-SK-NORTHSIKKIM,North Sikkim,,
+IN-SK,Sikkim,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-SK-PAKYONG,Pakyong,,
+IN-SK,Sikkim,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-SK-SORENG,Soreng,,
+IN-SK,Sikkim,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-SK-SOUTHSIKKIM,South Sikkim,,
+IN-SK,Sikkim,state,Eastern Himalayan Region,Eastern Himalayas (Warm Perhumid),IN-SK-WESTSIKKIM,West Sikkim,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),,,13.08,80.27
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-ARIYALUR,Ariyalur,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-CHENGALPATTU,Chengalpattu,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-CHENNAI,Chennai,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-COIMBATORE,Coimbatore,11.02,76.96
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-CUDDALORE,Cuddalore,11.74,79.77
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-DHARMAPURI,Dharmapuri,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-DINDIGUL,Dindigul,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-ERODE,Erode,11.34,77.72
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-KALLAKURICHI,Kallakurichi,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-KANCHEEPURAM,Kancheepuram,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-KANYAKUMARI,Kanyakumari,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-KARUR,Karur,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-KRISHNAGIRI,Krishnagiri,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-MADURAI,Madurai,9.93,78.12
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-MAYILADUTHURAI,Mayiladuthurai,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-NAGAPATTINAM,Nagapattinam,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-NAMAKKAL,Namakkal,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-NILGIRIS,Nilgiris,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-PERAMBALUR,Perambalur,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-PUDUKKOTTAI,Pudukkottai,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-RAMANATHAPURAM,Ramanathapuram,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-RANIPET,Ranipet,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-SALEM,Salem,11.66,78.15
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-SIVAGANGA,Sivaganga,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-TENKASI,Tenkasi,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-THANJAVUR,Thanjavur,10.79,79.14
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-THENI,Theni,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-THOOTHUKUDI,Thoothukudi,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-TIRUCHIRAPPALLI,Tiruchirappalli,10.79,78.7
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-TIRUNELVELI,Tirunelveli,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-TIRUPATHUR,Tirupathur,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-TIRUPPUR,Tiruppur,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-TIRUVALLUR,Tiruvallur,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-TIRUVANNAMALAI,Tiruvannamalai,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-TIRUVARUR,Tiruvarur,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-VELLORE,Vellore,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-VILUPPURAM,Viluppuram,,
+IN-TN,Tamil Nadu,state,Southern Plateau and Hills,Eastern Coastal Plain (Hot Humid),IN-TN-VIRUDHUNAGAR,Virudhunagar,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),,,17.38,78.49
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-ADILABAD,Adilabad,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-BHADRADRIKOTHAGUDEM,Bhadradri Kothagudem,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-HANAMKONDA,Hanamkonda,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-HYDERABAD,Hyderabad,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-JAGTIAL,Jagtial,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-JANGAON,Jangaon,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-JAYASHANKARBHUPALPALLY,Jayashankar Bhupalpally,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-JOGULAMBAGADWAL,Jogulamba Gadwal,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-KAMAREDDY,Kamareddy,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-KARIMNAGAR,Karimnagar,18.44,79.13
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-KHAMMAM,Khammam,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-KOMARAMBHEEM,Komaram Bheem,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-MAHABUBABAD,Mahabubabad,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-MAHBUBNAGAR,Mahbubnagar,16.74,77.98
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-MANCHERIAL,Mancherial,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-MEDAK,Medak,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-MEDCHALMALKAJGIRI,Medchal-Malkajgiri,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-MULUGU,Mulugu,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-NAGARKURNOOL,Nagarkurnool,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-NALGONDA,Nalgonda,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-NARAYANPET,Narayanpet,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-NIRMAL,Nirmal,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-NIZAMABAD,Nizamabad,18.67,78.1
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-PEDDAPALLI,Peddapalli,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-RAJANNASIRCILLA,Rajanna Sircilla,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-RANGAREDDY,Rangareddy,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-SANGAREDDY,Sangareddy,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-SIDDIPET,Siddipet,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-SURYAPET,Suryapet,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-VIKARABAD,Vikarabad,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-WANAPARTHY,Wanaparthy,,
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-WARANGAL,Warangal,17.97,79.59
+IN-TG,Telangana,state,Southern Plateau and Hills,Deccan Plateau (Hot Semi-arid),IN-TG-YADADRIBHUVANAGIRI,Yadadri Bhuvanagiri,,
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),,,23.83,91.29
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-TR-DHALAI,Dhalai,,
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-TR-GOMATI,Gomati,,
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-TR-KHOWAI,Khowai,,
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-TR-NORTHTRIPURA,North Tripura,,
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-TR-SEPAHIJALA,Sepahijala,,
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-TR-SOUTHTRIPURA,South Tripura,,
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-TR-UNAKOTI,Unakoti,,
+IN-TR,Tripura,state,Eastern Himalayan Region,North-Eastern Hills (Warm Perhumid),IN-TR-WESTTRIPURA,West Tripura,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),,,26.85,80.95
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-AGRA,Agra,27.18,78.01
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-ALIGARH,Aligarh,27.88,78.08
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-AMBEDKARNAGAR,Ambedkar Nagar,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-AMETHI,Amethi,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-AMROHA,Amroha,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-AURAIYA,Auraiya,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-AYODHYA,Ayodhya,26.8,82.2
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-AZAMGARH,Azamgarh,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BAGHPAT,Baghpat,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BAHRAICH,Bahraich,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BALLIA,Ballia,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BALRAMPUR,Balrampur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BANDA,Banda,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BARABANKI,Barabanki,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BAREILLY,Bareilly,28.37,79.43
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BASTI,Basti,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BHADOHI,Bhadohi,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BIJNOR,Bijnor,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BUDAUN,Budaun,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-BULANDSHAHR,Bulandshahr,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-CHANDAULI,Chandauli,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-CHITRAKOOT,Chitrakoot,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-DEORIA,Deoria,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-ETAH,Etah,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-ETAWAH,Etawah,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-FARRUKHABAD,Farrukhabad,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-FATEHPUR,Fatehpur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-FIROZABAD,Firozabad,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-GAUTAMBUDDHANAGAR,Gautam Buddha Nagar,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-GHAZIABAD,Ghaziabad,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-GHAZIPUR,Ghazipur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-GONDA,Gonda,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-GORAKHPUR,Gorakhpur,26.76,83.37
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-HAMIRPUR,Hamirpur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-HAPUR,Hapur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-HARDOI,Hardoi,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-HATHRAS,Hathras,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-JALAUN,Jalaun,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-JAUNPUR,Jaunpur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-JHANSI,Jhansi,25.45,78.57
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-KANNAUJ,Kannauj,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-KANPURDEHAT,Kanpur Dehat,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-KANPURNAGAR,Kanpur Nagar,26.45,80.33
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-KASGANJ,Kasganj,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-KAUSHAMBI,Kaushambi,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-KHERI,Kheri,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-KUSHINAGAR,Kushinagar,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-LALITPUR,Lalitpur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-LUCKNOW,Lucknow,26.85,80.95
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MAHARAJGANJ,Maharajganj,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MAHOBA,Mahoba,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MAINPURI,Mainpuri,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MATHURA,Mathura,27.49,77.67
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MAU,Mau,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MEERUT,Meerut,28.98,77.71
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MIRZAPUR,Mirzapur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MORADABAD,Moradabad,28.84,78.78
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-MUZAFFARNAGAR,Muzaffarnagar,29.47,77.7
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-PILIBHIT,Pilibhit,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-PRATAPGARH,Pratapgarh,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-PRAYAGRAJ,Prayagraj,25.44,81.85
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-RAEBARELI,Raebareli,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-RAMPUR,Rampur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SAHARANPUR,Saharanpur,29.97,77.55
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SAMBHAL,Sambhal,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SANTKABIRNAGAR,Sant Kabir Nagar,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SHAHJAHANPUR,Shahjahanpur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SHAMLI,Shamli,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SHRAVASTI,Shravasti,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SIDDHARTHNAGAR,Siddharthnagar,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SITAPUR,Sitapur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SONBHADRA,Sonbhadra,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-SULTANPUR,Sultanpur,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-UNNAO,Unnao,,
+IN-UP,Uttar Pradesh,state,Upper Gangetic Plains,Upper Gangetic Plains (Hot Subhumid),IN-UP-VARANASI,Varanasi,25.32,83.01
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),,,30.32,78.03
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-ALMORA,Almora,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-BAGESHWAR,Bageshwar,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-CHAMOLI,Chamoli,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-CHAMPAWAT,Champawat,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-DEHRADUN,Dehradun,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-HARIDWAR,Haridwar,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-NAINITAL,Nainital,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-PAURIGARHWAL,Pauri Garhwal,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-PITHORAGARH,Pithoragarh,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-RUDRAPRAYAG,Rudraprayag,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-TEHRIGARHWAL,Tehri Garhwal,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-UDHAMSINGHNAGAR,Udham Singh Nagar,,
+IN-UK,Uttarakhand,state,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-UK-UTTARKASHI,Uttarkashi,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),,,22.57,88.36
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-ALIPURDUAR,Alipurduar,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-BANKURA,Bankura,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-BIRBHUM,Birbhum,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-COOCHBEHAR,Cooch Behar,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-DAKSHINDINAJPUR,Dakshin Dinajpur,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-DARJEELING,Darjeeling,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-HOOGHLY,Hooghly,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-HOWRAH,Howrah,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-JALPAIGURI,Jalpaiguri,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-JHARGRAM,Jhargram,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-KALIMPONG,Kalimpong,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-KOLKATA,Kolkata,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-MALDA,Malda,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-MURSHIDABAD,Murshidabad,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-NADIA,Nadia,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-NORTH24PARGANAS,North 24 Parganas,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-PASCHIMBARDHAMAN,Paschim Bardhaman,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-PASCHIMMEDINIPUR,Paschim Medinipur,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-PURBABARDHAMAN,Purba Bardhaman,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-PURBAMEDINIPUR,Purba Medinipur,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-PURULIA,Purulia,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-SOUTH24PARGANAS,South 24 Parganas,,
+IN-WB,West Bengal,state,Lower Gangetic Plains,Lower Gangetic Plain (Hot Subhumid),IN-WB-UTTARDINAJPUR,Uttar Dinajpur,,
+IN-AN,Andaman and Nicobar Islands,UT,The Islands Region,Islands (Hot Humid),,,11.62,92.73
+IN-AN,Andaman and Nicobar Islands,UT,The Islands Region,Islands (Hot Humid),IN-AN-NICOBAR,Nicobar,,
+IN-AN,Andaman and Nicobar Islands,UT,The Islands Region,Islands (Hot Humid),IN-AN-NORTHANDMIDDLEANDAMAN,North and Middle Andaman,,
+IN-AN,Andaman and Nicobar Islands,UT,The Islands Region,Islands (Hot Humid),IN-AN-SOUTHANDAMAN,South Andaman,,
+IN-CH,Chandigarh,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),,,30.73,76.78
+IN-CH,Chandigarh,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-CH-CHANDIGARH,Chandigarh,,
+IN-DH,Dadra and Nagar Haveli and Daman and Diu,UT,Gujarat Plains and Hills,Western Coastal Plain (Hot Humid),,,20.4,72.83
+IN-DH,Dadra and Nagar Haveli and Daman and Diu,UT,Gujarat Plains and Hills,Western Coastal Plain (Hot Humid),IN-DH-DADRAANDNAGARHAVELI,Dadra and Nagar Haveli,,
+IN-DH,Dadra and Nagar Haveli and Daman and Diu,UT,Gujarat Plains and Hills,Western Coastal Plain (Hot Humid),IN-DH-DAMAN,Daman,,
+IN-DH,Dadra and Nagar Haveli and Daman and Diu,UT,Gujarat Plains and Hills,Western Coastal Plain (Hot Humid),IN-DH-DIU,Diu,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),,,28.61,77.21
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-CENTRALDELHI,Central Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-EASTDELHI,East Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-NEWDELHI,New Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-NORTHDELHI,North Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-NORTHEASTDELHI,North East Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-NORTHWESTDELHI,North West Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-SHAHDARA,Shahdara,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-SOUTHDELHI,South Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-SOUTHEASTDELHI,South East Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-SOUTHWESTDELHI,South West Delhi,,
+IN-DL,Delhi,UT,Trans-Gangetic Plains,Northern Plain (Hot Subhumid),IN-DL-WESTDELHI,West Delhi,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),,,34.08,74.8
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-ANANTNAG,Anantnag,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-BANDIPORA,Bandipora,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-BARAMULLA,Baramulla,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-BUDGAM,Budgam,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-DODA,Doda,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-GANDERBAL,Ganderbal,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-JAMMU,Jammu,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-KATHUA,Kathua,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-KISHTWAR,Kishtwar,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-KULGAM,Kulgam,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-KUPWARA,Kupwara,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-POONCH,Poonch,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-PULWAMA,Pulwama,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-RAJOURI,Rajouri,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-RAMBAN,Ramban,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-REASI,Reasi,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-SAMBA,Samba,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-SHOPIAN,Shopian,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-SRINAGAR,Srinagar,,
+IN-JK,Jammu and Kashmir,UT,Western Himalayan Region,Western Himalayas (Warm Subhumid),IN-JK-UDHAMPUR,Udhampur,,
+IN-LA,Ladakh,UT,Western Himalayan Region,Western Himalayas (Cold Arid),,,34.15,77.58
+IN-LA,Ladakh,UT,Western Himalayan Region,Western Himalayas (Cold Arid),IN-LA-KARGIL,Kargil,,
+IN-LA,Ladakh,UT,Western Himalayan Region,Western Himalayas (Cold Arid),IN-LA-LEH,Leh,,
+IN-LD,Lakshadweep,UT,The Islands Region,Islands (Hot Humid),,,10.57,72.64
+IN-LD,Lakshadweep,UT,The Islands Region,Islands (Hot Humid),IN-LD-LAKSHADWEEP,Lakshadweep,,
+IN-PY,Puducherry,UT,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),,,11.94,79.83
+IN-PY,Puducherry,UT,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-PY-KARAIKAL,Karaikal,,
+IN-PY,Puducherry,UT,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-PY-MAHE,Mahe,,
+IN-PY,Puducherry,UT,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-PY-PUDUCHERRY,Puducherry,,
+IN-PY,Puducherry,UT,East Coast Plains and Hills,Eastern Coastal Plain (Hot Humid),IN-PY-YANAM,Yanam,,

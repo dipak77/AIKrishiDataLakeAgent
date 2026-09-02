@@ -13,14 +13,18 @@ from domain.seed_data import (
     AUTHORITY_LEVELS,
     CROP_ALIASES,
     CROP_CALENDAR,
+    CROP_CALENDAR_OVERRIDES,
+    CROP_CALENDAR_TOP20,
     CROP_SEASON,
     CROPS,
     DISEASES,
     EXTRA_ALIASES,
     FERTILIZERS,
+    FERTILIZER_NUTRIENTS,
     GEOGRAPHY,
     GROWTH_STAGES,
     NUTRIENTS,
+    NUTRIENT_DEFICIENCIES,
     PESTS,
     SEASONS,
     SOILS,
@@ -40,6 +44,10 @@ def validate_ontologies() -> dict[str, Any]:
     crop_ids = _ids(CROPS, "crop_id")
     season_ids = _ids(SEASONS, "season_id")
     stage_ids = _ids(GROWTH_STAGES, "stage_id")
+    nutrient_ids = _ids(NUTRIENTS, "nutrient_id")
+    fertilizer_ids = _ids(FERTILIZERS, "fertilizer_id")
+    state_codes = {g["state_code"] for g in GEOGRAPHY}
+    district_codes = {d["code"] for g in GEOGRAPHY for d in g.get("districts", [])}
 
     def check(name: str, ok: bool, detail: str = "") -> None:
         checks.append({"name": name, "ok": ok, "detail": detail})
@@ -81,10 +89,40 @@ def validate_ontologies() -> dict[str, Any]:
     # calendar → crop + season + stage
     bad_cc = [
         r
-        for r in CROP_CALENDAR
+        for r in CROP_CALENDAR + CROP_CALENDAR_TOP20
         if r["crop_id"] not in crop_ids or r["season_id"] not in season_ids or r["stage_id"] not in stage_ids
     ]
     check("crop_calendar refs", not bad_cc, f"bad rows: {bad_cc}")
+
+    # calendar overrides → crop + season + stage + geography
+    bad_ovr = [
+        r
+        for r in CROP_CALENDAR_OVERRIDES
+        if r["crop_id"] not in crop_ids
+        or r["season_id"] not in season_ids
+        or r["stage_id"] not in stage_ids
+        or r["state_code"] not in state_codes
+        or (r["district_code"] is not None and r["district_code"] not in district_codes)
+    ]
+    check("crop_calendar_override refs", not bad_ovr, f"bad rows: {bad_ovr}")
+
+    # fertilizer_nutrient → fertilizer + nutrient; percent > 0
+    bad_fn = [
+        r
+        for r in FERTILIZER_NUTRIENTS
+        if r["fertilizer_id"] not in fertilizer_ids
+        or r["nutrient_id"] not in nutrient_ids
+        or not (0 < float(r["percent"]) <= 100)
+    ]
+    check("fertilizer_nutrient refs", not bad_fn, f"bad rows: {bad_fn}")
+
+    # nutrient_deficiency → nutrient + crop
+    bad_nd = [
+        r
+        for r in NUTRIENT_DEFICIENCIES
+        if r["nutrient_id"] not in nutrient_ids or r["crop_id"] not in crop_ids
+    ]
+    check("nutrient_deficiency refs", not bad_nd, f"bad rows: {bad_nd}")
 
     # aliases → crop
     bad_alias = [c for c in CROP_ALIASES if c not in crop_ids]
@@ -122,6 +160,10 @@ def validate_ontologies() -> dict[str, Any]:
             "weeds": len(WEEDS),
             "nutrients": len(NUTRIENTS),
             "fertilizers": len(FERTILIZERS),
+            "fertilizer_nutrients": len(FERTILIZER_NUTRIENTS),
+            "nutrient_deficiencies": len(NUTRIENT_DEFICIENCIES),
+            "calendar_rows": len(CROP_CALENDAR) + len(CROP_CALENDAR_TOP20),
+            "calendar_overrides": len(CROP_CALENDAR_OVERRIDES),
             "seasons": len(SEASONS),
             "growth_stages": len(GROWTH_STAGES),
             "soils": len(SOILS),

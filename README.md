@@ -6,10 +6,12 @@ disease/pest diagnosis, soil intelligence, fertilizer advisory, weather advisory
 crop planning, mandi intelligence, computer vision, research retrieval, and
 (eventually) model fine-tuning.
 
-This repository is the **V1 foundation**: project scaffold, canonical schemas,
-seed ontologies, a governed source registry, the Bronze → Silver → Gold medallion
-pipeline, data-quality scoring, a knowledge-graph builder, and live connector
-plugins with offline fixtures.
+This repository ships the **foundation through the assistant**: project
+scaffold, canonical schemas, seed ontologies, a governed source registry, the
+Bronze → Silver → Gold medallion pipeline, data-quality scoring, a
+graph-native lakehouse, seven reasoning engines (diagnosis, fertilizer, mandi,
+weather, crop planning, RAG evidence, nutrient math), and the **Krushi Mitra**
+multilingual assistant — exposed as a REST API + web UI (`make serve`).
 
 > **The key architectural decision.** We do *not* build "dump 10 TB of documents
 > + a vector DB = AI platform". We build: `data → normalization → ontologies →
@@ -101,6 +103,12 @@ documented in `docs/architecture.md` and scaffolded in
 ## Quickstart
 
 ```bash
+make bootstrap             # ONE command: venv → seed → gold → validate → test
+                           # (self-bootstraps .venv; idempotent; writes a health report)
+make up                    # alias for `bootstrap`
+make doctor                # environment + capability report (no build)
+
+# … or the explicit steps (bootstrap runs these):
 make setup                 # python3 -m venv .venv && pip install -e ".[dev]"
 make seed                  # load seed ontologies into data/lake (DuckDB) + Parquet
 make validate              # ontology + knowledge-graph + quality checks
@@ -108,15 +116,28 @@ make schema                # emit schemas/json/*.json from Pydantic models
 make graph                 # emit data/gold/knowledge_graph.json
 make gold                  # build application-ready gold tables
 make test                  # smoke tests
+make check                 # validate + test (fast pre-commit gate)
+
+# Reasoning substrate (pure DuckDB — no LLM / vector DB):
+python scripts/diagnose.py --crop tomato --symptoms "black spots, lower leaves yellowing"
+python scripts/diagnose.py --crop "टोमॅटो" --symptoms "पानावर काळे डाग"   # Marathi symptoms
+python scripts/diagnose.py --crop "धान" --symptoms "भूरे धब्बे, सफेद कली, बौना"  # Hindi
 
 # Live ingestion (needs internet + optionally a data.gov.in API key; falls back
 # to bundled fixtures when the source is unreachable):
 make ingest SOURCE=agmarknet LIMIT=5
 make ingest SOURCE=kcc LIMIT=5
 make ingest SOURCE=faostat LIMIT=20
+
+# Krushi Mitra — the assistant (REST API + web UI on http://0.0.0.0:8000):
+make serve
 ```
 
 See `docs/live-ingestion.md` for endpoint details and API-key setup.
+
+Configuration is automatic (env `AGRILAKE_*` → `.env` → defaults); see
+`.env.example`. The build report lands at `data/lake/_bootstrap_report.json`.
+The Phase 4 product plan is in `docs/phase-4-plan.md`.
 
 ---
 
@@ -124,8 +145,10 @@ See `docs/live-ingestion.md` for endpoint details and API-key setup.
 
 - **100+ canonical crops** with scientific names, families, types/groups, and
   Indian-language aliases (hi/mr/gu/pa/bn/od/ta/te/kn/ml/as).
-- **All 36 Indian states/UTs** (+ a representative district set) with ISO codes,
-  agro-climatic zones and agro-ecological regions.
+- **All 36 Indian states/UTs → 764 districts** with ISO codes, curated
+  headquarters coordinates for major agri districts, rename aliases, and
+  representative tehsil/taluk/block/village rows — plus agro-climatic zones and
+  agro-ecological regions.
 - **Seasons** (kharif/rabi/zaid/summer/whole-year) and the full **phenological
   growth-stage timeline** per crop, with location overrides.
 - **Disease + pathogen**, **pest**, **weed**, **nutrient**, **fertilizer**,
@@ -136,6 +159,12 @@ See `docs/live-ingestion.md` for endpoint details and API-key setup.
 - **Medallion pipeline** + **data-quality scoring** + **unified agriculture record**
   schema + **evidence-separated recommendations** (observation → diagnosis →
   evidence → management option → source → legal/label validity → location → date).
+- **Reasoning substrate (V1.5)** — `fertilizer → contains → nutrient` (numeric),
+  nutrient-deficiency disorders, symptom graph, IPM thresholds, crop calendars
+  with location overrides, and a pure-DuckDB **diagnosis retriever**
+  (`reasoning/`, `scripts/diagnose.py`) that accepts English **or** Hindi/Marathi
+  crop + symptom text (Devanagari lexicon + hi/mr disambiguation in
+  `pipelines/language.py`).
 
 ---
 

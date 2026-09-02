@@ -33,7 +33,7 @@ def main() -> int:
     graph = build_knowledge_graph()
     graph_path = write_json(GOLD_DIR / "knowledge_graph.json", graph)
     print(f"\nKnowledge graph: {graph['summary']['node_count']} nodes, "
-          f"{graph['summary']['edge_count']} edges → {graph_path}")
+          f"{graph['summary']['edge_count']} edges -> {graph_path}")
 
     demo = score_record(
         {

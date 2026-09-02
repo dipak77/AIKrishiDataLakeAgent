@@ -1,0 +1,13 @@
+parameter,label,unit,kind,nutrient_form,low_max,high_min,adjustment,low_note,high_note
+available_n,Available N (KMnO4),kg/ha,nutrient,N,280.0,560.0,0.25,Increase N by {pct:.0%}; consider split application.,Reduce N by {pct:.0%} to avoid lodging/pest build-up.
+available_p,Available P (Olsen),kg/ha,nutrient,P2O5,10.0,25.0,0.25,Increase P2O5 by {pct:.0%}; band-place at sowing.,Reduce P2O5 by {pct:.0%}.
+available_k,Available K (NH4OAc),kg/ha,nutrient,K2O,110.0,280.0,0.25,Increase K2O by {pct:.0%}; split basal + reproductive.,Reduce K2O by {pct:.0%}.
+oc,Organic carbon,%,organic,,0.5,0.75,0.0,Low OC: incorporate FYM/compost ~10 t/ha; N use-efficiency improves.,Good organic matter status.
+ph,Soil pH,,condition,,6.5,7.5,0.0,Acidic soil: apply lime as per lime requirement; prefer SSP over DAP on very acid soils.,Alkaline soil: apply gypsum; avoid acidifying fertilizers.
+ec,EC,dS/m,condition,,1.0,2.0,0.0,,Saline: leach with good water; prefer SOP over MOP (avoid Cl).
+zn,Available Zn (DTPA),ppm,micro,,0.6,1.5,0.0,Zn deficient: apply ZnSO4 25 kg/ha soil or 0.5% foliar spray.,
+fe,Available Fe (DTPA),ppm,micro,,4.5,10.0,0.0,Fe deficient: 0.5% FeSO4 foliar spray (repeat 2–3 times).,
+b,Available B (hot water),ppm,micro,,0.5,1.0,0.0,B deficient: borax 10 kg/ha soil or 0.2% foliar at flowering.,
+mn,Available Mn (DTPA),ppm,micro,,2.0,5.0,0.0,Mn deficient: 0.5% MnSO4 foliar spray.,
+cu,Available Cu (DTPA),ppm,micro,,0.2,0.5,0.0,Cu deficient: CuSO4 5 kg/ha soil application.,
+s,Available S,ppm,micro,,10.0,20.0,0.0,S deficient: prefer SSP/gypsum (S carriers) over DAP.,

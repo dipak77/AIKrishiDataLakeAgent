@@ -55,6 +55,8 @@ def _build_geography_lookup() -> dict[str, Any]:
         scode = state["state_code"]
         state_row = {k: v for k, v in state.items() if k != "districts"}
         by_state[_norm(state["name"])] = state_row
+        # ISO suffix (e.g. "MH", "UP") resolves too.
+        by_alias.setdefault(scode.split("-")[-1].lower(), state_row)
         for alias in GEOGRAPHY_ALIASES.get(scode, []):
             by_alias[_norm(alias)] = state_row
         for dist in state.get("districts", []):

@@ -1,0 +1,4 @@
+crop_id,season_id,stage_id,location_scope,state_code,district_code,month_start,month_end,note
+CROP_TOMATO,SEASON_RABI,STAGE_NURSERY,district,IN-MH,IN-MH-PUNE,9,10,Pune rabi tomato nursery
+CROP_RICE,SEASON_KHARIF,STAGE_TRANSPLANTING,district,IN-TN,IN-TN-THANJAVUR,8,9,samba transplant (Cauvery delta)
+CROP_WHEAT,SEASON_RABI,STAGE_SOWING,state,IN-PB,,10,11,early sowing to escape terminal heat
