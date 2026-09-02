@@ -9,6 +9,18 @@ acquisition:
   schedule: daily
   api_key_required: true
   pagination: offset_limit
+  # ── Resources must be DISCOVERED, not guessed ─────────────────────────────
+  # Verified 2026-09-02: the previously documented KCC resource ids are gone —
+  #   GET /resource/5f039cdb2e054ab5b74bfc2a6e1a860b
+  #     -> {"message": "Meta not found", "status": "error"}
+  # and the old connector passed the literal dict key "transcripts" as the
+  # resource id, so its request URL was /resource/transcripts.
+  # Run `agrilake-discover` (or the OGD portal search) with a real API key,
+  # then register the live ids here:
+  #   resources:
+  #     - resource_id: <uuid>
+  #       description: KCC transcripts (state, month)
+  resources: []
 domains: [crop, farmer_query, advisory]
 license:
   type: GODL-India
@@ -16,4 +28,31 @@ license:
 quality:
   authority_score: 1.0
   freshness_score: 0.9
-notes: District-wise/month-wise farmer queries + expert answers. Central dataset for farmer question -> intent -> crop -> problem -> recommendation.
+contract:
+  version: "2026-09-02"
+  # Canonical silver record (schemas/records.py::FarmerQuery). The upstream
+  # field set is re-recorded once a live resource id is registered — declaring
+  # source_fields against a retired resource would be fiction.
+  fields:
+    state:           {type: str}
+    district:        {type: str}
+    block:           {type: str}
+    farmer_language: {type: str}
+    query_original:  {type: str, required: true, non_empty: true}
+    answer_original: {type: str, required: true, non_empty: true}
+    crop:            {type: str}
+    crop_canonical:  {type: str}
+    category:        {type: str}
+    subcategory:     {type: str}
+    season:          {type: str}
+    month:           {type: int, min: 1, max: 12}
+    source_url:      {type: str, required: true}
+  business_key: [query_id]
+  rate_limit: {rps: 1, burst: 5, honor_retry_after: true}
+  incremental: {strategy: none}
+  volume: {expected_rows_per_run: [0, 200000]}
+notes: >-
+  District-wise/month-wise farmer queries + expert answers. Central dataset for
+  farmer question -> intent -> crop -> problem -> recommendation. PII policy —
+  contact details are redacted on ingest and national identifiers are rejected
+  (pipelines/refine.py, rules DQ-PII-REDACT / DQ-PII-IDENTIFIER).

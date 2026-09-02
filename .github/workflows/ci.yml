@@ -1,0 +1,74 @@
+name: CI
+
+# One gate, three layers, in the order a release depends on them:
+#   1. bootstrap  — build the lakehouse from committed seeds (seed → gold)
+#   2. check      — ontology/graph validation + the full pytest suite
+#   3. pipeline   — run the real ingestion orchestrator end to end in replay
+#                   mode, so the discovery → collection → quality → gap flow is
+#                   exercised on every push, not just its units
+#
+# No step talks to a live API: AGRILAKE_TRANSPORT=replay makes every connector
+# serve recorded cassettes, and a source without a cassette fails closed instead
+# of dialling out (docs/v7-plan.md §7).
+
+on:
+  push:
+    branches: [main, "arena/**"]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  AGRILAKE_TRANSPORT: replay
+  # keeps any stray live attempt from being mistaken for a fixture fallback
+  AGRILAKE_REQUIRE_LIVE: "1"
+
+jobs:
+  build-and-check:
+    name: bootstrap + check (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Bootstrap (seed → gold → validate → test)
+        run: python scripts/bootstrap.py
+
+      - name: Committed seed drift gate
+        run: .venv/bin/python scripts/verify_seeds.py
+
+      - name: Ingestion pipeline smoke run (replay, throwaway lake)
+        run: >
+          .venv/bin/python scripts/pipeline_run.py
+          --source GOI_AGMARKNET
+          --transport replay
+          --limit 2
+          --lake /tmp/ci-agrilake.duckdb
+          --json
+
+      - name: Environment report
+        if: always()
+        run: .venv/bin/python scripts/bootstrap.py --check
+
+      - name: Upload lake audit tables
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lake-audit-py${{ matrix.python-version }}
+          path: data/gold/knowledge_graph.json
+          if-no-files-found: warn
+          retention-days: 7

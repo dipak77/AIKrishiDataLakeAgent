@@ -24,6 +24,9 @@ data/bronze/
 data/silver/
 data/gold/
 data/lake/
+
+# per-environment discovery snapshots written by scripts/pipeline_run.py
+metadata/discovered/
 *.duckdb
 *.duckdb.wal
 *.parquet

@@ -178,6 +178,7 @@ The Phase 4 product plan is in `docs/phase-4-plan.md`.
 | [`docs/roadmap.md`](docs/roadmap.md) | V1 → Vn milestones and the 55-domain coverage target |
 | [`docs/provenance-and-licensing.md`](docs/provenance-and-licensing.md) | ALLOW/REVIEW/BLOCK policy, GODL, authority hierarchy, lineage |
 | [`docs/live-ingestion.md`](docs/live-ingestion.md) | Running live connectors, endpoints, keys, egress notes |
+| [`docs/v7-plan.md`](docs/v7-plan.md) | **Next:** real ingestion (discovery + collection), the data-quality refinery, knowledge-gap closure, frontier-only model policy |
 
 ## License
 

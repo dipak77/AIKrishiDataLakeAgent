@@ -21,6 +21,7 @@
 | Dual-Engine Context Gateway blueprint | `v6-plan.md` |
 | DECG implementation review | `decg-review.md` |
 | Full evaluation, coverage & gap analysis | `evaluation-report.md` |
+| Real ingestion + DQ refinery + gap closure (next) | `v7-plan.md` |
 
 ---
 

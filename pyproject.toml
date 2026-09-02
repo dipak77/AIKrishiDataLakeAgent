@@ -29,6 +29,8 @@ dev = [
 [project.scripts]
 agrilake-seed = "scripts.seed_lake:main"
 agrilake-ingest = "scripts.ingest_live:main"
+# full production run: discover -> collect -> quality gate -> watermark -> gaps
+agrilake-pipeline = "scripts.pipeline_run:main"
 agrilake-validate = "scripts.validate:main"
 agrilake-build-gold = "scripts.build_gold:main"
 agrilake-gen-schema = "scripts.gen_json_schema:main"
