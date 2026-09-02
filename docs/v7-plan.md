@@ -777,7 +777,7 @@ is `make check` → **403 passed** (baseline before this work: 262).
 | S8 gap detection | `pipelines/gaps.py` | `tests/test_gaps.py` (17) against the built lake; idempotent register upsert that never auto-closes |
 | S9 gap→collection loop | `scripts/pipeline_run.py` | `tests/test_pipeline_run.py` (14): one call runs discover → collect → gate → watermark → gaps on the recorded payload and promotes it |
 | F model policy | `pipelines/models.py` | `tests/test_model_policy.py` (18): frontier-only selection, cross-vendor quorum, fail-closed unavailability, run/day budget, audited cost |
-| Ops: CI | `.github/workflows/ci.yml` | bootstrap → verify-seeds → pipeline replay smoke run, py3.10/3.11/3.12, `AGRILAKE_TRANSPORT=replay` so CI never dials out |
+| Ops: CI | `ci/ci.yml` (**parked** — the branch's automation token lacks the GitHub `workflows` permission, so it cannot be written to `.github/workflows/`; the file header carries the one-line activation command) | bootstrap → verify-seeds → pipeline replay smoke run, py3.10/3.11/3.12, `AGRILAKE_TRANSPORT=replay` so CI never dials out |
 
 ### 12.2 Deviations from the plan (deliberate, with reasons)
 
