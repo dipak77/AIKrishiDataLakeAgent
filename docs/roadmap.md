@@ -82,10 +82,12 @@
     provenance-only research chunks; `search()` + `evidence_for_diagnosis()`;
     ICAR fixture 2 → 8 chunks; CLI `agrilake-retrieve`
   - 8 new tests
-- **Track 10 — CI/CD + observability** ✅ shipped
-  - `.github/workflows/ci.yml` (matrix tests + drift gate + validate; nightly
-    bootstrap with report artifact); `pipelines/logging.py` (JSON logs +
-    correlation ids); `scripts/verify_seeds.py` + `make verify-seeds`
+- **Track 10 — CI/CD + observability** ⚠ partially shipped
+  - `pipelines/logging.py` (JSON logs + correlation ids);
+    `scripts/verify_seeds.py` + `make verify-seeds`
+  - **`.github/workflows/ci.yml` is not present at HEAD** (verified
+    2026-09-02: `.github/` does not exist), so tests/validate/drift-gate never
+    run automatically. Restoring CI is Phase 0.5 of `v7-plan.md`.
   - 4 new tests
 - **Track 11 — multilingual + geography** ✅ (partial: Tamil + Telugu symptom
   lexicons + script-aware tokenizer + `resolve_subdistrict()`; LGD full import
@@ -185,15 +187,33 @@
       paths (gated on toolkit + `AGRI_MT_MODEL_DIR` / `AGRI_MT_API_URL`),
       graceful lexicon fallback unchanged
 
-## V2 — Live ingestion + lakehouse
+## V2 — Real ingestion, data-quality refinery & knowledge-gap closure
 
-## V2 — Live ingestion + lakehouse
+> **Full plan: [`v7-plan.md`](v7-plan.md)** (evidence-backed review + phased
+> delivery). Verified state at HEAD on 2026-09-02: 262 tests green, but **0 of
+> 8 connectors have ever landed a live record** (`ingest_live --source all` →
+> 8/8 `method=fixture`, `bronze=None`), there are **no `fact_*` tables** after
+> `make bootstrap`, and the seed-drift gate exits **1** on a pristine clone.
 
-- Kafka/Airflow ingestion schedules for KCC, Agmarknet, IMD
-- MinIO + Apache Iceberg + Trino (see `infrastructure/docker-compose.yml`)
-- Postgres + PostGIS for geography joins
-- Qdrant vector store + first RAG corpus build
-- Full district/subdistrict/block/village geography import
+- **Phase 0** — line-ending/reproducibility fix ✅ (landed 2026-09-02: LF pinned in
+  `scripts/seed_lake.py::_write_csv` + `.gitattributes`; `verify_seeds` now exits 0
+  on a pristine tree), then KCC resource-id fix, status-aware retry, test
+  isolation, CI restored
+- **Phase A** — source **discovery** (`pipelines/discovery/`, `gold.source_catalog`,
+  contract hashes + drift detection) and recorded-payload **contract tests**
+- **Phase B** — real **collection** (throttled/incremental/resumable transport,
+  watermarks, run ledger, `ingestion_method` as a column, fail-closed runs)
+- **Phase C** — **data-quality filter** (rule engine, `pass|quarantine|reject`,
+  promotion gate, PII + license gates, scorecards)
+- **Phase D** — **quality conversion** (canonical dates/units/geo/entities,
+  typed DDL gold, SCD2, dataset versions, lineage)
+- **Phase E** — **knowledge-gap discovery + targeted collection loop**
+  (gap register ranked by demand; gaps close only with a passing regression test)
+- **Phase F** — ops (scheduler, metrics, alerts), **frontier-only model policy**
+  (`grok-4.6` / `qwen3.8-max` and higher, audited + budget-capped), eval gates
+- Scale-out substrate when volume demands it: MinIO + Iceberg + Trino,
+  Postgres/PostGIS, Qdrant (see `infrastructure/docker-compose.yml`); full
+  district/subdistrict/block/village geography import
 
 ## V3 — Reasoning & assistants
 

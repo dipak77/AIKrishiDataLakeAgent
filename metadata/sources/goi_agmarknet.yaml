@@ -9,6 +9,9 @@ acquisition:
   schedule: daily
   api_key_required: true
   pagination: offset_limit
+  resources:
+    - resource_id: 9ef84268-d588-465a-a308-a864a43d0070
+      description: Current Daily Price of Various Commodities from Various Markets (Mandi)
 domains: [market, mandi_price]
 license:
   type: GODL-India
@@ -16,4 +19,55 @@ license:
 quality:
   authority_score: 1.0
   freshness_score: 1.0
+
+# ── Contract (verified against the live resource on 2026-09-02) ──────────────
+# Live probe returned status=ok, total=17800, updated_date=2026-09-02T17:01:08Z.
+# Facts encoded here that a guess would get wrong:
+#   * field ids are lowercase (`state`, `min_price`) while display names are
+#     `State`, `Min_x0020_Price`;
+#   * `arrival_date` is DD/MM/YYYY, not ISO;
+#   * only 6 fields are filterable — `arrival_date` is NOT among them, and a
+#     server-side `filters[arrival_date]` is silently ignored, so incremental
+#     pulls must scan and filter client-side.
+contract:
+  version: "2026-09-02"
+  resource_id: 9ef84268-d588-465a-a308-a864a43d0070
+  source_fields:
+    state:        {type: str, required: true}
+    district:     {type: str, required: true}
+    market:       {type: str, required: true}
+    commodity:    {type: str, required: true}
+    variety:      {type: str}
+    grade:        {type: str}
+    arrival_date: {type: date, format: "DD/MM/YYYY", required: true}
+    min_price:    {type: float, min: 0}
+    max_price:    {type: float, min: 0}
+    modal_price:  {type: float, min: 0}
+  source_date_fields: [arrival_date]
+  # Canonical silver record (what the lake stores, what DQ validates).
+  fields:
+    state:         {type: str, required: true}
+    district:      {type: str}
+    market:        {type: str, required: true}
+    commodity_raw: {type: str, required: true}
+    variety:       {type: str}
+    grade:         {type: str}
+    price_date:    {type: date, format: ISO8601, required: true}
+    min_price:     {type: float, min: 0}
+    modal_price:   {type: float, min: 0}
+    max_price:     {type: float, min: 0}
+    unit:          {type: str, non_empty: true}
+    source_url:    {type: str, required: true}
+  date_fields: [price_date]
+  business_key: [market, commodity_raw, variety, grade, price_date]
+  filterable: [state, district, market, commodity, variety, grade]
+  pagination: {mode: offset_limit, page_size: 1000, max_pages: 20}
+  rate_limit: {rps: 1, burst: 5, honor_retry_after: true}
+  # the high-water mark is read from the canonical silver field (arrival_date
+  # is the upstream alias; see source_date_fields above)
+  incremental: {strategy: full_scan_client_filter, key: price_date}
+  volume: {expected_rows_per_run: [1, 40000], expected_rows_per_day: [8000, 40000]}
+  cassettes:
+    - tests/fixtures/cassettes/goi_agmarknet_daily_mandi_price.json
+
 notes: Daily wholesale min/max/modal price per market x commodity x variety (INR/quintal).

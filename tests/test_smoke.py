@@ -84,13 +84,19 @@ def test_knowledge_graph_has_edges():
     assert "crop" in types and "disease" in types
 
 
-def test_seed_csvs_emit_and_load():
+def test_seed_csvs_emit_and_load(tmp_path, monkeypatch):
+    # Emit into a temp dir: the committed data/seeds tree must never be a test
+    # artefact (a previous version of this test rewrote 24 committed CSVs).
+    import scripts.seed_lake as seed_lake
+
+    monkeypatch.setattr(seed_lake, "SEEDS_DIR", tmp_path)
     paths = emit_seed_csvs()
     assert len(paths) >= 15
+    assert all(tmp_path in p.parents for p in paths)
     con = duckdb.connect(":memory:")
     try:
         n = con.execute(
-            f"SELECT count(*) FROM read_csv_auto('{ROOT / 'data' / 'seeds' / 'dim_crop.csv'}', header=true)"
+            f"SELECT count(*) FROM read_csv_auto('{tmp_path / 'dim_crop.csv'}', header=true)"
         ).fetchone()[0]
         assert n == len(CROPS)
     finally:

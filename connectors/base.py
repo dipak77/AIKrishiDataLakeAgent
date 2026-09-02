@@ -31,6 +31,10 @@ class SourceMetadata(BaseModel):
     domains: list[str] = Field(default_factory=list)
     license: dict[str, Any] = Field(default_factory=dict)
     quality: dict[str, Any] = Field(default_factory=dict)
+    #: Machine-checkable contract (schema/business key/pagination/rate limit/
+    #: volume/cassettes). Validated lazily by ``pipelines.contracts.contract_for``
+    #: so an invalid block fails loudly at use time, not at registry load time.
+    contract: dict[str, Any] = Field(default_factory=dict)
     notes: str = ""
 
 
@@ -95,6 +99,24 @@ class AgricultureSourceConnector(abc.ABC):
             registry.load()
         return registry.get(self.source_id)
 
+    # ── transport ──────────────────────────────────────────────────────────
+    def set_transport(self, mode: str | None, cassette_dir: Path | None = None) -> None:
+        """Point this connector's HTTP client at ``mode``.
+
+        Connectors that talk HTTP expose an ``http()`` accessor returning a
+        :class:`pipelines.http.HttpClient`; the orchestrator calls this so the
+        ``--transport`` flag (not just the environment) decides whether a run is
+        live, recorded or replayed.
+        """
+        factory = getattr(self, "http", None)
+        if not callable(factory):
+            return
+        client = factory()
+        if mode and getattr(client, "mode", None) != mode:
+            client.mode = mode
+        if cassette_dir is not None:
+            client.cassette_dir = Path(cassette_dir)
+
     # ── lifecycle ──────────────────────────────────────────────────────────
     @abc.abstractmethod
     def discover(self) -> list[dict[str, Any]]:
@@ -111,8 +133,15 @@ class AgricultureSourceConnector(abc.ABC):
     def normalize(self, raw: Any, resource: dict[str, Any]) -> list[dict[str, Any]]:
         """Map raw payload → list of canonical silver records (dicts)."""
 
-    def enrich(self, records: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        """Attach ontology links, geocoding, language, quality."""
+    def enrich(
+        self,
+        records: list[dict[str, Any]],
+        *,
+        run_id: str | None = None,
+        method: str | None = None,
+    ) -> list[dict[str, Any]]:
+        """Attach ontology links, geocoding, language, quality + run provenance."""
+        from pipelines.collect import attach_provenance
         from pipelines.quality import score_record
 
         enriched: list[dict[str, Any]] = []
@@ -128,6 +157,12 @@ class AgricultureSourceConnector(abc.ABC):
             rec.setdefault("ingested_at", self._now())
             rec["quality"] = score_record(rec, authority=self.metadata.authority)
             enriched.append(rec)
+        if run_id and method:
+            # record_hash / run_id / ingestion_method become first-class columns,
+            # so a fixture row can never be mistaken for a live one downstream.
+            enriched = attach_provenance(
+                enriched, run_id=run_id, method=method, source_id=self.source_id
+            )
         return enriched
 
     def persist_bronze(self, raw: Any, resource: dict[str, Any]) -> str | None:
@@ -170,31 +205,84 @@ class AgricultureSourceConnector(abc.ABC):
 
     # ── orchestration ──────────────────────────────────────────────────────
     def run(self, **kwargs: Any) -> dict[str, Any]:
+        """Run the full lifecycle for every discovered resource.
+
+        Production semantics (docs/v7-plan.md §4.3):
+
+        * one ``run_id`` per invocation, stamped onto every record;
+        * ``ingestion_method`` recorded **per record** (live | replay | fixture);
+        * ``require_live=True`` (or ``AGRILAKE_REQUIRE_LIVE=1``) makes an
+          unreachable source **fail the run** instead of silently substituting
+          bundled fixtures — fixture data must never masquerade as real data;
+        * every resource produces a ``gold.ingest_run`` ledger row.
+        """
+        import os
+
+        from pipelines.collect import RunLedger, RunSummary, attach_provenance, git_sha, new_run_id
         from pipelines.config import load_settings
         from pipelines.retry import retry_call
+        from pipelines.storage import utcnow_iso
 
         settings = load_settings()
+        require_live = bool(kwargs.pop("require_live", os.environ.get("AGRILAKE_REQUIRE_LIVE", "") == "1"))
+        transport = kwargs.pop("transport", os.environ.get("AGRILAKE_TRANSPORT", "live"))
+        cassette_dir = kwargs.pop("cassette_dir", None)
+        lake = kwargs.pop("lake", None)
+        self.set_transport(transport, cassette_dir)
+        run_id = str(kwargs.pop("run_id", "") or new_run_id(self.source_id.lower()))
+        sha = git_sha()
+
         resources = self.discover()
         summary: dict[str, Any] = {
             "source_id": self.source_id,
+            "run_id": run_id,
+            "transport": transport,
             "discovered": len(resources),
             "resources": [],
         }
+        ledger = RunLedger(lake) if kwargs.pop("ledger", True) else None
+
         for resource in resources:
-            entry: dict[str, Any] = {"resource": resource, "status": "ok"}
+            rid = str(resource.get("resource_id") or resource.get("id") or "default")
+            started = utcnow_iso()
+            row = RunSummary(
+                run_id=f"{run_id}:{rid}", source_id=self.source_id, resource_id=rid,
+                transport=transport, git_sha=sha, started_at=started,
+            )
+            entry: dict[str, Any] = {"resource": resource, "status": "ok", "run_id": row.run_id}
             try:
                 raw = retry_call(
                     self.fetch,
                     resource,
                     retries=settings.http_retries,
                     logger=logger,
+                    on_retry=lambda info: setattr(row, "retries", row.retries + 1),
                 )
-                method = resource.get("_method") or ("fixture" if raw is None else "live")
+                # a connector that reports how it got the data wins over the
+                # requested transport (replay rows are not live rows)
+                reported = resource.get("_method") or (
+                    raw.get("_method") if isinstance(raw, dict) else None
+                )
+                method = str(reported or ("fixture" if raw is None else transport))
+                if raw is None and method != "fixture":
+                    method = "fixture"
+
+                if raw is None and require_live:
+                    # Fail closed: no silent fixture substitution.
+                    raise RuntimeError(
+                        f"source unreachable and require_live=1 — refusing to emit fixtures "
+                        f"(transport={transport})"
+                    )
+
                 bronze_path = self.persist_bronze(raw, resource)
                 self.validate(raw)
                 records = self.normalize(raw, resource)
-                records = self.enrich(records)
+                row.rows_raw = len(records)
+                records = self.enrich(records, run_id=row.run_id, method=method)
                 paths = self.persist(records, resource)
+                row.rows_pass = len(records)
+                row.status = "ok"
+                row.finished_at = utcnow_iso()
                 entry.update(
                     {
                         "records": len(records),
@@ -204,9 +292,22 @@ class AgricultureSourceConnector(abc.ABC):
                     }
                 )
             except Exception as exc:  # noqa: BLE001 - connectors must be resilient
-                entry.update({"status": "error", "error": f"{type(exc).__name__}: {exc}"})
+                row.status = "failed"
+                row.error = f"{type(exc).__name__}: {exc}"
+                row.finished_at = utcnow_iso()
+                entry.update({"status": "error", "method": "", "error": row.error})
                 logger.exception("Connector %s failed on %s", self.source_id, resource)
+
             summary["resources"].append(entry)
+            if ledger is not None:
+                try:
+                    ledger.record(row)
+                except Exception:  # noqa: BLE001 - ledger must never break ingestion
+                    logger.exception("could not write run ledger for %s", row.run_id)
+
+        summary["status"] = (
+            "ok" if all(r.get("status") == "ok" for r in summary["resources"]) else "failed"
+        )
         return summary
 
     @staticmethod

@@ -47,7 +47,13 @@ def seed_fingerprint() -> str:
 def _write_csv(name: str, fieldnames: list[str], rows: list[dict[str, Any]]) -> Path:
     path = ensure_dir(SEEDS_DIR) / f"{name}.csv"
     with path.open("w", encoding="utf-8", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=fieldnames, extrasaction="ignore")
+        # `lineterminator` must be pinned: csv's default is "\r\n", which made
+        # every emit rewrite the committed LF seed CSVs (CRLF churn) and made
+        # `verify_seeds` contradict itself depending on whether the build had
+        # already run. LF everywhere keeps the drift gate byte-stable.
+        writer = csv.DictWriter(
+            fh, fieldnames=fieldnames, extrasaction="ignore", lineterminator="\n"
+        )
         writer.writeheader()
         for row in rows:
             writer.writerow(row)

@@ -23,13 +23,17 @@ from pipelines.storage import FIXTURES_DIR
 
 logger = logging.getLogger("agrilake.connectors.kcc")
 
-# Known KCC resources on data.gov.in (resource_id → description).
-# District × month specific resources exist too (e.g. "5f039cdb2e054ab5b74bfc2a6e1a860b"
-# = Vizianagaram (AP), June 2018); discover() can be expanded via the OGD search API.
-KCC_RESOURCES = {
-    # Aggregate transcript corpus (primary QA corpus).
-    "transcripts": "kisan-call-centre-kcc-transcripts-farmers-queries-answers",
-}
+# KCC resources are declared in the source registry, not hard-coded here:
+# ``metadata/sources/goi_kcc.yaml → acquisition.resources``.
+#
+# Why: the previously documented resource ids are gone. Verified 2026-09-02:
+# ``GET https://api.data.gov.in/resource/5f039cdb2e054ab5b74bfc2a6e1a860b``
+# returns ``{"message": "Meta not found", "status": "error"}``, and the old code
+# passed the literal dict *key* ``"transcripts"`` as the resource id, so the
+# request URL was ``/resource/transcripts`` — it could never have worked.
+# Resources are therefore discovered (``agrilake-discover``) and registered as
+# data. An unconfigured source reports zero resources rather than guessing.
+KCC_RESOURCES: dict[str, str] = {}
 
 CATEGORY_MAP = {
     "horticulture": "horticulture",
@@ -44,11 +48,32 @@ class KccConnector(DataGovConnector, AgricultureSourceConnector):
     source_id = "GOI_KCC"
     domain = "farmer_qa"
 
+    def configured_resources(self) -> list[dict[str, Any]]:
+        """Resources declared in the registry (``acquisition.resources``)."""
+        raw = (self.metadata.acquisition or {}).get("resources") or []
+        out: list[dict[str, Any]] = []
+        for item in raw:
+            if isinstance(item, dict) and item.get("resource_id"):
+                out.append(
+                    {
+                        "resource_id": str(item["resource_id"]),
+                        "description": str(item.get("description") or "KCC farmer Q&A"),
+                        "limit": self.limit,
+                    }
+                )
+            elif isinstance(item, str) and item.strip():
+                out.append({"resource_id": item.strip(), "description": "KCC farmer Q&A", "limit": self.limit})
+        return out
+
     def discover(self) -> list[dict[str, Any]]:
-        return [
-            {"resource_id": rid, "description": desc, "limit": self.limit}
-            for rid, desc in KCC_RESOURCES.items()
-        ]
+        resources = self.configured_resources()
+        if not resources:
+            logger.warning(
+                "GOI_KCC has no resources registered. Add real resource ids to "
+                "metadata/sources/goi_kcc.yaml (acquisition.resources) after running "
+                "`agrilake-discover`; refusing to guess an id."
+            )
+        return resources
 
     def fetch(self, resource: dict[str, Any]) -> Any:
         """Attempt live fetch; return None (→ fixtures) when unreachable."""

@@ -14,6 +14,16 @@ from connectors.research.icar import IcarConnector  # noqa: E402
 from scripts.ingest_research import _run_connector, _upsert  # noqa: E402
 
 
+@pytest.fixture(autouse=True)
+def isolated_medallion_dirs(tmp_path, monkeypatch):
+    """`_run_connector` persists bronze+silver; keep it out of the real tree."""
+    import pipelines.storage as storage
+
+    monkeypatch.setattr(storage, "SILVER_DIR", tmp_path / "silver")
+    monkeypatch.setattr(storage, "BRONZE_DIR", tmp_path / "bronze")
+    return tmp_path
+
+
 def test_icar_connector_falls_back_to_fixture_offline(monkeypatch):
     # Simulate no network: requests.get raises → fetch returns None (fixture).
     import requests

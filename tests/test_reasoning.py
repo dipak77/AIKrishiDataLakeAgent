@@ -30,12 +30,22 @@ def _seeded():
     if not lake.exists():
         import duckdb
 
-        sl.emit_seed_csvs()
-        con = duckdb.connect(str(lake))
-        try:
-            sl.load_lake(con, export_parquet=False)
-        finally:
-            con.close()
+        # Seed from a temp copy of the CSVs: the committed data/seeds tree must
+        # not be rewritten by a test run (see docs/v7-plan.md F12 / Phase 0.4).
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as tmp:
+            original = sl.SEEDS_DIR
+            sl.SEEDS_DIR = Path(tmp)
+            try:
+                sl.emit_seed_csvs()
+                con = duckdb.connect(str(lake))
+                try:
+                    sl.load_lake(con, export_parquet=False)
+                finally:
+                    con.close()
+            finally:
+                sl.SEEDS_DIR = original
     yield
 
 
