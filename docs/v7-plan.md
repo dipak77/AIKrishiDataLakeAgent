@@ -764,19 +764,19 @@ score.
 ## 12. Implementation status — plan vs. landed code (2026-09-02)
 
 Everything below was produced by running the code, not by reading it. Test count
-is `make check` → **403 passed** (baseline before this work: 262).
+is `make check` → **403 passed** (baseline before this work: 262, so 141 new tests: 30 DQ + 19 model policy + 16 contracts + 16 transport + 14 collect + 14 gaps + 13 pipeline + 10 connector-contract + 9 discovery).
 
 ### 12.1 Stage → module → proof
 
 | Plan stage | Landed module | Executed proof |
 |---|---|---|
-| S0 discovery | `pipelines/discovery.py` | `tests/test_discovery.py` (10): reads the recorded `limit=1` payload → `total_records=17800`, `license_decision=ALLOW`, `has_drift=False`; a mutated contract flips `has_drift=True`; a retired resource raises `LookupError` |
-| S1 contracts + cassettes | `pipelines/contracts.py`, `pipelines/http.py`, `tests/contracts/test_agmarknet_contract.py` | `tests/test_contracts.py` (19) + `tests/test_http_transport.py` (13); the contract test replays the **real** captured payload and asserts `arrival_date == "02/09/2026"` → `price_date == "2026-09-02"` |
-| S2 collection engine | `pipelines/collect.py`, `connectors/base.py::run` | `tests/test_collect.py` (16): run ledger rows, per-record `ingestion_method`, watermark monotonicity, `require_live` fail-closed |
+| S0 discovery | `pipelines/discovery.py` | `tests/test_discovery.py` (9): reads the recorded `limit=1` payload → `total_records=17800`, `license_decision=ALLOW`, `has_drift=False`; a mutated contract flips `has_drift=True`; a retired resource raises `LookupError` |
+| S1 contracts + cassettes | `pipelines/contracts.py`, `pipelines/http.py`, `tests/contracts/test_agmarknet_contract.py` | `tests/test_contracts.py` (16) + `tests/test_http_transport.py` (16); the contract test replays the **real** captured payload and asserts `arrival_date == "02/09/2026"` → `price_date == "2026-09-02"` |
+| S2 collection engine | `pipelines/collect.py`, `connectors/base.py::run` | `tests/test_collect.py` (14): run ledger rows, per-record `ingestion_method`, watermark monotonicity, `require_live` fail-closed |
 | S4 DQ filter | `pipelines/dq.py` | `tests/test_dq_refinery.py` (30): 23 rules, reject/quarantine/pass, `gate()` semantics, scorecard persistence |
-| S8 gap detection | `pipelines/gaps.py` | `tests/test_gaps.py` (17) against the built lake; idempotent register upsert that never auto-closes |
-| S9 gap→collection loop | `scripts/pipeline_run.py` | `tests/test_pipeline_run.py` (14): one call runs discover → collect → gate → watermark → gaps on the recorded payload and promotes it |
-| F model policy | `pipelines/models.py` | `tests/test_model_policy.py` (18): frontier-only selection, cross-vendor quorum, fail-closed unavailability, run/day budget, audited cost |
+| S8 gap detection | `pipelines/gaps.py` | `tests/test_gaps.py` (14) against the built lake; idempotent register upsert that never auto-closes |
+| S9 gap→collection loop | `scripts/pipeline_run.py` | `tests/test_pipeline_run.py` (13) + `tests/contracts/test_agmarknet_contract.py` (10): one call runs discover → collect → gate → watermark → gaps on the recorded payload and promotes it |
+| F model policy | `pipelines/models.py` | `tests/test_model_policy.py` (19): frontier-only selection, cross-vendor quorum, fail-closed unavailability, run/day budget, audited cost |
 | Ops: CI | `ci/ci.yml` (**parked** — the branch's automation token lacks the GitHub `workflows` permission, so it cannot be written to `.github/workflows/`; the file header carries the one-line activation command) | bootstrap → verify-seeds → pipeline replay smoke run, py3.10/3.11/3.12, `AGRILAKE_TRANSPORT=replay` so CI never dials out |
 
 ### 12.2 Deviations from the plan (deliberate, with reasons)
