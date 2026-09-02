@@ -775,7 +775,7 @@ is `make check` → **403 passed** (baseline before this work: 262, so 141 new t
 | S2 collection engine | `pipelines/collect.py`, `connectors/base.py::run` | `tests/test_collect.py` (14): run ledger rows, per-record `ingestion_method`, watermark monotonicity, `require_live` fail-closed |
 | S4 DQ filter | `pipelines/dq.py` | `tests/test_dq_refinery.py` (30): 23 rules, reject/quarantine/pass, `gate()` semantics, scorecard persistence |
 | S8 gap detection | `pipelines/gaps.py` | `tests/test_gaps.py` (14) against the built lake; idempotent register upsert that never auto-closes |
-| S9 gap→collection loop | `scripts/pipeline_run.py` | `tests/test_pipeline_run.py` (13) + `tests/contracts/test_agmarknet_contract.py` (10): one call runs discover → collect → gate → watermark → gaps on the recorded payload and promotes it |
+| S9 gap→collection loop | `scripts/pipeline_run.py` | `tests/test_pipeline_run.py` (13), plus the S1 connector-contract file: one call runs discover → collect → gate → watermark → gaps on the recorded payload and promotes it |
 | F model policy | `pipelines/models.py` | `tests/test_model_policy.py` (19): frontier-only selection, cross-vendor quorum, fail-closed unavailability, run/day budget, audited cost |
 | Ops: CI | `ci/ci.yml` (**parked** — the branch's automation token lacks the GitHub `workflows` permission, so it cannot be written to `.github/workflows/`; the file header carries the one-line activation command) | bootstrap → verify-seeds → pipeline replay smoke run, py3.10/3.11/3.12, `AGRILAKE_TRANSPORT=replay` so CI never dials out |
 
