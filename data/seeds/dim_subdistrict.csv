@@ -1,0 +1,70 @@
+state_code,district_code,name,type
+IN-MH,IN-MH-PUNE,Haveli,tehsil
+IN-MH,IN-MH-PUNE,Baramati,tehsil
+IN-MH,IN-MH-PUNE,Purandar,tehsil
+IN-MH,IN-MH-PUNE,Indapur,tehsil
+IN-MH,IN-MH-PUNE,Daund,tehsil
+IN-MH,IN-MH-PUNE,Shirur,tehsil
+IN-MH,IN-MH-PUNE,Junnar,tehsil
+IN-MH,IN-MH-PUNE,Khed,tehsil
+IN-MH,IN-MH-PUNE,Maval,tehsil
+IN-MH,IN-MH-PUNE,Mulshi,tehsil
+IN-MH,IN-MH-PUNE,Uruli Kanchan,village
+IN-MH,IN-MH-PUNE,Manchar,village
+IN-MH,IN-MH-PUNE,Saswad,village
+IN-MH,IN-MH-PUNE,Indapur,village
+IN-MH,IN-MH-NAGPUR,Nagpur Rural,tehsil
+IN-MH,IN-MH-NAGPUR,Kamptee,tehsil
+IN-MH,IN-MH-NAGPUR,Umred,tehsil
+IN-MH,IN-MH-NAGPUR,Hingna,tehsil
+IN-MH,IN-MH-NAGPUR,Kalmeshwar,tehsil
+IN-MH,IN-MH-NAGPUR,Katol,tehsil
+IN-MH,IN-MH-NAGPUR,Narkhed,tehsil
+IN-MH,IN-MH-NAGPUR,Ramtek,tehsil
+IN-MH,IN-MH-NAGPUR,Savner,tehsil
+IN-MH,IN-MH-NAGPUR,Mauda,tehsil
+IN-MH,IN-MH-NAGPUR,Khapri,village
+IN-MH,IN-MH-NAGPUR,Bori,village
+IN-MH,IN-MH-NAGPUR,Butibori,village
+IN-MH,IN-MH-NAGPUR,Katol,village
+IN-MH,IN-MH-NASHIK,Nashik,tehsil
+IN-MH,IN-MH-NASHIK,Igatpuri,tehsil
+IN-MH,IN-MH-NASHIK,Sinnar,tehsil
+IN-MH,IN-MH-NASHIK,Niphad,tehsil
+IN-MH,IN-MH-NASHIK,Yeola,tehsil
+IN-MH,IN-MH-NASHIK,Nandgaon,tehsil
+IN-MH,IN-MH-NASHIK,Malegaon,tehsil
+IN-MH,IN-MH-NASHIK,Kalwan,tehsil
+IN-MH,IN-MH-NASHIK,Baglan,tehsil
+IN-MH,IN-MH-NASHIK,Dindori,tehsil
+IN-MH,IN-MH-NASHIK,Lasalgaon,village
+IN-MH,IN-MH-NASHIK,Pimpalgaon Baswant,village
+IN-MH,IN-MH-NASHIK,Ozar,village
+IN-MH,IN-MH-NASHIK,Saykheda,village
+IN-PB,IN-PB-LUDHIANA,Ludhiana East,tehsil
+IN-PB,IN-PB-LUDHIANA,Ludhiana West,tehsil
+IN-PB,IN-PB-LUDHIANA,Jagraon,tehsil
+IN-PB,IN-PB-LUDHIANA,Khanna,tehsil
+IN-PB,IN-PB-LUDHIANA,Raikot,tehsil
+IN-PB,IN-PB-LUDHIANA,Samrala,tehsil
+IN-PB,IN-PB-LUDHIANA,Payal,tehsil
+IN-PB,IN-PB-LUDHIANA,Machhiwara,tehsil
+IN-PB,IN-PB-LUDHIANA,Dehlon,tehsil
+IN-PB,IN-PB-LUDHIANA,Sidhwan Bet,tehsil
+IN-PB,IN-PB-LUDHIANA,Jagraon,village
+IN-PB,IN-PB-LUDHIANA,Khanna,village
+IN-PB,IN-PB-LUDHIANA,Raikot,village
+IN-PB,IN-PB-LUDHIANA,Machhiwara,village
+IN-TN,IN-TN-THANJAVUR,Thanjavur,taluk
+IN-TN,IN-TN-THANJAVUR,Kumbakonam,taluk
+IN-TN,IN-TN-THANJAVUR,Papanasam,taluk
+IN-TN,IN-TN-THANJAVUR,Pattukkottai,taluk
+IN-TN,IN-TN-THANJAVUR,Peravurani,taluk
+IN-TN,IN-TN-THANJAVUR,Orathanadu,taluk
+IN-TN,IN-TN-THANJAVUR,Thiruvidaimarudur,taluk
+IN-TN,IN-TN-THANJAVUR,Thiruvaiyaru,taluk
+IN-TN,IN-TN-THANJAVUR,Budalur,taluk
+IN-TN,IN-TN-THANJAVUR,Papanasam,village
+IN-TN,IN-TN-THANJAVUR,Thiruvaiyaru,village
+IN-TN,IN-TN-THANJAVUR,Pattukkottai,village
+IN-TN,IN-TN-THANJAVUR,Orathanadu,village

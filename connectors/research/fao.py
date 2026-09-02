@@ -26,9 +26,15 @@ from pipelines.storage import FIXTURES_DIR
 
 logger = logging.getLogger("agrilake.connectors.faostat")
 
-FAOSTAT_BASE = os.environ.get(
-    "FAOSTAT_BASE_URL", "https://fenixservices.fao.org/faostat/api/v1"
-)
+def _faostat_base() -> str:
+    from pipelines.config import load_settings
+
+    return load_settings().faostat_base_url or os.environ.get(
+        "FAOSTAT_BASE_URL", "https://fenixservices.fao.org/faostat/api/v1"
+    )
+
+
+FAOSTAT_BASE = _faostat_base()
 
 # (element_code, element) used by the crop-production fact table.
 ELEMENT_PRODUCTION = 5510

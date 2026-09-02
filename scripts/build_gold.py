@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 import duckdb  # noqa: E402
 
-from pipelines.storage import LAKE_DIR, SILVER_DIR, ensure_dir  # noqa: E402
+from pipelines.storage import LAKE_DIR, SILVER_DIR, ensure_dir, read_write_connection  # noqa: E402
 from scripts.seed_lake import load_lake  # noqa: E402
 
 DOMAIN_TO_TABLE = {
@@ -70,7 +70,7 @@ def _derive_yield(con: duckdb.DuckDBPyConnection) -> None:
 
 def main() -> int:
     lake_path = ensure_dir(LAKE_DIR) / "agrilake.duckdb"
-    con = duckdb.connect(str(lake_path))
+    con = read_write_connection(lake_path)
     try:
         con.execute("CREATE SCHEMA IF NOT EXISTS gold")
         # Ensure dimensions are present (no-op if already seeded).
@@ -86,12 +86,46 @@ def main() -> int:
             _derive_yield(con)
             n_yield = con.execute("SELECT count(*) FROM gold.fact_yield").fetchone()[0]
             print(f"  derived gold.fact_yield: {n_yield} rows")
+
+        # Mandi trend aggregate (Track 6) if price facts exist.
+        has_mandi = con.execute(
+            "SELECT count(*) FROM information_schema.tables WHERE table_schema='gold' AND table_name='fact_mandi_price'"
+        ).fetchone()[0]
+        if has_mandi:
+            con.execute(
+                """
+                CREATE OR REPLACE TABLE gold.mandi_price_trend AS
+                WITH t AS (
+                    SELECT
+                        commodity_raw, market, state, district, crop,
+                        price_date, modal_price, min_price, max_price,
+                        ROW_NUMBER() OVER (
+                            PARTITION BY commodity_raw, market ORDER BY price_date DESC
+                        ) AS rn
+                    FROM gold.fact_mandi_price
+                    WHERE modal_price IS NOT NULL
+                )
+                SELECT
+                    commodity_raw, market, state, district, crop,
+                    count(*) AS n_days,
+                    round(avg(modal_price), 2) AS mean_modal,
+                    round(min(min_price), 2) AS min_price,
+                    round(max(max_price), 2) AS max_price,
+                    round(max(modal_price) - min(modal_price), 2) AS range_modal,
+                    max_by(modal_price, price_date) AS latest_modal,
+                    max(price_date) AS latest_date
+                FROM t
+                GROUP BY commodity_raw, market, state, district, crop
+                """
+            )
+            n_mandi = con.execute("SELECT count(*) FROM gold.mandi_price_trend").fetchone()[0]
+            print(f"  derived gold.mandi_price_trend: {n_mandi} rows")
     finally:
         con.close()
 
     print(f"Gold layer updated in {lake_path}")
     print("  dimensions:", ", ".join(f"{k}={v}" for k, v in dim_counts.items()))
-    print("  silver→gold facts:", silver_counts or "(no silver data yet — run ingest_live)")
+    print("  silver->gold facts:", silver_counts or "(no silver data yet - run ingest_live)")
     return 0
 
 

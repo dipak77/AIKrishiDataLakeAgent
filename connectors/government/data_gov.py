@@ -23,7 +23,9 @@ class DataGovConnector:
     """Mixin providing authenticated access to the OGD Platform API."""
 
     def api_key(self) -> str:
-        return os.environ.get("DATA_GOV_IN_API_KEY") or DEMO_API_KEY
+        from pipelines.config import load_settings
+
+        return load_settings().data_gov_api_key or os.environ.get("DATA_GOV_IN_API_KEY") or DEMO_API_KEY
 
     def fetch_resource(
         self,

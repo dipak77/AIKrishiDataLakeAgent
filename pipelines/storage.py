@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -45,6 +46,62 @@ def utcnow_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+# ── Thread-local read-only DuckDB connections (V6 2a: connection reuse) ────
+#
+# ``duckdb.connect(read_only=True)`` costs ~10–15 ms per call. Reasoning hot
+# paths opened a fresh connection on every query, which pushed the canonical
+# gateway path to ~21 ms. DuckDB connections are NOT thread-safe, so we cache
+# one connection *per thread*, keyed by the resolved lake path. Callers MUST
+# NOT ``.close()`` a connection obtained here — it is shared and reused.
+import threading  # noqa: E402
+
+_READ_CONNS: dict[tuple[int, str], Any] = {}
+_CONNS_LOCK = threading.Lock()
+
+
+def get_read_connection(lake: Path | None = None):
+    """Return a cached read-only DuckDB connection for this thread + lake file.
+
+    Never close the returned handle; it is reused across calls. Use
+    ``clear_connection_cache()`` to reset (e.g. after rebuilding the lake).
+    """
+    import duckdb
+
+    path = Path(lake or (LAKE_DIR / "agrilake.duckdb")).resolve()
+    key = (threading.get_ident(), str(path))
+    with _CONNS_LOCK:
+        con = _READ_CONNS.get(key)
+        if con is None:
+            con = duckdb.connect(str(path), read_only=True)
+            _READ_CONNS[key] = con
+        return con
+
+
+def clear_connection_cache() -> None:
+    """Close and forget all cached read-only connections."""
+    with _CONNS_LOCK:
+        for con in _READ_CONNS.values():
+            try:
+                con.close()
+            except Exception:
+                pass
+        _READ_CONNS.clear()
+
+
+def read_write_connection(lake: Path | None = None):
+    """Open a read-write connection, first closing cached read-only handles.
+
+    DuckDB refuses to open the same file with mixed configurations, so any
+    write path (seed / graph build / corpus build) must drop the read cache
+    first. The cached read connections are re-established lazily afterwards.
+    """
+    import duckdb
+
+    clear_connection_cache()
+    path = Path(lake or (LAKE_DIR / "agrilake.duckdb")).resolve()
+    return duckdb.connect(str(path))
+
+
 def content_hash(data: bytes | str) -> str:
     if isinstance(data, str):
         data = data.encode("utf-8")
@@ -57,21 +114,36 @@ def slugify(value: str) -> str:
 
 
 def write_json(path: Path, data: Any, indent: int | None = 2) -> Path:
-    ensure_dir(path.parent)
-    path.write_text(
-        json.dumps(data, ensure_ascii=False, indent=indent, default=str),
-        encoding="utf-8",
-    )
-    return path
+    payload = json.dumps(data, ensure_ascii=False, indent=indent, default=str)
+    return _atomic_write_text(path, payload)
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> Path:
     """Append-independent JSONL writer (one JSON object per line)."""
-    ensure_dir(path.parent)
-    with path.open("w", encoding="utf-8") as fh:
-        for row in rows:
-            fh.write(json.dumps(row, ensure_ascii=False, default=str) + "\n")
+    payload = "".join(
+        json.dumps(row, ensure_ascii=False, default=str) + "\n" for row in rows
+    )
+    return _atomic_write_text(path, payload)
+
+
+def _atomic_write_text(path: Path, text: str) -> Path:
+    _atomic_write_bytes(path, text.encode("utf-8"))
     return path
+
+
+def _atomic_write_bytes(path: Path, data: bytes) -> None:
+    """Write bytes to ``path`` atomically (tmp file + ``os.replace``).
+
+    A crash mid-write can never leave a half-written CSV/JSONL/manifest behind.
+    """
+    ensure_dir(path.parent)
+    tmp = path.with_name(path.name + ".tmp")
+    try:
+        tmp.write_bytes(data)
+        os.replace(tmp, path)  # atomic on POSIX and Windows (same volume)
+    finally:
+        if tmp.exists():
+            tmp.unlink(missing_ok=True)
 
 
 def write_bronze(
@@ -89,7 +161,7 @@ def write_bronze(
     digest = content_hash(raw)
     resource_dir = ensure_dir(BRONZE_DIR / slugify(source_id) / slugify(resource_id))
     artifact = resource_dir / filename
-    artifact.write_bytes(raw)
+    _atomic_write_bytes(artifact, raw)
 
     manifest = {
         "source_id": source_id,

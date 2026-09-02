@@ -1,0 +1,14 @@
+deficiency_id,nutrient_id,crop_id,crop,symptoms,correction
+DEF_ZN_RICE,NUT_ZN,CROP_RICE,Rice,"Khaira disease: dusty brown spots on leaves, white bud, stunted growth, uneven crop",ZnSO4 25 kg/ha in soil or 0.5% foliar spray (5 g/L + lime); root-dip of seedlings in 1% ZnO
+DEF_N_MAIZE,NUT_N,CROP_MAIZE,Maize,"V-shaped yellowing from leaf tip along midrib, stunted plants, pale green older leaves",Top-dress urea in splits (knee-high and tasseling stages); ~120 kg N/ha
+DEF_N_WHEAT,NUT_N,CROP_WHEAT,Wheat,"Pale yellow older leaves, reduced tillering, stunted growth",Split urea application at crown-root initiation and jointing
+DEF_FE_SUGARCANE,NUT_FE,CROP_SUGARCANE,Sugarcane,"Interveinal chlorosis of young leaves (calcareous soils), white stripes",FeSO4 0.5% foliar spray + soil application; avoid waterlogging
+DEF_FE_GROUNDNUT,NUT_FE,CROP_GROUNDNUT,Groundnut,Interveinal chlorosis of younger leaves (calcareous/alkaline soils),FeSO4 0.5-1.0% foliar spray + organic matter; avoid excess irrigation
+DEF_B_TOMATO,NUT_B,CROP_TOMATO,Tomato,"Distorted growth, hollow fruit, fruit cracking, reduced fruit set",Borax 0.2-0.25% foliar spray at flowering/fruit set; soil application 10 kg/ha on deficient soils
+DEF_B_CAULIFLOWER,NUT_B,CROP_CAULIFLOWER,Cauliflower,"Brown hollow stem, water-soaked curd, whiptail-like leaf distortion",Borax 0.2% foliar spray before curd initiation
+DEF_MO_CAULIFLOWER,NUT_MO,CROP_CAULIFLOWER,Cauliflower,"Whiptail: narrow strap-like leaves, no curd formation",Sodium molybdate 0.01-0.02% foliar or ammonium molybdate soil application; liming acid soils
+DEF_CA_TOMATO,NUT_CA,CROP_TOMATO,Tomato,Blossom-end rot: dark water-soaked spot at fruit blossom end,Calcium nitrate 0.5% foliar spray at fruit set; uniform irrigation; avoid excess N/K
+DEF_K_POTATO,NUT_K,CROP_POTATO,Potato,"Scorched leaf margins, bronzing, weak stems, small tubers",MOP 80-100 kg/ha at planting (split); avoid chloride-sensitive varieties
+DEF_MG_COTTON,NUT_MG,CROP_COTTON,Cotton,Purplish-red interveinal chlorosis of older leaves (leaf reddening),MgSO4 0.5% foliar spray; dolomite on acid soils
+DEF_S_OILSEED,NUT_S,CROP_MUSTARD,Mustard,"Uniform yellowing of young leaves, reduced oil content, cupped leaves",Ammonium sulphate or SSP (sulphur-bearing) at sowing; gypsum 50 kg/ha
+DEF_P_PULSES,NUT_P,CROP_CHICKPEA,Chickpea,"Dull green/purple leaves, poor root nodules, delayed maturity",DAP or SSP basal + phospho-bacteria (PSB) seed treatment

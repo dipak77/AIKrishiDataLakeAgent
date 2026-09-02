@@ -4,8 +4,13 @@
     "document": "Integrated Pest Management for Pink Bollworm in Cotton",
     "institution": "ICAR-CICR",
     "year": 2025,
-    "crop": ["CROP_COTTON"],
-    "topics": ["pink bollworm", "IPM"],
+    "crop": [
+      "CROP_COTTON"
+    ],
+    "topics": [
+      "pink bollworm",
+      "IPM"
+    ],
     "section": "management",
     "page": 43,
     "text": "Pink bollworm (Pectinophora gossypiella) is managed through a season-long IPM ladder: timely sowing, destruction of cotton crop residues, use of PBKnot pheromone traps for monitoring, and release of Trichogramma bactrae egg parasitoids. Insecticide intervention with chlorantraniliprole is recommended only when infestation crosses the economic threshold level.",
@@ -14,17 +19,484 @@
     "source_url": "https://cicr.org.in"
   },
   {
+    "chunk_id": "icar-maize-faw-007",
+    "document": "Fall Armyworm Management in Maize",
+    "institution": "ICAR-IIMR",
+    "year": 2023,
+    "crop": [
+      "CROP_MAIZE"
+    ],
+    "topics": [
+      "fall armyworm",
+      "ipm",
+      "whorl"
+    ],
+    "section": "management",
+    "page": 5,
+    "text": "Fall armyworm (Spodoptera frugiperda) feeds in the whorl causing ragged holes. Scout for egg masses, use pheromone traps, and spray emamectin benzoate or spinetoram only when infestation exceeds the economic threshold; sand-lime mixture in the whorl helps young larvae.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://iimr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-onion-pb-008",
+    "document": "Onion Disease Guide",
+    "institution": "ICAR-DOGR",
+    "year": 2024,
+    "crop": [
+      "CROP_ONION"
+    ],
+    "topics": [
+      "purple blotch",
+      "alternaria",
+      "fungicide"
+    ],
+    "section": "management",
+    "page": 9,
+    "text": "Purple blotch (Alternaria porri) causes purple lesions on onion leaves, favoured by humid weather. Rotate crops, avoid excess nitrogen, and spray mancozeb or propiconazole at first sign; stop irrigation before harvest to reduce bulb rot.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://dogr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-rice-zn-005",
+    "document": "Micronutrient Management in Rice",
+    "institution": "ICAR-IIRR",
+    "year": 2023,
+    "crop": [
+      "CROP_RICE"
+    ],
+    "topics": [
+      "zinc deficiency",
+      "khaira",
+      "micronutrient"
+    ],
+    "section": "management",
+    "page": 8,
+    "text": "Zinc deficiency (Khaira) shows as dusty brown spots, white bud and stunted growth on lowland rice. Correct with ZnSO4 25 kg/ha soil application or 0.5% foliar spray; root dipping seedlings in 1% ZnO suspension prevents early season deficiency.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://iirr.icar.gov.in"
+  },
+  {
     "chunk_id": "icar-soybean-rust-002",
     "document": "Soybean Disease Management Guide",
     "institution": "ICAR-IISR",
     "year": 2024,
-    "crop": ["CROP_SOYBEAN"],
-    "topics": ["soybean rust", "fungicide"],
+    "crop": [
+      "CROP_SOYBEAN"
+    ],
+    "topics": [
+      "soybean rust",
+      "fungicide"
+    ],
     "section": "management",
     "page": 21,
     "text": "Soybean rust (Phakopsora pachyrhizi) causes premature defoliation and yield loss. Monitoring from flowering onward, coupled with a protectant spray of propiconazole or tebuconazole at first symptom, limits spread. Avoid prolonged leaf wetness through wider spacing and drain management.",
     "authority": "research",
     "authority_score": 0.98,
     "source_url": "https://iisr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-tomato-eb-003",
+    "document": "Tomato Disease Management",
+    "institution": "ICAR-IIHR",
+    "year": 2024,
+    "crop": [
+      "CROP_TOMATO"
+    ],
+    "topics": [
+      "early blight",
+      "alternaria",
+      "fungicide"
+    ],
+    "section": "management",
+    "page": 12,
+    "text": "Early blight (Alternaria solani) causes dark concentric ring spots on lower leaves that yellow and drop. Manage with crop rotation, staking and mulching, removal of infected leaves, and protectant sprays of mancozeb or chlorothalonil starting at first symptom.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://iihr.res.in"
+  },
+  {
+    "chunk_id": "icar-tomato-lb-004",
+    "document": "Tomato Disease Management",
+    "institution": "ICAR-IIHR",
+    "year": 2024,
+    "crop": [
+      "CROP_TOMATO"
+    ],
+    "topics": [
+      "late blight",
+      "phytophthora",
+      "blight"
+    ],
+    "section": "management",
+    "page": 14,
+    "text": "Late blight (Phytophthora infestans) appears as water-soaked greasy lesions in cool humid weather and can defoliate the crop in days. Use metalaxyl + mancozeb or Bordeaux mixture as protectant, avoid overhead irrigation, and rogue infected plants.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://iihr.res.in"
+  },
+  {
+    "chunk_id": "icar-wheat-rust-006",
+    "document": "Wheat Rust Management",
+    "institution": "ICAR-IIWBR",
+    "year": 2023,
+    "crop": [
+      "CROP_WHEAT"
+    ],
+    "topics": [
+      "rust",
+      "stem rust",
+      "resistant varieties"
+    ],
+    "section": "management",
+    "page": 19,
+    "text": "Wheat rusts (stem, leaf and stripe) are managed by sowing resistant varieties, avoiding late sowing, and scouting from tillering. Apply propiconazole or tebuconazole at first pustule appearance; keep fields weed-free to reduce the green bridge.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://iiwbr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-rice-blast-001",
+    "document": "Rice Disease Management",
+    "institution": "ICAR-NRRI",
+    "year": 2025,
+    "crop": [
+      "CROP_RICE"
+    ],
+    "topics": [
+      "rice blast",
+      "fungus"
+    ],
+    "section": "management",
+    "page": 21,
+    "text": "Rice blast (Magnaporthe oryzae) causes spindle-shaped lesions on leaves, nodes and neck. Manage with resistant varieties, seed treatment with tricyclazole or carbendazim, balanced nitrogen (excess N worsens it), and field drainage to reduce humidity.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://icar-nrri.in"
+  },
+  {
+    "chunk_id": "icar-rice-bph-002",
+    "document": "Rice Pest Management",
+    "institution": "ICAR-NRRI",
+    "year": 2025,
+    "crop": [
+      "CROP_RICE"
+    ],
+    "topics": [
+      "brown planthopper",
+      "IPM"
+    ],
+    "section": "management",
+    "page": 33,
+    "text": "Brown planthopper (Nilaparvata lugens) sucks sap at the stem base and transmits ragged stunt virus. Alternate wetting and drying, avoid excess nitrogen, conserve natural enemies, and apply buprofezin or pymetrozine only above the economic threshold.",
+    "authority": "research",
+    "authority_score": 0.97,
+    "source_url": "https://icar-nrri.in"
+  },
+  {
+    "chunk_id": "icar-rice-zinc-003",
+    "document": "Micronutrient Management in Rice",
+    "institution": "ICAR-NRRI",
+    "year": 2024,
+    "crop": [
+      "CROP_RICE"
+    ],
+    "topics": [
+      "zinc deficiency",
+      "micronutrient"
+    ],
+    "section": "nutrition",
+    "page": 18,
+    "text": "Zinc deficiency in rice shows as dusty brown lesions and mid-rib chlorosis on young leaves, plus stunted tillering on calcareous or sandy soils. Correct with 25 kg/ha zinc sulphate in soil, or 0.5% foliar spray at tillering, repeated if symptoms persist.",
+    "authority": "research",
+    "authority_score": 0.96,
+    "source_url": "https://icar-nrri.in"
+  },
+  {
+    "chunk_id": "icar-wheat-termite-001",
+    "document": "Wheat Pest Management",
+    "institution": "ICAR-IIWBR",
+    "year": 2025,
+    "crop": [
+      "CROP_WHEAT"
+    ],
+    "topics": [
+      "termite",
+      "soil pest"
+    ],
+    "section": "management",
+    "page": 27,
+    "text": "Termites attack wheat roots and crown, especially in light soils with low moisture. Treat seed with chlorpyrifos or fipronil, apply well-decomposed farmyard manure, and irrigate timely; in endemic fields apply a soil drench at sowing.",
+    "authority": "research",
+    "authority_score": 0.95,
+    "source_url": "https://icar.org.in"
+  },
+  {
+    "chunk_id": "icar-wheat-irrig-002",
+    "document": "Wheat Irrigation Scheduling",
+    "institution": "ICAR-IIWBR",
+    "year": 2024,
+    "crop": [
+      "CROP_WHEAT"
+    ],
+    "topics": [
+      "irrigation",
+      "water"
+    ],
+    "section": "agronomy",
+    "page": 12,
+    "text": "Wheat needs critical irrigations at crown root initiation, tillering, jointing, flowering and grain filling. Skipping the crown-root stage cuts yield most; use border strip or sprinkler and avoid waterlogging, which favours root diseases.",
+    "authority": "research",
+    "authority_score": 0.94,
+    "source_url": "https://icar.org.in"
+  },
+  {
+    "chunk_id": "icar-maize-faw-002",
+    "document": "Fall Armyworm Management in Maize",
+    "institution": "ICAR-IIMR",
+    "year": 2025,
+    "crop": [
+      "CROP_MAIZE"
+    ],
+    "topics": [
+      "fall armyworm",
+      "threshold"
+    ],
+    "section": "monitoring",
+    "page": 14,
+    "text": "Monitor fall armyworm (Spodoptera frugiperda) with pheromone traps and scout the whorl for shot-holes and frass. Act at 10% plant infestation: emamectin benzoate or spinetoram sprays, or push-pull with desmodium and napier grass in smallholder fields.",
+    "authority": "research",
+    "authority_score": 0.97,
+    "source_url": "https://iimr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-soybean-ymv-002",
+    "document": "Soybean Disease Management Guide",
+    "institution": "ICAR-IISR",
+    "year": 2025,
+    "crop": [
+      "CROP_SOYBEAN"
+    ],
+    "topics": [
+      "yellow mosaic",
+      "virus"
+    ],
+    "section": "management",
+    "page": 30,
+    "text": "Yellow mosaic virus is spread by whitefly and shows as yellow-green mottling and puckered leaves. Sow resistant varieties, rogue infected plants early, control whitefly with yellow sticky traps and neem-based sprays, and avoid late sowing.",
+    "authority": "research",
+    "authority_score": 0.96,
+    "source_url": "https://iisr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-chickpea-wilt-001",
+    "document": "Chickpea Disease Management",
+    "institution": "ICAR-IIPR",
+    "year": 2025,
+    "crop": [
+      "CROP_CHICKPEA"
+    ],
+    "topics": [
+      "fusarium wilt",
+      "soil borne"
+    ],
+    "section": "management",
+    "page": 19,
+    "text": "Fusarium wilt in chickpea causes yellowing and wilting, often in patches. Use resistant varieties, treat seed with Trichoderma viride plus carbendazim, avoid waterlogging, and rotate with cereals to reduce soil inoculum.",
+    "authority": "research",
+    "authority_score": 0.97,
+    "source_url": "https://iipr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-chickpea-podb-002",
+    "document": "Chickpea Pest Management",
+    "institution": "ICAR-IIPR",
+    "year": 2024,
+    "crop": [
+      "CROP_CHICKPEA"
+    ],
+    "topics": [
+      "pod borer",
+      "IPM"
+    ],
+    "section": "management",
+    "page": 41,
+    "text": "Gram pod borer (Helicoverpa armigera) bores pods causing direct yield loss. Deploy pheromone traps for monitoring, conserve predators, apply HNPV or spinosad at early larval stage, and avoid repeated pyrethroids to delay resistance.",
+    "authority": "research",
+    "authority_score": 0.96,
+    "source_url": "https://iipr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-sugarcane-redrot-001",
+    "document": "Sugarcane Disease Management",
+    "institution": "ICAR-SBI",
+    "year": 2025,
+    "crop": [
+      "CROP_SUGARCANE"
+    ],
+    "topics": [
+      "red rot",
+      "fungus"
+    ],
+    "section": "management",
+    "page": 24,
+    "text": "Red rot (Colletotrichum falcatum) causes reddening of internodes with white patches and drying of canes. Plant disease-free setts of resistant varieties, treat setts with carbendazim, and rogue and burn infected clumps promptly.",
+    "authority": "research",
+    "authority_score": 0.97,
+    "source_url": "https://sugarcane.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-groundnut-tikka-001",
+    "document": "Groundnut Disease Management",
+    "institution": "ICAR-DGR",
+    "year": 2025,
+    "crop": [
+      "CROP_GROUNDNUT"
+    ],
+    "topics": [
+      "tikka",
+      "leaf spot"
+    ],
+    "section": "management",
+    "page": 22,
+    "text": "Early and late leaf spot (tikka) defoliate groundnut and cut pod yield. Intercrop or rotate with cereals, apply sulphur or mancozeb at first spots, and use resistant varieties; foliar nutrition with zinc improves tolerance.",
+    "authority": "research",
+    "authority_score": 0.95,
+    "source_url": "https://icar.org.in"
+  },
+  {
+    "chunk_id": "icar-banana-sigatoka-001",
+    "document": "Banana Disease Management",
+    "institution": "ICAR-NRCB",
+    "year": 2025,
+    "crop": [
+      "CROP_BANANA"
+    ],
+    "topics": [
+      "sigatoka",
+      "leaf spot"
+    ],
+    "section": "management",
+    "page": 16,
+    "text": "Sigatoka leaf spot reduces green leaf area and bunch weight. Remove infected leaves, improve drainage and spacing, and spray protectant or systemic fungicides in rotation; soil application of silicon reduces severity.",
+    "authority": "research",
+    "authority_score": 0.96,
+    "source_url": "https://nrcb.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-mango-hopper-001",
+    "document": "Mango Pest Management",
+    "institution": "ICAR-IIHR",
+    "year": 2025,
+    "crop": [
+      "CROP_MANGO"
+    ],
+    "topics": [
+      "hopper",
+      "sap feeder"
+    ],
+    "section": "management",
+    "page": 29,
+    "text": "Mango hoppers suck sap from inflorescences causing flower drop and sooty mould. Prune dense canopies, avoid excess nitrogen, and spray imidacloprid or neem formulations at panicle emergence, repeated at fruit set if needed.",
+    "authority": "research",
+    "authority_score": 0.95,
+    "source_url": "https://iihr.res.in"
+  },
+  {
+    "chunk_id": "icar-mango-anthrac-002",
+    "document": "Mango Disease Management",
+    "institution": "ICAR-IIHR",
+    "year": 2024,
+    "crop": [
+      "CROP_MANGO"
+    ],
+    "topics": [
+      "anthracnose",
+      "fungus"
+    ],
+    "section": "management",
+    "page": 31,
+    "text": "Anthracnose causes leaf blight and black fruit spots favoured by rain and humidity. Prune for airflow, bag fruits where feasible, and apply copper or thiophanate-methyl sprays from flowering through fruit development.",
+    "authority": "research",
+    "authority_score": 0.95,
+    "source_url": "https://iihr.res.in"
+  },
+  {
+    "chunk_id": "icar-onion-purple-002",
+    "document": "Onion Disease Guide",
+    "institution": "ICAR-DOGR",
+    "year": 2025,
+    "crop": [
+      "CROP_ONION"
+    ],
+    "topics": [
+      "purple blotch",
+      "fungus"
+    ],
+    "section": "management",
+    "page": 20,
+    "text": "Purple blotch (Alternaria porri) makes sunken purple lesions on leaves and seed stalks. Rotate with non-allium crops, ensure drainage, and apply mancozeb or iprodione at first symptoms; avoid overhead irrigation late in the day.",
+    "authority": "research",
+    "authority_score": 0.96,
+    "source_url": "https://dogr.icar.gov.in"
+  },
+  {
+    "chunk_id": "icar-tomato-bw-005",
+    "document": "Tomato Disease Management",
+    "institution": "ICAR-IIHR",
+    "year": 2025,
+    "crop": [
+      "CROP_TOMATO"
+    ],
+    "topics": [
+      "bacterial wilt",
+      "soil borne"
+    ],
+    "section": "management",
+    "page": 18,
+    "text": "Bacterial wilt (Ralstonia solanacearum) causes sudden wilting with browning of vascular tissue. Graft onto resistant rootstocks, solarize beds, maintain soil pH near 6, rotate with cereals, and remove infected plants with surrounding soil.",
+    "authority": "research",
+    "authority_score": 0.98,
+    "source_url": "https://iihr.res.in"
+  },
+  {
+    "chunk_id": "icar-cotton-sucking-002",
+    "document": "Integrated Pest Management for Cotton",
+    "institution": "ICAR-CICR",
+    "year": 2025,
+    "crop": [
+      "CROP_COTTON"
+    ],
+    "topics": [
+      "sucking pests",
+      "jassid"
+    ],
+    "section": "management",
+    "page": 36,
+    "text": "Sucking pests (jassid, aphid, whitefly) curl leaves, deposit honeydew and transmit leaf curl virus. Scout weekly, conserve ladybird beetles and lacewings, and use neem or buprofezin; avoid calendar sprays that flare whitefly.",
+    "authority": "research",
+    "authority_score": 0.97,
+    "source_url": "https://cicr.org.in"
+  },
+  {
+    "chunk_id": "icar-rice-water-004",
+    "document": "Rice Water Management",
+    "institution": "ICAR-NRRI",
+    "year": 2024,
+    "crop": [
+      "CROP_RICE"
+    ],
+    "topics": [
+      "irrigation",
+      "aerobic rice"
+    ],
+    "section": "agronomy",
+    "page": 15,
+    "text": "Alternate wetting and drying saves 20-30% water with little yield loss when the water table is reflooded before the soil cracks. For aerobic rice, use drip or sprinkler and select varieties with early vigour and weed competitiveness.",
+    "authority": "research",
+    "authority_score": 0.94,
+    "source_url": "https://icar-nrri.in"
   }
 ]
