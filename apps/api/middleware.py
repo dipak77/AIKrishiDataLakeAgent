@@ -14,6 +14,7 @@ service scales horizontally — the guard functions are the seam for that.
 
 from __future__ import annotations
 
+import hmac
 import os
 import threading
 import time
@@ -23,6 +24,11 @@ from typing import Any
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
+
+
+#: Paths that stay open for load-balancer / k8s probes even when
+#: AGRILAKE_API_TOKEN is set. Everything under /api/ still requires auth.
+OPEN_PATHS = frozenset({"/health", "/", "/docs", "/openapi.json", "/redoc"})
 
 
 def _env_int(name: str, default: int) -> int:
@@ -40,6 +46,7 @@ class RateLimiter:
         self.window_s = float(window_s)
         self._hits: dict[str, deque[float]] = defaultdict(deque)
         self._lock = threading.Lock()
+        self._last_sweep = time.monotonic()
 
     def allow(self, key: str) -> bool:
         now = time.monotonic()
@@ -50,6 +57,17 @@ class RateLimiter:
             if len(dq) >= self.limit:
                 return False
             dq.append(now)
+            # Opportunistic sweep: drop idle client buckets so the table
+            # cannot grow without bound behind a NAT / scanner (≈1/s amortised).
+            if now - self._last_sweep > 60.0:
+                cutoff = now - self.window_s
+                for k in list(self._hits):
+                    q = self._hits[k]
+                    while q and q[0] < cutoff:
+                        q.popleft()
+                    if not q:
+                        del self._hits[k]
+                self._last_sweep = now
             return True
 
     def reset(self) -> None:
@@ -66,14 +84,21 @@ def client_key(request: Request) -> str:
 
 
 def check_auth(request: Request) -> bool:
-    """True when the request is authorized (or auth is disabled)."""
+    """True when the request is authorized (or auth is disabled).
+
+    Health/docs probes stay open so orchestrators can check liveness without
+    a secret. Uses constant-time comparison to avoid timing oracles.
+    """
+    if request.url.path in OPEN_PATHS:
+        return True
     token = os.environ.get("AGRILAKE_API_TOKEN")
     if not token:
         return True
     auth = request.headers.get("authorization") or ""
     if auth.startswith("Bearer "):
-        return auth[len("Bearer "):] == token
-    return request.headers.get("x-api-token") == token
+        return hmac.compare_digest(auth[len("Bearer "):], token)
+    presented = request.headers.get("x-api-token") or ""
+    return bool(presented) and hmac.compare_digest(presented, token)
 
 
 class OpsMiddleware(BaseHTTPMiddleware):
@@ -90,7 +115,11 @@ class OpsMiddleware(BaseHTTPMiddleware):
         if not check_auth(request):
             return JSONResponse({"detail": "unauthorized"}, status_code=401)
         if not self.limiter.allow(client_key(request)):
-            return JSONResponse({"detail": "rate limit exceeded"}, status_code=429)
+            return JSONResponse(
+                {"detail": "rate limit exceeded"},
+                status_code=429,
+                headers={"Retry-After": str(int(self.limiter.window_s))},
+            )
         return await call_next(request)
 
 

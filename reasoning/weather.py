@@ -14,6 +14,8 @@ never forecasts.
 from __future__ import annotations
 
 import json
+import logging
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -25,6 +27,8 @@ from domain.seed_data import (
     RAINFALL_TEXT_PROXY,
     WEATHER_RISK_THRESHOLDS,
 )
+
+log = logging.getLogger("agrilake.weather")
 
 DEFAULT_LAKE = LAKE_DIR / "agrilake.duckdb"
 
@@ -64,6 +68,10 @@ class WeatherAdvisory:
     flags: list[WeatherFlag] = field(default_factory=list)
     crops: list[CropWeatherNote] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
+    # Honest provenance: "bulletin" = IMD bulletin, "live" = Open-Meteo
+    # observation, "synthetic" = seasonal baseline (NOT an observation).
+    data_source: str = "bulletin"
+    is_live: bool = False
     evidence: dict[str, Any] = field(
         default_factory=lambda: {
             "source": "IMD Agromet Advisory Service",
@@ -82,6 +90,8 @@ class WeatherAdvisory:
             "flags": [f.as_dict() for f in self.flags],
             "crops": [c.as_dict() for c in self.crops],
             "notes": self.notes,
+            "data_source": self.data_source,
+            "is_live": self.is_live,
             "evidence": self.evidence,
         }
 
@@ -155,31 +165,44 @@ def load_bulletins(lake: Path | None = None) -> list[dict[str, Any]]:
 
     lake = Path(lake or DEFAULT_LAKE)
     if lake.exists():
-        con = get_read_connection(lake)
-        tables = {
-            r[0]
-            for r in con.execute(
-                "SELECT table_name FROM information_schema.tables WHERE table_schema='gold'"
-            ).fetchall()
-        }
-        if "fact_agromet_advisory" in tables:
-            cols = [
-                r[1]
-                for r in con.execute("PRAGMA table_info('gold.fact_agromet_advisory')").fetchall()
-            ]
-            select = ",".join(f'"{c}"' for c in cols)
-            return [
-                dict(zip(cols, row))
-                for row in con.execute(f"SELECT {select} FROM gold.fact_agromet_advisory").fetchall()
-            ]
+        try:
+            con = get_read_connection(lake)
+            tables = {
+                r[0]
+                for r in con.execute(
+                    "SELECT table_name FROM information_schema.tables WHERE table_schema='gold'"
+                ).fetchall()
+            }
+            if "fact_agromet_advisory" in tables:
+                cols = [
+                    r[1]
+                    for r in con.execute("PRAGMA table_info('gold.fact_agromet_advisory')").fetchall()
+                ]
+                select = ",".join(f'"{c}"' for c in cols)
+                return [
+                    dict(zip(cols, row))
+                    for row in con.execute(f"SELECT {select} FROM gold.fact_agromet_advisory").fetchall()
+                ]
+        except Exception as exc:  # noqa: BLE001 - corrupt/missing lake → fixture
+            log.info("bulletin load failed (%s); using fixture.", type(exc).__name__)
     fixture = FIXTURES_DIR / "imd_agromet_advisory.json"
     if fixture.exists():
         return json.loads(fixture.read_text(encoding="utf-8"))
     return []
 
 
+def _offline() -> bool:
+    return os.environ.get("AGRILAKE_OFFLINE", "").strip().lower() in {"1", "true", "yes", "on"}
+
+
 def fetch_live_weather(lat: float, lon: float, timeout: float = 3.5) -> dict[str, Any] | None:
-    """Fetch real-time weather & forecast from Open-Meteo for coordinates."""
+    """Fetch real-time weather & forecast from Open-Meteo for coordinates.
+
+    Returns None when offline, unreachable, or malformed — never raises.
+    Honours AGRILAKE_OFFLINE so air-gapped runs never touch the network.
+    """
+    if _offline():
+        return None
     import requests
     try:
         url = (
@@ -216,15 +239,21 @@ def fetch_live_weather(lat: float, lon: float, timeout: float = 3.5) -> dict[str
                 "rainfall": rain_text,
                 "precipitation_mm": precip,
             }
-    except Exception:
-        pass
+        log.warning("Open-Meteo HTTP %s for (%s, %s)", resp.status_code, lat, lon)
+    except Exception as exc:  # noqa: BLE001 - weather must degrade, never crash
+        log.info("Open-Meteo unreachable (%s); falling back.", type(exc).__name__)
     return None
 
 
 def resolve_district_coords(
     district: str, lake: Path | None = None
 ) -> tuple[str | None, str, float | None, float | None, str | None]:
-    """Return (state, district_canonical, lat, lon, agroclimatic_zone)."""
+    """Return (state, district_canonical, lat, lon, agroclimatic_zone).
+
+    Lake lookup is exact-first (no fuzzy LIKE): a LIKE ``%pur%`` match once
+    resolved "Nashik" to the wrong district. The hosted geocoder is a
+    last resort and is skipped entirely in offline mode.
+    """
     from pipelines.storage import get_read_connection
     d_clean = district.strip().lower()
     lake = Path(lake or DEFAULT_LAKE)
@@ -233,24 +262,38 @@ def resolve_district_coords(
             con = get_read_connection(lake)
             rows = con.execute(
                 "SELECT state_name, district_name, latitude, longitude, agroclimatic_zone "
-                "FROM gold.dim_geography WHERE district_name IS NOT NULL AND ("
-                "LOWER(district_name) = ? OR LOWER(district_name) LIKE ? OR ? LIKE '%' || LOWER(district_name) || '%') "
-                "ORDER BY (latitude IS NOT NULL) DESC LIMIT 1",
-                [d_clean, f"%{d_clean}%", d_clean],
+                "FROM gold.dim_geography WHERE district_name IS NOT NULL AND "
+                "LOWER(district_name) = ? LIMIT 1",
+                [d_clean],
             ).fetchall()
+            if not rows:
+                # Explicit contains-match only when the query names a full district
+                # (e.g. "North 24 Parganas" typed partially) — still ordered to
+                # prefer coordinate-bearing rows.
+                rows = con.execute(
+                    "SELECT state_name, district_name, latitude, longitude, agroclimatic_zone "
+                    "FROM gold.dim_geography WHERE district_name IS NOT NULL AND ("
+                    "LOWER(district_name) LIKE ? OR ? LIKE '%' || LOWER(district_name) || '%') "
+                    "ORDER BY (latitude IS NOT NULL) DESC LIMIT 1",
+                    [f"%{d_clean}%", d_clean],
+                ).fetchall()
             if rows:
                 st, dist, lat, lon, zone = rows[0]
                 if lat is not None and lon is not None:
                     return st, dist, float(lat), float(lon), zone
                 return st, dist, None, None, zone
-        except Exception:
-            pass
+        except Exception as exc:  # noqa: BLE001
+            log.info("district lookup failed (%s)", type(exc).__name__)
+
+    if _offline():
+        return None, district.strip().title() or district, None, None, None
 
     # Open-Meteo geocoding search for Indian districts if coords missing from table
     import requests
     try:
         resp = requests.get(
-            f"https://geocoding-api.open-meteo.com/v1/search?name={district}&count=1&country_code=IN&language=en",
+            "https://geocoding-api.open-meteo.com/v1/search",
+            params={"name": district, "count": 1, "country_code": "IN", "language": "en"},
             timeout=2.5,
         )
         if resp.status_code == 200:
@@ -258,8 +301,10 @@ def resolve_district_coords(
             if res and len(res) > 0:
                 item = res[0]
                 return item.get("admin1"), item.get("name") or district, float(item["latitude"]), float(item["longitude"]), None
-    except Exception:
-        pass
+        else:
+            log.warning("geocoding HTTP %s for %r", resp.status_code, district)
+    except Exception as exc:  # noqa: BLE001
+        log.info("geocoding unreachable (%s)", type(exc).__name__)
 
     return None, district.title(), None, None, None
 
@@ -373,6 +418,8 @@ def agromet_advisory(
             valid_to=b.get("valid_to"),
             weather=weather,
             flags=flags,
+            data_source="bulletin",
+            is_live=False,
             evidence={
                 "source": b.get("source", "IMD Agromet Advisory Service"),
                 "authority": b.get("authority", "government"),
@@ -407,11 +454,16 @@ def agromet_advisory(
 
     now_iso = datetime.now(timezone.utc).date().isoformat()
     weather = None
+    is_live = False
     if lat is not None and lon is not None:
         weather = fetch_live_weather(lat, lon)
+        is_live = weather is not None
 
     if not weather:
-        # Realistic seasonal baseline for India based on current month
+        # Seasonal baseline — clearly NOT an observation. It keeps the
+        # assistant usable offline, but the payload says so (data_source=
+        # "synthetic", is_live=False) so it can never be mistaken for a
+        # live IMD/Open-Meteo reading downstream.
         m = datetime.now().month
         if 6 <= m <= 9:  # Monsoon
             weather = {"temp_max": 31.0, "temp_min": 24.0, "humidity": 80.0, "wind": 14.0, "rainfall": "Scattered monsoon showers", "precipitation_mm": 12.0}
@@ -423,6 +475,22 @@ def agromet_advisory(
             weather = {"temp_max": 39.0, "temp_min": 26.0, "humidity": 40.0, "wind": 15.0, "rainfall": "Dry hot conditions", "precipitation_mm": 0.0}
 
     flags = weather_flags(weather)
+    if is_live:
+        evidence = {
+            "source": "Open-Meteo live observation (geocoded via IMD/LGD)",
+            "authority": "research",
+            "license": {"type": "CC-BY-4.0"},
+            "source_url": "https://open-meteo.com",
+        }
+        data_source = "live"
+    else:
+        evidence = {
+            "source": "Seasonal climatology baseline for India (synthetic — not a live observation)",
+            "authority": "research",
+            "license": {"type": "CC-BY-4.0"},
+            "source_url": None,
+        }
+        data_source = "synthetic"
     adv = WeatherAdvisory(
         state=st or "India",
         district=dist_canon,
@@ -430,13 +498,15 @@ def agromet_advisory(
         valid_to=now_iso,
         weather=weather,
         flags=flags,
-        evidence={
-            "source": "Open-Meteo Real-Time Agromet Service (geocoded via IMD/LGD)",
-            "authority": "research",
-            "license": {"type": "CC-BY-4.0"},
-            "source_url": "https://open-meteo.com",
-        },
+        data_source=data_source,
+        is_live=is_live,
+        evidence=evidence,
     )
+    if not is_live:
+        adv.notes.append(
+            "Synthetic baseline: no IMD bulletin or live observation was "
+            "available — treat values as climatology, not today's weather."
+        )
 
     resolved_c = resolve_crop(crop) if crop else None
     c_canon = resolved_c["canonical_en"] if resolved_c else (crop.title() if crop else None)

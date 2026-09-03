@@ -150,10 +150,10 @@ class AgricultureSourceConnector(abc.ABC):
             rec.setdefault("source", self.metadata.name)
             rec.setdefault("license", self.metadata.license)
             rec.setdefault("authority", self.metadata.authority)
-            rec.setdefault(
-                "authority_level",
-                self.metadata.quality.get("authority_score", self.metadata.authority),
-            )
+            # authority_level is a *level name* ("government"|"research"|…),
+            # never the numeric authority_score — the old fallback leaked a
+            # float into a string column and broke downstream grouping.
+            rec.setdefault("authority_level", self.metadata.authority)
             rec.setdefault("ingested_at", self._now())
             rec["quality"] = score_record(rec, authority=self.metadata.authority)
             enriched.append(rec)
@@ -165,11 +165,13 @@ class AgricultureSourceConnector(abc.ABC):
             )
         return enriched
 
-    def persist_bronze(self, raw: Any, resource: dict[str, Any]) -> str | None:
+    def persist_bronze(self, raw: Any, resource: dict[str, Any], *, method: str = "live") -> str | None:
         """Write the immutable raw payload (bronze) + manifest; return path.
 
         Fixture fallbacks (``raw is None``) carry no raw payload, so no bronze
         artifact is written — the silver records still record their method.
+        ``method`` is the per-record ingestion method (live|replay|fixture) so
+        the manifest never mislabels a replayed cassette as a live call.
         """
         from pipelines.storage import write_bronze
 
@@ -185,7 +187,7 @@ class AgricultureSourceConnector(abc.ABC):
             rid,
             payload,
             f"{rid}.json",
-            meta={"ingestion_method": "live"},
+            meta={"ingestion_method": method},
         )
         return str(artifact)
 
@@ -274,7 +276,7 @@ class AgricultureSourceConnector(abc.ABC):
                         f"(transport={transport})"
                     )
 
-                bronze_path = self.persist_bronze(raw, resource)
+                bronze_path = self.persist_bronze(raw, resource, method=method)
                 self.validate(raw)
                 records = self.normalize(raw, resource)
                 row.rows_raw = len(records)
@@ -306,7 +308,9 @@ class AgricultureSourceConnector(abc.ABC):
                     logger.exception("could not write run ledger for %s", row.run_id)
 
         summary["status"] = (
-            "ok" if all(r.get("status") == "ok" for r in summary["resources"]) else "failed"
+            "empty" if not summary["resources"]
+            else "ok" if all(r.get("status") == "ok" for r in summary["resources"])
+            else "failed"
         )
         return summary
 

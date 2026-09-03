@@ -176,6 +176,35 @@ def markets() -> list[dict[str, Any]]:
     return list_markets()
 
 
+# ── Mandi district view (Agmarknet dashboard: district avg + MSP) ────────────
+@app.get("/api/mandi/districts")
+def mandi_districts() -> dict[str, Any]:
+    """Districts covered by the dashboard feed (location picker for the UI)."""
+    from reasoning.mandi_dashboard import covered_districts, dashboard_source
+
+    return {"districts": covered_districts(), "data_source": dashboard_source()}
+
+
+@app.get("/api/mandi/district")
+def mandi_district(
+    district: str = Query(..., min_length=1, max_length=100),
+    state: str | None = Query(default=None, max_length=100),
+    commodity: str | None = Query(default=None, max_length=100),
+) -> dict[str, Any]:
+    """Today's district-wise rates + MSP comparison for the user's location."""
+    from reasoning.mandi_dashboard import district_view
+
+    view = district_view(district, state=state, commodity=commodity)
+    if view is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"no dashboard coverage for district '{district}'"
+            + (f" in '{state}'" if state else "")
+            + " (see /api/mandi/districts for covered districts)",
+        )
+    return view.as_dict()
+
+
 # ── Weather ──────────────────────────────────────────────────────────────────
 @app.get("/api/weather")
 def weather(
@@ -193,9 +222,9 @@ def weather(
 # ── Crop planning ────────────────────────────────────────────────────────────
 @app.get("/api/plan")
 def plan(
-    crop: str,
-    state: str | None = None,
-    district: str | None = None,
+    crop: str = Query(..., min_length=1, max_length=100),
+    state: str | None = Query(default=None, max_length=100),
+    district: str | None = Query(default=None, max_length=100),
 ) -> dict[str, Any]:
     from reasoning.crop_plan import crop_plan
 
@@ -214,9 +243,16 @@ def plan_sow(month: int = Query(..., ge=1, le=12), state: str | None = None) -> 
 
 # ── Evidence (RAG) ───────────────────────────────────────────────────────────
 @app.get("/api/evidence")
-def evidence(query: str, crop: str | None = None, top: int = 5, mode: str = "hybrid") -> dict[str, Any]:
+def evidence(
+    query: str = Query(..., min_length=1, max_length=2000),
+    crop: str | None = Query(default=None, max_length=100),
+    top: int = Query(default=5, ge=1, le=20),
+    mode: str = Query(default="hybrid", max_length=20),
+) -> dict[str, Any]:
     from reasoning.rag import hybrid_search, search
 
+    if mode not in ("hybrid", "bm25"):
+        raise HTTPException(status_code=400, detail="mode must be 'hybrid' or 'bm25'")
     hits = hybrid_search(query, top_k=top, crop=crop) if mode == "hybrid" else search(query, top_k=top, crop=crop)
     return {"query": query, "mode": mode, "hits": [h.as_dict() for h in hits]}
 
@@ -230,60 +266,93 @@ def graph_summary() -> dict[str, Any]:
 
 
 @app.get("/api/graph/neighbors")
-def graph_neighbors(node_id: str, direction: str = "out") -> list[dict[str, Any]]:
+def graph_neighbors(
+    node_id: str = Query(..., min_length=1, max_length=200),
+    direction: str = Query(default="out", max_length=10),
+) -> list[dict[str, Any]]:
     from reasoning.graph_query import graph_neighbors
 
+    if direction not in ("in", "out", "both"):
+        raise HTTPException(status_code=400, detail="direction must be 'in', 'out' or 'both'")
     return graph_neighbors(node_id, direction=direction)
 
 
 @app.get("/api/graph/health")
-def graph_health(crop: str) -> dict[str, Any]:
+def graph_health(crop: str = Query(..., min_length=1, max_length=100)) -> dict[str, Any]:
     from reasoning.graph_query import crop_health_map
 
     return crop_health_map(crop)
 
 
 @app.get("/api/graph/candidates")
-def graph_candidates(symptoms: str, crop: str | None = None, top: int = 8) -> list[dict[str, Any]]:
+def graph_candidates(
+    symptoms: str = Query(..., min_length=1, max_length=1000),
+    crop: str | None = Query(default=None, max_length=100),
+    top: int = Query(default=8, ge=1, le=50),
+) -> list[dict[str, Any]]:
     from reasoning.graph_query import symptom_candidates
 
     return symptom_candidates(symptoms, crop=crop, top_n=top)
 
 
 @app.get("/api/graph/path")
-def graph_path_endpoint(src: str, dst: str, max_depth: int = Query(default=5, ge=1, le=10)) -> list[dict[str, Any]]:
+def graph_path_endpoint(
+    src: str = Query(..., min_length=1, max_length=200),
+    dst: str = Query(..., min_length=1, max_length=200),
+    max_depth: int = Query(default=5, ge=1, le=10),
+) -> list[dict[str, Any]]:
     from reasoning.graph_query import graph_path
 
     return graph_path(src, dst, max_depth=max_depth)
 
 
 # ── Vision Crop Doctor (Image Diagnosis) ──────────────────────────────────
+# 8 MiB base64 ≈ 6 MiB raw — matches vision.inference.MAX_IMAGE_BYTES.
+MAX_VISION_B64_CHARS = 11_000_000
+
 @app.post("/api/vision")
 def vision_endpoint(req: VisionRequest) -> dict[str, Any]:
     import base64
-    from vision.inference import analyze_image
+    import logging
+    from vision.inference import VisionError, analyze_image
 
+    _log = logging.getLogger("krushi-mitra.vision")
     if req.image_path:
-        path = Path(req.image_path)
-        if not path.is_file():
-            raise HTTPException(status_code=404, detail=f"image file not found: {req.image_path}")
-        source: Any = path
+        # Server-side paths are a local-file-read primitive: sandbox them to
+        # the repo's data/uploads tree and refuse everything else.
+        raw = (req.image_path or "").strip().replace("\\", "/")
+        base = (ROOT / "data" / "uploads").resolve()
+        candidate = (base / raw).resolve() if not Path(raw).is_absolute() else Path(raw).resolve()
+        try:
+            candidate.relative_to(base)
+        except ValueError:
+            raise HTTPException(status_code=400, detail="image_path must live under data/uploads")
+        if not candidate.is_file():
+            raise HTTPException(status_code=404, detail="image file not found")
+        source: Any = candidate
     elif req.image_base64:
         raw_b64 = req.image_base64
         if "," in raw_b64:
             raw_b64 = raw_b64.split(",", 1)[1]
+        if len(raw_b64) > MAX_VISION_B64_CHARS:
+            raise HTTPException(status_code=413, detail="image too large (max ~6 MB raw)")
         try:
-            source = base64.b64decode(raw_b64)
-        except Exception as exc:
-            raise HTTPException(status_code=400, detail=f"invalid base64 image data: {exc}") from exc
+            source = base64.b64decode(raw_b64, validate=True)
+        except Exception:
+            raise HTTPException(status_code=400, detail="invalid base64 image data")
     else:
         raise HTTPException(status_code=400, detail="either image_base64 or image_path must be provided")
 
+    if req.backend not in ("auto", "heuristic", "onnx", "tflite", "transformers"):
+        raise HTTPException(status_code=400, detail="unknown vision backend")
     try:
         res = analyze_image(source, crop=req.crop, backend=req.backend, top_k=req.top_k)
         return res.as_dict()
-    except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"vision inference error: {exc}") from exc
+    except VisionError as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001 - never leak internals to clients
+        _log.exception("vision inference failed")
+        raise HTTPException(status_code=500, detail="vision inference failed") from exc
 
 
 # ── NLU Diagnostic & Parsing ──────────────────────────────────────────────
@@ -319,16 +388,21 @@ def metrics_endpoint() -> dict[str, Any]:
     lake = LAKE_DIR / "agrilake.duckdb"
     tables: dict[str, int] = {}
     if lake.exists():
-        con = get_read_connection(lake)
-        t_rows = con.execute(
-            "SELECT table_name FROM information_schema.tables WHERE table_schema='gold' ORDER BY table_name"
-        ).fetchall()
-        for (tname,) in t_rows:
-            try:
-                cnt = con.execute(f"SELECT count(*) FROM gold.{tname}").fetchone()[0]
-                tables[tname] = cnt
-            except Exception:
-                pass
+        try:
+            con = get_read_connection(lake)
+            t_rows = con.execute(
+                "SELECT table_name FROM information_schema.tables WHERE table_schema='gold' ORDER BY table_name"
+            ).fetchall()
+            allowed = {str(t[0]) for t in t_rows if str(t[0]).replace("_", "").isalnum()}
+            for tname in sorted(allowed):
+                try:
+                    # Quoted identifier from the allow-list above — never raw input.
+                    cnt = con.execute(f'SELECT count(*) FROM gold."{tname}"').fetchone()[0]
+                    tables[tname] = int(cnt)
+                except Exception:
+                    continue
+        except Exception:
+            tables = {}
 
     return {
         "status": "healthy",

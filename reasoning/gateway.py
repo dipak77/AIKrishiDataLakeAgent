@@ -199,6 +199,7 @@ def _list_value(value: Any) -> List[str]:
 @lru_cache(maxsize=256)
 def _health_lines(crop: str) -> Tuple[Tuple[str, str], ...]:
     """Cached, flattened OKF crop-health facts → ((node_id, text), …)."""
+    _ensure_cache_fresh()
     data = crop_health_map(crop)
     if not data.get("found"):
         return ()
@@ -212,8 +213,32 @@ def _health_lines(crop: str) -> Tuple[Tuple[str, str], ...]:
 @lru_cache(maxsize=256)
 def _candidate_lines(symptoms: Tuple[str, ...], crop: str) -> Tuple[Tuple[str, str], ...]:
     """Cached, flattened symptom→disease candidates → ((node_id, text), …)."""
+    _ensure_cache_fresh()
     cands = symptom_candidates(" ".join(symptoms), crop=crop or None)
     return tuple((c.get("id", ""), f"{c['label']}: {', '.join(c['symptoms'][:6])}") for c in cands)
+
+
+_CACHE_FINGERPRINT: str = ""
+
+
+def _lake_fingerprint() -> str:
+    try:
+        from pipelines.storage import LAKE_DIR
+        p = LAKE_DIR / "agrilake.duckdb"
+        st = p.stat()
+        return f"{st.st_mtime_ns}:{st.st_size}"
+    except OSError:
+        return "missing"
+
+
+def _ensure_cache_fresh() -> None:
+    """Drop OKF caches when the lake file changed under us (seed/gold rebuild)."""
+    global _CACHE_FINGERPRINT
+    fp = _lake_fingerprint()
+    if _CACHE_FINGERPRINT != fp:
+        _CACHE_FINGERPRINT = fp
+        _health_lines.cache_clear()
+        _candidate_lines.cache_clear()
 
 
 def _graph_segments(tasks: Sequence[dict[str, Any]], location: str = "") -> List[Segment]:
@@ -318,24 +343,34 @@ def _rrf(ranked: List[Segment]) -> Dict[Tuple[str, str], float]:
 
 
 def _fuse(graph: List[Segment], rag: List[Segment], top_k: int = 5) -> List[Segment]:
-    """RRF-fused, de-duplicated, reranked segment list."""
-    merged: Dict[Tuple[str, str], Segment] = {}
+    """RRF-fused, de-duplicated, reranked segment list.
+
+    Scores are computed on copies: the cached `_health_lines` /
+    `_candidate_lines` segments are shared across requests and must never be
+    mutated in place (the old code did `merged[key].score += val`, leaking one
+    query's RRF scores into the next).
+    """
+    from dataclasses import replace
+
+    graph_by_key: Dict[Tuple[str, str], Segment] = {}
+    for seg in graph:
+        graph_by_key.setdefault(seg.key(), seg)
+    rag_by_key: Dict[Tuple[str, str], Segment] = {}
+    for seg in rag:
+        rag_by_key.setdefault(seg.key(), seg)
+    fused: Dict[Tuple[str, str], Segment] = {}
     for key, val in _rrf(graph).items():
-        for seg in graph:
-            if seg.key() == key:
-                merged[key] = seg
-                break
-        merged[key].score = val
+        base = graph_by_key.get(key)
+        if base is not None:
+            fused[key] = replace(base, score=val)
     for key, val in _rrf(rag).items():
-        if key in merged:
-            merged[key].score += val
+        if key in fused:
+            fused[key] = replace(fused[key], score=fused[key].score + val)
         else:
-            for seg in rag:
-                if seg.key() == key:
-                    merged[key] = seg
-                    break
-            merged[key].score = val
-    return sorted(merged.values(), key=lambda s: s.score, reverse=True)[:top_k]
+            base = rag_by_key.get(key)
+            if base is not None:
+                fused[key] = replace(base, score=val)
+    return sorted(fused.values(), key=lambda s: s.score, reverse=True)[:top_k]
 
 
 # ─────────────────── rerank + compaction (pluggable) ──────────────────────
@@ -434,8 +469,29 @@ async def _run_async(query: str, top_k: int, lake: Optional[Any], crop: Optional
 
 
 def gateway(query: str, crop: Optional[str] = None, top_k: int = 5, lake: Optional[Any] = None) -> GatewayResult:
-    """Sync one-shot orchestration."""
-    return asyncio.run(_run_async(query, top_k, lake, crop))
+    """Sync one-shot orchestration.
+
+    Works both outside and inside a running event loop (e.g. Jupyter /
+    FastAPI tests): when a loop is already running the coroutine is executed
+    on a dedicated thread instead of raising `RuntimeError: asyncio.run()
+    cannot be called from a running event loop`.
+    """
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        return asyncio.run(_run_async(query, top_k, lake, crop))
+    import concurrent.futures
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+        return pool.submit(asyncio.run, _run_async(query, top_k, lake, crop)).result()
+
+
+def clear_gateway_cache() -> None:
+    """Drop cached OKF lookups after a lake rebuild (seed/gold/graph)."""
+    global _CACHE_FINGERPRINT
+    _CACHE_FINGERPRINT = ""
+    _health_lines.cache_clear()
+    _candidate_lines.cache_clear()
 
 
 # ─────────────────────────── CLI ──────────────────────────────────────────

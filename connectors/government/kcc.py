@@ -69,8 +69,12 @@ class KccConnector(DataGovConnector, AgricultureSourceConnector):
         resources = self.configured_resources()
         if not resources:
             import os
+            # Opt-in offline bundle: AGRILAKE_KCC_ARCHIVE=1 exposes the committed
+            # fixture as an explicit "archive" resource so `make ingest
+            # SOURCE=kcc` works air-gapped. It is labelled fixture-only below —
+            # never a live resource id — so require_live still fails closed.
             if os.environ.get("AGRILAKE_KCC_ARCHIVE", "").lower() in ("1", "true"):
-                return [{"resource_id": "archive", "description": "KCC farmer Q&A (archive)", "limit": self.limit}]
+                return [{"resource_id": "archive", "description": "KCC farmer Q&A (bundled fixture-only bundle)", "limit": self.limit, "_fixture_only": True}]
             logger.warning(
                 "GOI_KCC has no resources registered. Add real resource ids to "
                 "metadata/sources/goi_kcc.yaml (acquisition.resources) after running "
@@ -80,9 +84,16 @@ class KccConnector(DataGovConnector, AgricultureSourceConnector):
 
     def fetch(self, resource: dict[str, Any]) -> Any:
         """Attempt live fetch; return None (→ fixtures) when unreachable."""
+        if resource.get("_fixture_only"):
+            return None  # no upstream call: this resource IS the fixture bundle
         try:
             payload = self.fetch_resource(resource["resource_id"], limit=resource.get("limit", 10))
-            return {"_method": "live", "resource": resource, "payload": payload}
+            mode = self.http().mode
+            return {
+                "_method": "live" if mode in ("live", "record") else mode,
+                "resource": resource,
+                "payload": payload,
+            }
         except Exception as exc:  # noqa: BLE001 - offline/rate-limit fallback
             logger.warning("KCC live fetch failed (%s); using fixtures.", type(exc).__name__)
             return None

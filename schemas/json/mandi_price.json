@@ -231,6 +231,7 @@
     "min_price": {
       "anyOf": [
         {
+          "minimum": 0,
           "type": "number"
         },
         {
@@ -243,6 +244,7 @@
     "max_price": {
       "anyOf": [
         {
+          "minimum": 0,
           "type": "number"
         },
         {
@@ -255,6 +257,7 @@
     "modal_price": {
       "anyOf": [
         {
+          "minimum": 0,
           "type": "number"
         },
         {

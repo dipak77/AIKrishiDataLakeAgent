@@ -93,11 +93,14 @@ def redact_url(url: str) -> str:
 _DEFAULT_VALUED_PARAMS = {"offset": ("0", "")}
 
 
-def url_key(url: str) -> str:
+def url_key(url: str, body: str = "") -> str:
     """Stable cassette lookup key: scheme+host+path+sorted credential-free query.
 
     The ``_redacted`` marker added by :func:`redact_url` is excluded, so a
     recorded (redacted) URL and the live URL that produced it share one key.
+    For POST calls the canonical request ``body`` is folded in (``""`` for
+    GET), so different district payloads to the same dashboard URL do not
+    collide on one cassette entry.
     """
     parts = urlsplit(url)
     pairs = sorted(
@@ -107,7 +110,20 @@ def url_key(url: str) -> str:
         and k.lower() != "_redacted"
         and v not in _DEFAULT_VALUED_PARAMS.get(k.lower(), ())
     )
-    return urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(pairs), ""))
+    key = urlunsplit((parts.scheme, parts.netloc, parts.path, urlencode(pairs), ""))
+    return f"{key}#{body}" if body else key
+
+
+def body_key(body: Any) -> str:
+    """Canonical form of a POST JSON body for cassette keys (``""`` when none)."""
+    if body in (None, ""):
+        return ""
+    if isinstance(body, str):
+        try:
+            body = json.loads(body)
+        except ValueError:
+            return body
+    return json.dumps(body, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
 
 
 # ─────────────────────────── rate limiting ─────────────────────────────────
@@ -173,6 +189,7 @@ class CassetteEntry:
     headers: dict[str, str]
     body: str
     recorded_at: str
+    request_body: str = ""    # canonical POST JSON ("" for GET)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -215,16 +232,16 @@ class Cassette:
             self.path.write_bytes(data)
         return self.path
 
-    def find(self, url: str) -> CassetteEntry | None:
-        key = url_key(url)
+    def find(self, url: str, body: Any = None) -> CassetteEntry | None:
+        key = url_key(url, body_key(body))
         for entry in self.entries:
-            if url_key(entry.request_url) == key:
+            if url_key(entry.request_url, entry.request_body) == key:
                 return entry
         return None
 
     def append(self, entry: CassetteEntry) -> None:
-        key = url_key(entry.request_url)
-        self.entries = [e for e in self.entries if url_key(e.request_url) != key]
+        key = url_key(entry.request_url, entry.request_body)
+        self.entries = [e for e in self.entries if url_key(e.request_url, e.request_body) != key]
         self.entries.append(entry)
 
 
@@ -307,10 +324,49 @@ class HttpClient:
     def get_json(self, url: str, **kwargs: Any) -> Any:
         return self.get(url, **kwargs).json()
 
+    def post(
+        self,
+        url: str,
+        *,
+        payload: Any = None,
+        headers: dict[str, str] | None = None,
+        timeout: float | None = None,
+    ) -> Response:
+        """POST a JSON payload (dashboard-style APIs). Same mode semantics as get().
+
+        The canonical payload is part of the cassette key, so replaying serves
+        the entry recorded for *that* payload, and a missing one raises
+        CassetteMiss instead of hitting the network.
+        """
+        canon = body_key(payload)
+        if self.mode == "offline":
+            raise TransportOffline(f"transport=offline; refusing to POST {redact_url(url)}")
+        if self.mode == "replay":
+            return self._replay(url, body=payload)
+
+        self.bucket.acquire()
+        started = time.perf_counter()
+        resp = self._live_post(url, payload, headers or {}, timeout or self.timeout)
+        self.calls.append(
+            {
+                "url": redact_url(url),
+                "method": "POST",
+                "status": resp.status,
+                "elapsed_ms": round((time.perf_counter() - started) * 1000, 2),
+                "bytes": len(resp.text or ""),
+            }
+        )
+        if self.mode == "record":
+            self._write_cassette(url, resp, method="POST", request_body=canon)
+        return resp
+
+    def post_json(self, url: str, **kwargs: Any) -> Any:
+        return self.post(url, **kwargs).json()
+
     # ── internals ──────────────────────────────────────────────────────────
-    def _replay(self, url: str) -> Response:
-        cassette = self._active_cassette(url)
-        entry = cassette.find(url)
+    def _replay(self, url: str, body: Any = None) -> Response:
+        cassette = self._active_cassette(url, body)
+        entry = cassette.find(url, body)
         if entry is None:
             raise CassetteMiss(
                 f"no recorded response for {redact_url(url)} in {cassette.path.name}; "
@@ -318,31 +374,32 @@ class HttpClient:
             )
         return Response(entry.status, dict(entry.headers), entry.body, entry.request_url, from_cassette=True)
 
-    def _active_cassette(self, url: str) -> Cassette:
+    def _active_cassette(self, url: str, body: Any = None) -> Cassette:
         if self.cassette is not None:
             return self.cassette
         candidates = sorted(self.cassette_dir.glob("*.json")) + sorted(self.cassette_dir.glob("*.json.gz"))
         for path in candidates:
             cassette = Cassette.load(path)
-            if cassette.find(url) is not None:
+            if cassette.find(url, body) is not None:
                 self.cassette = cassette
                 return cassette
         raise CassetteMiss(
             f"no cassette in {self.cassette_dir} matches {redact_url(url)}"
         )
 
-    def _write_cassette(self, url: str, resp: Response) -> None:
+    def _write_cassette(self, url: str, resp: Response, method: str = "GET", request_body: str = "") -> None:
         from pipelines.storage import utcnow_iso
 
         cassette = self.cassette or Cassette(path=self.cassette_dir / "recorded.json")
         cassette.append(
             CassetteEntry(
                 request_url=redact_url(url),
-                method="GET",
+                method=method,
                 status=resp.status,
                 headers={k: v for k, v in resp.headers.items()},
                 body=resp.text,
                 recorded_at=utcnow_iso(),
+                request_body=request_body,
             )
         )
         cassette.save()
@@ -355,6 +412,28 @@ class HttpClient:
         session = self._session or requests
         headers = {"User-Agent": self.user_agent}
         resp = session.get(url, timeout=timeout, headers=headers)
+        status = int(getattr(resp, "status_code", 0))
+        text = getattr(resp, "text", "") or ""
+        raw_headers = dict(getattr(resp, "headers", {}) or {})
+        if status >= 400:
+            raise HTTPStatusError(
+                status,
+                url=redact_url(url),
+                retry_after=_retry_after(raw_headers),
+                message=f"HTTP {status} for {redact_url(url)}",
+            )
+        return Response(status, raw_headers, text, redact_url(url))
+
+    def _live_post(self, url: str, payload: Any, extra_headers: dict[str, str], timeout: float) -> Response:
+        import requests  # imported lazily: replay/offline need no HTTP stack
+
+        session = self._session or requests
+        headers = {"User-Agent": self.user_agent, "Content-Type": "application/json"}
+        headers.update(extra_headers)
+        if hasattr(session, "post"):
+            resp = session.post(url, json=payload, timeout=timeout, headers=headers)
+        else:  # pragma: no cover - injected test doubles without .post
+            resp = requests.post(url, json=payload, timeout=timeout, headers=headers)
         status = int(getattr(resp, "status_code", 0))
         text = getattr(resp, "text", "") or ""
         raw_headers = dict(getattr(resp, "headers", {}) or {})

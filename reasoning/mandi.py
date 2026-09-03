@@ -60,6 +60,8 @@ class MandiAdvisory:
     season_signal: str = "unknown"
     season_note: str = ""
     notes: list[str] = field(default_factory=list)
+    # Honest provenance: "lake" = real gold rows, "fixture" = bundled samples.
+    data_source: str = "lake"
     evidence: dict[str, Any] = field(
         default_factory=lambda: {
             "source": "Agmarknet (via data.gov.in)",
@@ -77,6 +79,7 @@ class MandiAdvisory:
             "season_signal": self.season_signal,
             "season_note": self.season_note,
             "notes": self.notes,
+            "data_source": self.data_source,
             "evidence": self.evidence,
         }
 
@@ -95,38 +98,73 @@ def _normalize_dates(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def load_price_rows(lake: Path | None = None, limit: int = 10000) -> list[dict[str, Any]]:
-    """Read `fact_mandi_price` from the lake; fall back to the fixture."""
+    """Read `fact_mandi_price` from the lake; fall back to the fixture.
+
+    The fixture fallback keeps the assistant usable on a fresh checkout, but
+    callers must treat the result as sample data: use
+    :func:`price_rows_source` to label provenance honestly.
+    """
     from pipelines.storage import FIXTURES_DIR, get_read_connection
     import json
 
     lake = Path(lake or DEFAULT_LAKE)
     if lake.exists():
-        con = get_read_connection(lake)
-        tables = {
-            r[0]
-            for r in con.execute(
-                "SELECT table_name FROM information_schema.tables WHERE table_schema='gold'"
-            ).fetchall()
-        }
-        if "fact_mandi_price" in tables:
-            cols = [
-                r[1]
-                for r in con.execute("PRAGMA table_info('gold.fact_mandi_price')").fetchall()
-            ]
-            select = ",".join(f'"{c}"' for c in cols)
-            rows = [
-                dict(zip(cols, r))
+        try:
+            con = get_read_connection(lake)
+            tables = {
+                r[0]
                 for r in con.execute(
-                    f"SELECT {select} FROM gold.fact_mandi_price ORDER BY price_date LIMIT ?",
-                    [limit],
+                    "SELECT table_name FROM information_schema.tables WHERE table_schema='gold'"
                 ).fetchall()
-            ]
-            return _normalize_dates(rows)
+            }
+            if "fact_mandi_price" in tables:
+                cols = [
+                    r[1]
+                    for r in con.execute("PRAGMA table_info('gold.fact_mandi_price')").fetchall()
+                ]
+                select = ",".join(f'"{c}"' for c in cols)
+                rows = [
+                    dict(zip(cols, r))
+                    for r in con.execute(
+                        f"SELECT {select} FROM gold.fact_mandi_price ORDER BY price_date LIMIT ?",
+                        [limit],
+                    ).fetchall()
+                ]
+                rows = _normalize_dates(rows)
+                if rows:
+                    return rows
+                # Empty gold table → fall through to the fixture (sample data).
+        except Exception:  # noqa: BLE001 - a broken lake must not kill the API
+            pass
     # Fallback: bundled fixture.
     fixture = FIXTURES_DIR / "agmarknet_mandi_price.json"
     if fixture.exists():
         return _normalize_dates(json.loads(fixture.read_text(encoding="utf-8")))
     return []
+
+
+def price_rows_source(lake: Path | None = None) -> str:
+    """Where would :func:`load_price_rows` read from? ``lake`` | ``fixture`` | ``empty``."""
+    from pipelines.storage import FIXTURES_DIR, get_read_connection
+
+    lake_p = Path(lake or DEFAULT_LAKE)
+    if lake_p.exists():
+        try:
+            con = get_read_connection(lake_p)
+            tables = {
+                r[0]
+                for r in con.execute(
+                    "SELECT table_name FROM information_schema.tables WHERE table_schema='gold'"
+                ).fetchall()
+            }
+            if "fact_mandi_price" in tables:
+                n = con.execute("SELECT count(*) FROM gold.fact_mandi_price").fetchone()[0]
+                if n:
+                    return "lake"
+        except Exception:  # noqa: BLE001
+            pass
+    fixture = FIXTURES_DIR / "agmarknet_mandi_price.json"
+    return "fixture" if fixture.exists() else "empty"
 
 
 def price_stats(rows: list[dict[str, Any]]) -> list[PriceStat]:
@@ -140,12 +178,20 @@ def price_stats(rows: list[dict[str, Any]]) -> list[PriceStat]:
 
     out: list[PriceStat] = []
     for (commodity, market), recs in groups.items():
+        # Chronological order matters: the trend compares first vs last *by date*,
+        # not by ingestion order (the lake has no guaranteed row order).
+        recs = sorted(recs, key=lambda r: str(r.get("price_date") or ""))
         modal = [float(r["modal_price"]) for r in recs if r.get("modal_price") is not None]
         if not modal:
             continue
         mins = [float(r["min_price"]) for r in recs if r.get("min_price") is not None]
         maxs = [float(r["max_price"]) for r in recs if r.get("max_price") is not None]
-        latest = max(recs, key=lambda r: r.get("price_date") or "")
+        dated = [r for r in recs if r.get("modal_price") is not None and r.get("price_date")]
+        latest = max(dated or recs, key=lambda r: str(r.get("price_date") or ""))
+        try:
+            latest_modal = round(float(latest["modal_price"]), 2)
+        except (TypeError, ValueError, KeyError):
+            latest_modal = round(modal[-1], 2)
         mean = statistics.mean(modal)
         stdev = statistics.pstdev(modal) if len(modal) > 1 else 0.0
         first, last = modal[0], modal[-1]
@@ -163,8 +209,8 @@ def price_stats(rows: list[dict[str, Any]]) -> list[PriceStat]:
                 state=latest.get("state") or recs[0].get("state"),
                 district=latest.get("district") or recs[0].get("district"),
                 n_days=len(modal),
-                latest_date=latest.get("price_date") or "",
-                latest_modal=round(float(latest["modal_price"]), 2),
+                latest_date=str(latest.get("price_date") or ""),
+                latest_modal=latest_modal,
                 mean_modal=round(mean, 2),
                 min_price=round(min(mins), 2) if mins else 0.0,
                 max_price=round(max(maxs), 2) if maxs else 0.0,
@@ -223,33 +269,37 @@ def market_advisory(
 
     rows_was_default = rows is None
     rows = rows if rows is not None else load_price_rows(lake)
+    data_source = price_rows_source(lake) if rows_was_default else "provided"
     crop_row = resolve_crop(commodity)
     crop_id = crop_row["crop_id"] if crop_row else None
     canon = crop_row["canonical_en"] if crop_row else commodity
 
-    matches = [
-        r for r in rows
-        if str(r.get("commodity_raw") or "").lower() == commodity.lower()
-        or str(r.get("crop_canonical") or "").lower() == canon.lower()
-        or (crop_id and r.get("crop") == crop_id)
-    ]
-    if market:
-        matches = [r for r in matches if str(r.get("market") or "").lower() == market.lower()]
+    def _match(pool: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        out = [
+            r for r in pool
+            if str(r.get("commodity_raw") or "").lower() == commodity.lower()
+            or str(r.get("crop_canonical") or "").lower() == canon.lower()
+            or (crop_id and r.get("crop") == crop_id)
+        ]
+        if market:
+            out = [r for r in out if str(r.get("market") or "").lower() == market.lower()]
+        return out
 
-    if not matches and rows_was_default:
+    matches = _match(rows)
+
+    if not matches and rows_was_default and data_source == "lake":
+        # The lake is real but thin (e.g. 2 rows after a replay run) while the
+        # bundled fixture carries the demo commodities the UI/tests use.
+        # Fall back to the sample — but label it as such so sample prices are
+        # never mistaken for live mandi data.
         from pipelines.storage import FIXTURES_DIR
         import json
         fixture = FIXTURES_DIR / "agmarknet_mandi_price.json"
         if fixture.exists():
             fixture_rows = _normalize_dates(json.loads(fixture.read_text(encoding="utf-8")))
-            matches = [
-                r for r in fixture_rows
-                if str(r.get("commodity_raw") or "").lower() == commodity.lower()
-                or str(r.get("crop_canonical") or "").lower() == canon.lower()
-                or (crop_id and r.get("crop") == crop_id)
-            ]
-            if market:
-                matches = [r for r in matches if str(r.get("market") or "").lower() == market.lower()]
+            matches = _match(fixture_rows)
+            if matches:
+                data_source = "fixture"
 
     if not matches:
         return None
@@ -264,7 +314,19 @@ def market_advisory(
         stats=stats,
         season_signal=signal,
         season_note=note,
+        data_source=data_source,
     )
+    if data_source == "fixture":
+        adv.evidence = {
+            "source": "Bundled Agmarknet sample (offline fixture — not live prices)",
+            "authority": "government",
+            "license": {"type": "GODL-India"},
+            "unit": "INR/quintal",
+        }
+        adv.notes.append(
+            "Sample data: the lake has no fact_mandi_price rows yet — "
+            "run ingestion for live prices before advising farmers."
+        )
     for s in stats:
         adv.notes.append(
             f"{s.market}: modal {s.latest_modal} INR/q on {s.latest_date} "

@@ -23,6 +23,7 @@ from scripts.seed_lake import load_lake  # noqa: E402
 DOMAIN_TO_TABLE = {
     "farmer_qa": "farmer_query",
     "market": "fact_mandi_price",
+    "market_dashboard": "fact_mandi_dashboard",
     "production": "fact_crop_production",
     "weather": "fact_agromet_advisory",
     "soil": "fact_soil_test",

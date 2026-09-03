@@ -34,33 +34,33 @@ multilingual assistant — exposed as a REST API + web UI (`make serve`).
              │                   │                │                 │
              └───────────────────┴────────────────┴─────────────────┘
                                      │
-                             INGESTION LAYER          connectors/  (plugin base)
-                  API / CSV / JSON / PDF / HTML / Images
-                                     │
-                                     ▼
-                              BRONZE / RAW            pipelines/bronze.py  (immutable)
-                                     │
-                        Validation · OCR · Parsing · Cleaning ·
-                        Dedup · Language detection · Entity extraction ·
-                        Geocoding
-                                     │
-                                     ▼
-                              SILVER / CLEAN          pipelines/silver.py
-                                     │
-                   Crop / Disease / Pest / Soil / Season /
-                   State / District / Variety / Growth stage
-                                     │
-                                     ▼
-                              GOLD / DOMAIN           pipelines/gold.py
-                                     │
-            ┌────────────────────────┼────────────────────────┐
-            ▼                        ▼                        ▼
-      Lakehouse (DuckDB       Vector DB (Qdrant)       Knowledge Graph
-      + Parquet/Iceberg)       (rag/ - future)         (knowledge_graph/)
-            │                        │                        │
-            └────────────────────────┼────────────────────────┘
-                                     ▼
-                           AGRI INTELLIGENCE APIs  (apps/ - future)
+                              INGESTION LAYER          connectors/  (plugin base)
+                   API / CSV / JSON / PDF / HTML / Images
+                                      │
+                                      ▼
+                               BRONZE / RAW            pipelines/storage.write_bronze  (immutable)
+                                      │
+                         Validation · OCR · Parsing · Cleaning ·
+                         Dedup · Language detection · Entity extraction ·
+                         Geocoding
+                                      │
+                                      ▼
+                               SILVER / CLEAN          pipelines/collect+refine+dq  (normalized)
+                                      │
+                    Crop / Disease / Pest / Soil / Season /
+                    State / District / Variety / Growth stage
+                                      │
+                                      ▼
+                               GOLD / DOMAIN           scripts/build_gold.py  (domain tables)
+                                      │
+             ┌────────────────────────┼────────────────────────┐
+             ▼                        ▼                        ▼
+       Lakehouse (DuckDB       Hybrid RAG (BM25+dense   Knowledge Graph
+       + Parquet)              in reasoning/rag.py)      (knowledge_graph/)
+             │                        │                        │
+             └────────────────────────┼────────────────────────┘
+                                      ▼
+                            AGRI INTELLIGENCE APIs  (apps/api + reasoning/gateway)
 ```
 
 **Stack for V1 (deliberately light):** Python + Pydantic (schemas) + YAML
@@ -74,19 +74,24 @@ documented in `docs/architecture.md` and scaffolded in
 ## Repository layout
 
 ```
-├── apps/                  # (future) ingestion-api / search-api / admin-api
+├── apps/                  # Krushi Mitra REST API + web UI (FastAPI: query/diagnose/
+│                          #   fertilizer/mandi/weather/plan/evidence/graph/gateway/vision)
 ├── connectors/            # source connector plugins (see base.AgricultureSourceConnector)
 │   ├── government/        #   data_gov, kcc, agmarknet, imd, soil_health
 │   ├── research/          #   fao (FAOSTAT), icar, research_pdf
 │   ├── web/               #   crawler, article_parser, license_checker
 │   └── vision/            #   plantdoc, plantvillage
-├── pipelines/             # bronze / silver / gold + quality scoring
+├── pipelines/             # medallion flow: collect/discovery/contracts/http/dq/refine/
+│                          #   quality/gaps + storage (bronze→silver→gold in scripts/)
 ├── domain/                # canonical ontologies: crops, pests, diseases, soils,
 │                          #   nutrients, fertilizers, pesticides, weather, geography
 ├── ontology/              # ontology loaders + cross-entity validators
-├── knowledge_graph/       # nodes/edges builder + consistency checks
-├── rag/                   # (future) vector retrieval
-├── vision/                # (future) image pipeline
+├── knowledge_graph/       # nodes/edges builder + consistency checks + Neo4j/AGE export
+├── reasoning/             # deterministic engines (diagnose/advisory/mandi/weather/
+│                          #   crop_plan) + hybrid RAG + NLU + DECG gateway + guardrails
+├── rag/                   # (doc placeholder) — shipped vector RAG lives in reasoning/rag.py
+├── vision/                # image pipeline: stdlib PNG + Pillow decode, HSV heuristic,
+│                          #   pluggable ONNX/TFLite/transformers backends (opt-in weights)
 ├── schemas/               # Pydantic record models + generated JSON Schema
 ├── metadata/sources/      # SOURCE REGISTRY (one YAML per registered source)
 ├── data/

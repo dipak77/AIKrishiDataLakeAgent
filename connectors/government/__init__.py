@@ -1,6 +1,7 @@
 """Government of India source connectors (data.gov.in / OGD platform)."""
 
 from .agmarknet import AgmarknetConnector
+from .agmarknet_dashboard import AgmarknetDashboardConnector
 from .data_gov import DataGovConnector
 from .imd import ImdConnector
 from .kcc import KccConnector
@@ -10,6 +11,7 @@ __all__ = [
     "DataGovConnector",
     "KccConnector",
     "AgmarknetConnector",
+    "AgmarknetDashboardConnector",
     "ImdConnector",
     "SoilHealthConnector",
 ]

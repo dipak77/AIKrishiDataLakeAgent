@@ -116,11 +116,21 @@ def test_auth_requires_token_when_set(monkeypatch):
 
     monkeypatch.setenv("AGRILAKE_API_TOKEN", "secret")
     good = Request(
-        {"type": "http", "headers": [(b"authorization", b"Bearer secret")], "method": "GET", "path": "/"}
+        {"type": "http", "headers": [(b"authorization", b"Bearer secret")], "method": "GET", "path": "/api/query"}
     )
-    bad = Request({"type": "http", "headers": [], "method": "GET", "path": "/"})
+    bad = Request({"type": "http", "headers": [], "method": "GET", "path": "/api/query"})
     assert check_auth(good) is True
     assert check_auth(bad) is False
+
+
+def test_auth_leaves_probes_open_when_set(monkeypatch):
+    """Liveness probes stay reachable without a secret (k8s/LB health checks)."""
+    from starlette.requests import Request
+
+    monkeypatch.setenv("AGRILAKE_API_TOKEN", "secret")
+    for open_path in ("/health", "/"):
+        req = Request({"type": "http", "headers": [], "method": "GET", "path": open_path})
+        assert check_auth(req) is True
 
 
 # ─────────────────────────── middleware integration ────────────────────────

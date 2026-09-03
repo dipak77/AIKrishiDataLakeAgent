@@ -51,6 +51,40 @@ GET https://fenixservices.fao.org/faostat/api/v1/en/data/QCL
 Primary path is the data.gov.in resource above (GODL). The portal itself is a
 fallback.
 
+### Agmarknet dashboard (district-wise prices + arrivals + MSP, no key)
+
+The portal dashboard API answers *"rate in MY district today"* — district
+aggregates the OGD feed cannot produce (it is market-level):
+
+```
+GET  https://api.agmarknet.gov.in/v1/dashboard-filters?dashboard_name=marketwise_price_arrival
+     → master codes (states / districts / commodities / grades)
+
+POST https://api.agmarknet.gov.in/v1/dashboard-data/
+     {"dashboard": "marketwise_price_arrival", "date": "YYYY-MM-DD",
+      "group": [100000], "commodity": [100001], "variety": 100021,
+      "state": 20, "district": [361], "grades": [4], "limit": 50, "format": "json"}
+     → per-commodity as_on/1-day-ago/2-day-ago price + arrival (MT) + MSP + trend
+```
+
+- Verified 2026-09-03: Maharashtra is `state_id=20` (38 districts, 429
+  markets); Nashik=`361`, Pune=`364`. The `dashboard-filters` query param must
+  be `dashboard_name` (`dashboard=` is rejected).
+- `reported_date` is `DD-MM-YYYY` and lags the request date (~2 days): `as_on`
+  is the latest *available* day, never a forecast. Served honestly as
+  `data_source: live|fixture` with the reported date on every view.
+- Source `AGMARKNET_DASHBOARD` (connector `agmarknet_dashboard`, default state
+  Maharashtra via `AGRILAKE_AMD_STATE`), gold table `fact_mandi_dashboard`:
+
+```bash
+make ingest SOURCE=agmarknet_dashboard LIMIT=2   # 2 MH districts
+python scripts/pipeline_run.py --source AGMARKNET_DASHBOARD --transport live --limit 2
+```
+
+- API: `GET /api/mandi/districts` (location picker),
+  `GET /api/mandi/district?district=Nashik&commodity=Wheat` (old names like
+  `Ahmednagar` resolve to `Ahilyanagar`; each view carries MSP comparison).
+
 ## Egress notes (this sandbox)
 
 - Direct HTTPS from Python is blocked; `pip` reaches a package mirror.

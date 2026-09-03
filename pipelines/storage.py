@@ -53,10 +53,24 @@ def utcnow_iso() -> str:
 # gateway path to ~21 ms. DuckDB connections are NOT thread-safe, so we cache
 # one connection *per thread*, keyed by the resolved lake path. Callers MUST
 # NOT ``.close()`` a connection obtained here — it is shared and reused.
+#
+# Staleness guard: the cache key includes the lake file's mtime/size, so a
+# rebuild (seed / gold / corpus) transparently drops the old handle instead of
+# serving yesterday's tables forever. `clear_connection_cache()` remains the
+# explicit reset for tests.
 import threading  # noqa: E402
 
-_READ_CONNS: dict[tuple[int, str], Any] = {}
+_READ_CONNS: dict[tuple[int, str, str], Any] = {}
 _CONNS_LOCK = threading.Lock()
+
+
+def _lake_cache_key(path: Path) -> tuple[int, str, str]:
+    try:
+        st = path.stat()
+        fingerprint = f"{st.st_mtime_ns}:{st.st_size}"
+    except OSError:
+        fingerprint = "missing"
+    return (threading.get_ident(), str(path), fingerprint)
 
 
 def get_read_connection(lake: Path | None = None):
@@ -68,11 +82,24 @@ def get_read_connection(lake: Path | None = None):
     import duckdb
 
     path = Path(lake or (LAKE_DIR / "agrilake.duckdb")).resolve()
-    key = (threading.get_ident(), str(path))
+    key = _lake_cache_key(path)
     with _CONNS_LOCK:
         con = _READ_CONNS.get(key)
         if con is None:
-            con = duckdb.connect(str(path), read_only=True)
+            # Evict stale fingerprints for this thread+path before opening.
+            for old in [k for k in _READ_CONNS if k[0] == key[0] and k[1] == key[1]]:
+                stale = _READ_CONNS.pop(old, None)
+                try:
+                    if stale is not None:
+                        stale.close()
+                except Exception:
+                    pass
+            try:
+                con = duckdb.connect(str(path), read_only=True)
+            except Exception:
+                # Missing lake (fresh checkout before `make seed`): let the
+                # caller fall back to fixtures instead of crashing the API.
+                raise
             _READ_CONNS[key] = con
         return con
 
@@ -119,7 +146,12 @@ def write_json(path: Path, data: Any, indent: int | None = 2) -> Path:
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> Path:
-    """Append-independent JSONL writer (one JSON object per line)."""
+    """Write rows as JSONL (one JSON object per line), atomically replacing `path`.
+
+    Note: this *replaces* the file (crash-safe via tmp+rename); it does not
+    append. The old "Append-independent" docstring was wrong and hid silent
+    data loss when two resources shared a silver path.
+    """
     payload = "".join(
         json.dumps(row, ensure_ascii=False, default=str) + "\n" for row in rows
     )

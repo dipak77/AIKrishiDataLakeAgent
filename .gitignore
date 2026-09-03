@@ -24,6 +24,7 @@ data/bronze/
 data/silver/
 data/gold/
 data/lake/
+data/cache/
 
 # per-environment discovery snapshots written by scripts/pipeline_run.py
 metadata/discovered/

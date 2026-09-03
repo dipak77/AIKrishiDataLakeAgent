@@ -44,6 +44,7 @@ sys.path.insert(0, str(ROOT))
 
 from connectors.government import (  # noqa: E402
     AgmarknetConnector,
+    AgmarknetDashboardConnector,
     ImdConnector,
     KccConnector,
     SoilHealthConnector,
@@ -68,6 +69,7 @@ LOGGER = logging.getLogger("agrilake.pipeline")
 #: source_id (registry key) → connector class
 SOURCE_CONNECTORS: dict[str, Callable[[], Any]] = {
     "GOI_AGMARKNET": AgmarknetConnector,
+    "AGMARKNET_DASHBOARD": AgmarknetDashboardConnector,
     "GOI_KCC": KccConnector,
     "GOI_SHC": SoilHealthConnector,
     "IMD_AAS": ImdConnector,
@@ -337,6 +339,9 @@ def run_source(
     }
     if not summary.get("resources"):
         outcome["status"] = "empty"          # nothing upstream to collect (e.g. retired resource)
+        return outcome
+    if summary.get("status") == "empty":
+        outcome["status"] = "empty"
         return outcome
     if summary.get("status") != "ok":
         outcome["status"] = "failed"

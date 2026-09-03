@@ -106,9 +106,21 @@ def load_settings(env_file: Path | None = None, environ: dict[str, str] | None =
     env_file = env_file or DEFAULT_ENV_FILE
     env = dict(os.environ if environ is None else environ)
 
+    # Read the .env file once (previously re-read per key: O(n) file I/O).
+    try:
+        file_values = load_dotenv(env_file)
+    except Exception:  # noqa: BLE001 - a bad .env must not crash startup
+        file_values = {}
+    # Legacy alias: DATA_GOV_IN_API_KEY (documented in .env.example before the
+    # AGRILAKE_ prefix existed) still unlocks the key when the new name is unset.
+    if not env.get("AGRILAKE_DATA_GOV_API_KEY") and not file_values.get("AGRILAKE_DATA_GOV_API_KEY"):
+        legacy = env.get("DATA_GOV_IN_API_KEY") or file_values.get("DATA_GOV_IN_API_KEY")
+        if legacy:
+            file_values["AGRILAKE_DATA_GOV_API_KEY"] = legacy
+
     values: dict[str, Any] = {}
     for env_key, (attr, cast) in _ENV_MAP.items():
-        raw = env.get(env_key) or load_dotenv(env_file).get(env_key)
+        raw = env.get(env_key) or file_values.get(env_key)
         if raw in (None, ""):
             continue
         try:

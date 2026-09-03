@@ -1,0 +1,82 @@
+source_id: AGMARKNET_DASHBOARD
+name: Agmarknet dashboard (marketwise price arrival)
+country: IN
+source_type: [api]
+authority: government
+acquisition:
+  method: api
+  endpoint: https://api.agmarknet.gov.in/v1/dashboard-data/
+  masters: https://api.agmarknet.gov.in/v1/dashboard-filters?dashboard_name=marketwise_price_arrival
+  schedule: daily
+  api_key_required: false
+  pagination: next_page_url
+  resources: []  # districts discovered live from the masters payload (MH default)
+domains: [market, mandi_price, district_price]
+license:
+  type: GODL-India
+  url: https://data.gov.in/government-open-data-license-india
+quality:
+  authority_score: 1.0
+  freshness_score: 1.0
+
+# ── Contract (verified against the live dashboard on 2026-09-03) ─────────────
+# Facts encoded here that a guess would get wrong:
+#   * masters come from dashboard-filters?dashboard_name=… (param name matters;
+#     `dashboard=` is rejected with "Invalid dashboard name parameter");
+#   * Maharashtra is state_id=20 (38 districts, 429 markets);
+#   * data request is a POST with numeric master ids; `variety`/`state` are
+#     scalars while `district` is a list; grades [4] = FAQ;
+#   * records are district aggregates (no market field) with 3-day prices,
+#     arrivals (metric tonnes), MSP and a trend flag;
+#   * reported_date is DD-MM-YYYY and lags the request date (~2 days) — the
+#     as_on_* columns describe the latest AVAILABLE day, never a forecast.
+contract:
+  version: "2026-09-03"
+  # No resource_id: dashboard districts are discovered live from the masters
+  # payload by the connector itself (an OGD resource id here would make the
+  # discovery stage probe data.gov.in for something that lives on
+  # api.agmarknet.gov.in and fail the run).
+  source_fields:
+    cmdt_name:           {type: str, required: true}
+    cmdt_grp_name:       {type: str}
+    msp_price:           {type: float, min: 0}
+    as_on_price:         {type: float, min: 0}
+    as_on_arrival:       {type: float, min: 0}
+    one_day_ago_price:   {type: float, min: 0}
+    two_day_ago_price:   {type: float, min: 0}
+    trend:               {type: str}
+    reported_date:       {type: date, format: "DD-MM-YYYY", required: true}
+  source_date_fields: [reported_date]
+  # Canonical silver record (what the lake stores, what DQ validates).
+  # Every field normalize() emits must appear here, or DQ-SCHEMA-DRIFT fires:
+  # provenance fields (record_hash/run_id/ingestion_method/…) and *_raw are
+  # allow-listed centrally, everything else is declared below.
+  fields:
+    state:          {type: str, required: true}
+    district:       {type: str, required: true}
+    market:         {type: str}
+    commodity_raw:  {type: str, required: true}
+    commodity_group: {type: str}
+    crop:           {type: str}
+    crop_canonical: {type: str}
+    modal_price:    {type: float, min: 0}
+    prev_day_price:  {type: float, min: 0}
+    prev_2day_price: {type: float, min: 0}
+    arrival_tonnes: {type: float, min: 0}
+    msp_price:      {type: float, min: 0}
+    trend:          {type: str}
+    price_kind:     {type: str, non_empty: true}
+    price_date:     {type: date, format: ISO8601, required: true}
+    unit:           {type: str, non_empty: true}
+    source_url:     {type: str, required: true}
+  date_fields: [price_date]
+  business_key: [district, commodity_raw, price_date]
+  filterable: [state, district, commodity]
+  pagination: {mode: page, page_size: 50, max_pages: 5}
+  rate_limit: {rps: 1, burst: 5, honor_retry_after: true}
+  incremental: {strategy: full_scan_client_filter, key: price_date}
+  volume: {expected_rows_per_run: [5, 2000], expected_rows_per_day: [200, 2000]}
+  cassettes:
+    - tests/fixtures/cassettes/agmarknet_dashboard_nashik.json
+
+notes: District-wise average modal price + arrival + MSP + 3-day trend per commodity (INR/quintal). Complements the market-level OGD feed (GOI_AGMARKNET).

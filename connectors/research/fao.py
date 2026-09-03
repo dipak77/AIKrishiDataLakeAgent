@@ -18,14 +18,29 @@ import logging
 import os
 from typing import Any
 
-import requests
-
 from connectors.base import AgricultureSourceConnector
 from pipelines.entities import resolve_crop
+from pipelines.http import HttpClient
 from pipelines.storage import FIXTURES_DIR
 
 logger = logging.getLogger("agrilake.connectors.faostat")
 
+
+def faostat_base() -> str:
+    """Resolve the FAOSTAT base URL lazily (env wins, so tests can override)."""
+    from pipelines.config import load_settings
+
+    try:
+        configured = load_settings().faostat_base_url
+    except Exception:  # noqa: BLE001 - config must never break ingestion
+        configured = ""
+    return configured or os.environ.get(
+        "FAOSTAT_BASE_URL", "https://fenixservices.fao.org/faostat/api/v1"
+    )
+
+
+# Backwards-compat alias: resolved once at import for callers that reference
+# the constant, but `fetch()` always calls `faostat_base()` fresh.
 def _faostat_base() -> str:
     from pipelines.config import load_settings
 
@@ -63,13 +78,16 @@ FAO_ITEM_ALIASES = {
 }
 
 
-# FAO item name → FAO numeric code (QCL domain standard)
+# FAO item name → FAO numeric code (QCL domain standard).
+# Covers every key in FAO_ITEM_ALIASES so `discover()` never emits an item the
+# `fetch()` cannot encode (previously 4 aliases silently dropped out).
 FAO_ITEM_CODES: dict[str, int] = {
     "Wheat": 15,
     "Rice, paddy": 27,
     "Maize": 56,
     "Millet": 79,
     "Sorghum": 83,
+    "Pulses, nes": 92,
     "Potatoes": 116,
     "Sugar cane": 156,
     "Soybeans": 236,
@@ -77,13 +95,24 @@ FAO_ITEM_CODES: dict[str, int] = {
     "Seed cotton": 328,
     "Tomatoes": 388,
     "Onions, dry": 403,
+    "Chillies and peppers, dry": 406,
     "Bananas": 486,
+    "Mangoes, mangosteens, guavas": 508,
 }
 
 
 class FaostatConnector(AgricultureSourceConnector):
     source_id = "FAO_FAOSTAT"
     domain = "production"
+
+    #: per-instance transport handle (mirrors DataGovConnector so the
+    #: orchestrator's --transport flag controls FAOSTAT too).
+    _http: HttpClient | None = None
+
+    def http(self) -> HttpClient:
+        if self._http is None:
+            self._http = HttpClient()
+        return self._http
 
     def discover(self) -> list[dict[str, Any]]:
         # A small, representative pull: India production for key crops, latest years.
@@ -98,6 +127,9 @@ class FaostatConnector(AgricultureSourceConnector):
         ]
 
     def fetch(self, resource: dict[str, Any]) -> Any:
+        import urllib.parse
+
+        from pipelines.http import CassetteMiss, TransportOffline
         try:
             item_codes = [
                 str(FAO_ITEM_CODES[name])
@@ -116,9 +148,19 @@ class FaostatConnector(AgricultureSourceConnector):
                 "show_unit": "true",
                 "output_type": "csv",
             }
-            resp = requests.get(f"{FAOSTAT_BASE}/en/data/QCL", params=params, timeout=15)
-            resp.raise_for_status()
-            return {"_method": "live", "csv": resp.text}
+            url = f"{faostat_base()}/en/data/QCL?{urllib.parse.urlencode(params)}"
+            # Route through the shared transport so live/record/replay/offline
+            # semantics (cassettes, throttling, redaction) apply to FAOSTAT too.
+            resp = self.http().get(url, timeout=15)
+            mode = self.http().mode
+            return {
+                "_method": "live" if mode in ("live", "record") else mode,
+                "csv": resp.text,
+            }
+        except (TransportOffline, CassetteMiss) as exc:
+            # Fail-closed transports must surface, never silently become fixtures.
+            logger.warning("FAOSTAT %s (%s); no fallback.", type(exc).__name__, exc)
+            raise
         except Exception as exc:  # noqa: BLE001
             logger.warning("FAOSTAT fetch failed (%s); using fixtures.", type(exc).__name__)
             return None

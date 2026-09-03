@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class Provenance(BaseModel):
@@ -93,11 +93,20 @@ class MandiPrice(Provenance):
     crop_canonical: Optional[str] = None
     variety: Optional[str] = None
     grade: Optional[str] = None
-    min_price: Optional[float] = None
-    max_price: Optional[float] = None
-    modal_price: Optional[float] = None
+    min_price: Optional[float] = Field(default=None, ge=0)
+    max_price: Optional[float] = Field(default=None, ge=0)
+    modal_price: Optional[float] = Field(default=None, ge=0)
     unit: Optional[str] = "INR/quintal"
     price_date: Optional[str] = None
+
+    @model_validator(mode="after")
+    def _triangle(self) -> "MandiPrice":
+        lo, modal, hi = self.min_price, self.modal_price, self.max_price
+        if lo is not None and modal is not None and lo > modal:
+            raise ValueError(f"min_price ({lo}) > modal_price ({modal})")
+        if modal is not None and hi is not None and modal > hi:
+            raise ValueError(f"modal_price ({modal}) > max_price ({hi})")
+        return self
 
 
 class AgrometAdvisory(Provenance):

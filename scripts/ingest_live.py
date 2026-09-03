@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 from connectors.government import (  # noqa: E402
     AgmarknetConnector,
+    AgmarknetDashboardConnector,
     ImdConnector,
     KccConnector,
     SoilHealthConnector,
@@ -27,6 +28,7 @@ from connectors.vision import PlantDocConnector, PlantVillageConnector  # noqa: 
 CONNECTORS = {
     "kcc": KccConnector,
     "agmarknet": AgmarknetConnector,
+    "agmarknet_dashboard": AgmarknetDashboardConnector,
     "faostat": FaostatConnector,
     "imd": ImdConnector,
     "shc": SoilHealthConnector,
@@ -41,6 +43,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--source", choices=sorted(CONNECTORS) + ["all"], default="agmarknet")
     parser.add_argument("--limit", type=int, default=10)
     parser.add_argument("--json", action="store_true", help="print summary as JSON")
+    parser.add_argument(
+        "--kcc-archive", action="store_true",
+        help="use the bundled KCC fixture bundle (same as AGRILAKE_KCC_ARCHIVE=1)",
+    )
     args = parser.parse_args(argv)
 
     if hasattr(sys.stdout, "reconfigure"):
@@ -49,12 +55,19 @@ def main(argv: list[str] | None = None) -> int:
         except Exception:
             pass
 
+    import os
+    if args.kcc_archive:
+        os.environ["AGRILAKE_KCC_ARCHIVE"] = "1"
+
     sources = list(CONNECTORS) if args.source == "all" else [args.source]
     summaries = []
     for src in sources:
-        if src == "kcc":
-            import os
-            os.environ.setdefault("AGRILAKE_KCC_ARCHIVE", "1")
+        if src == "kcc" and not args.kcc_archive and os.environ.get("AGRILAKE_KCC_ARCHIVE") is None:
+            # Backwards-compat: `make ingest SOURCE=kcc` historically produced
+            # the fixture bundle. Keep that, but say so — silence is how
+            # fixtures masquerade as live data.
+            os.environ["AGRILAKE_KCC_ARCHIVE"] = "1"
+            print("  [note] KCC has no live resource registered; using the bundled fixture bundle")
         connector = CONNECTORS[src]()
         connector.limit = args.limit
         summary = connector.run()

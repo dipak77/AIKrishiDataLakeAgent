@@ -1,0 +1,35 @@
+{
+  "entries": [
+    {
+      "body": "{\n    \"created\": 1627939168,\n    \"updated\": 1788404451,\n    \"created_date\": \"2021-08-02T21:19:28Z\",\n    \"updated_date\": \"2026-09-03T03:00:51Z\",\n    \"active\": \"1\",\n    \"index_name\": \"9ef84268-d588-465a-a308-a864a43d0070\",\n    \"org\": [\n        \"Ministry of Agriculture and Farmers Welfare\",\n        \"Department of Agriculture and Farmers Welfare\"\n    ],\n    \"org_type\": \"Central\",\n    \"source\": \"data.gov.in\",\n    \"title\": \"Current Daily Price of Various Commodities from Various Markets (Mandi)\",\n    \"external_ws_url\": \"\",\n    \"visualizable\": \"1\",\n    \"field\": [\n        {\n            \"name\": \"State\",\n            \"id\": \"state\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"District\",\n            \"id\": \"district\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Market\",\n            \"id\": \"market\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Commodity\",\n            \"id\": \"commodity\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Variety\",\n            \"id\": \"variety\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Grade\",\n            \"id\": \"grade\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Arrival_Date\",\n            \"id\": \"arrival_date\",\n            \"type\": \"date\"\n        },\n        {\n            \"name\": \"Min_x0020_Price\",\n            \"id\": \"min_price\",\n            \"type\": \"double\"\n        },\n        {\n            \"name\": \"Max_x0020_Price\",\n            \"id\": \"max_price\",\n            \"type\": \"double\"\n        },\n        {\n            \"name\": \"Modal_x0020_Price\",\n            \"id\": \"modal_price\",\n            \"type\": \"double\"\n        }\n    ],\n    \"external_ws\": 0,\n    \"catalog_uuid\": \"6141ea17-a69d-4713-b600-0a43c8fd9a6c\",\n    \"sector\": [\n        \"Agriculture\",\n        \"Agricultural Marketing\"\n    ],\n    \"target_bucket\": {\n        \"field\": \"9ef84268-d588-465a-a308-a864a43d0070\",\n        \"index\": \"daily_mandi_price\",\n        \"type\": \"6141ea17-a69d-4713-b600-0a43c8fd9a6c\"\n    },\n    \"desc\": \"Current Daily Price of Various Commodities from Various Markets (Mandi)\",\n    \"field_exposed\": [\n        {\n            \"name\": \"State\",\n            \"id\": \"state.keyword\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"District\",\n            \"id\": \"district\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Market\",\n            \"id\": \"market\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Commodity\",\n            \"id\": \"commodity\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Variety\",\n            \"id\": \"variety\",\n            \"type\": \"keyword\"\n        },\n        {\n            \"name\": \"Grade\",\n            \"id\": \"grade\",\n            \"type\": \"keyword\"\n        }\n    ],\n    \"message\": \"Resource lists\",\n    \"version\": \"2.2.0\",\n    \"status\": \"ok\",\n    \"total\": 178,\n    \"count\": 2,\n    \"limit\": \"2\",\n    \"offset\": \"0\",\n    \"records\": [\n        {\n            \"state\": \"Andhra Pradesh\",\n            \"district\": \"Kakinada\",\n            \"market\": \"Kakinada (Urban) APMC\",\n            \"commodity\": \"Paddy(Common)\",\n            \"variety\": \"Common\",\n            \"grade\": \"FAQ\",\n            \"arrival_date\": \"03\\/09\\/2026\",\n            \"min_price\": 2369,\n            \"max_price\": 2390,\n            \"modal_price\": 2375\n        },\n        {\n            \"state\": \"Andhra Pradesh\",\n            \"district\": \"Palnadu\",\n            \"market\": \"Gurazala APMC\",\n            \"commodity\": \"Chili Red\",\n            \"variety\": \"Red\",\n            \"grade\": \"Local\",\n            \"arrival_date\": \"03\\/09\\/2026\",\n            \"min_price\": 15000,\n            \"max_price\": 22500,\n            \"modal_price\": 19500\n        }\n    ]\n}",
+      "headers": {
+        "Access-Control-Allow-Headers": "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control, Access-Control-Allow-Origin",
+        "Access-Control-Allow-Methods": "GET",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Content-Length": "3768",
+        "Content-Security-Policy": "default-src 'self'; object-src 'none'; script-src 'self';, frame-ancestors 'none'; require-trusted-types-for 'script';",
+        "Content-Type": "application/json",
+        "Cross-Origin-Embedder-Policy": "require-corp",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Cross-Origin-Resource-Policy": "same-origin",
+        "Date": "Thu, 03 Sep 2026 03:40:20 GMT",
+        "Permissions-Policy": "Permissions-Policy: accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), interest-cohort=(), magnetometer=(), microphone=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()",
+        "Referrer-Policy": "Same-Origin",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload;",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, SAMEORIGIN",
+        "X-Ratelimit-Limit": "-1",
+        "X-Ratelimit-Remaining": "-1",
+        "X-Ratelimit-Reset": "1773828777",
+        "X-Xss-Protection": "1; mode=block, 1; mode=block"
+      },
+      "method": "GET",
+      "recorded_at": "2026-09-03T03:40:21.186416+00:00",
+      "request_url": "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?format=json&offset=0&limit=2&_redacted=1",
+      "status": 200
+    }
+  ],
+  "note": "Recorded live responses. Request URLs are redacted of credentials.",
+  "schema": "agrilake.cassette/v1"
+}

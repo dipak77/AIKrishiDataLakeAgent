@@ -72,13 +72,27 @@ def validate_ontologies() -> dict[str, Any]:
     bad = [d["disease_id"] for d in DISEASES if d.get("crop_id") not in crop_ids]
     check("disease.crop_id resolves", not bad, f"unresolved: {bad}")
 
-    # pest → crop hosts (free-text list; warn only, not error)
+    # pest → crop hosts (free-text list; warn when a host names no known crop).
+    # Previously a literal `pass` loop — hosts like "tomato|chilli" were never
+    # checked, so typos in crop_hosts shipped silently.
+    from pipelines.entities import resolve_crop as _resolve_crop
+
+    unknown_hosts: list[str] = []
     for pest in PESTS:
         for host in str(pest.get("crop_hosts", "")).split("|"):
             host = host.strip()
-            if host and host.lower() not in ("all crops",):
-                # hosts are common names, not ids; best-effort warn
-                pass
+            if not host or host.lower() in ("all crops",):
+                continue
+            if _resolve_crop(host) is None:
+                unknown_hosts.append(f"{pest.get('pest_id')}:{host}")
+    if unknown_hosts:
+        warnings.append(
+            f"pest hosts not resolving to dim_crop (sample: {unknown_hosts[:10]})"
+        )
+    checks.append(
+        {"name": "pest.hosts resolve", "ok": True,
+         "detail": f"{len(unknown_hosts)} unresolvable host mentions (warn-only)"}
+    )
 
     # crop_season → crop + season
     bad_cs = [

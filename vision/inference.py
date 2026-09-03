@@ -29,6 +29,10 @@ from domain.seed_data import DISEASES, NUTRIENT_DEFICIENCIES, PESTS
 
 _PNG_SIG = b"\x89PNG\r\n\x1a\n"
 
+#: DoS guardrails: reject absurd uploads before decoding into RAM.
+MAX_IMAGE_BYTES = 8 * 1024 * 1024      # 8 MiB wire size
+MAX_IMAGE_PIXELS = 12_000_000          # ~12 MP decoded
+
 
 class VisionError(Exception):
     """Base error for the vision pipeline."""
@@ -161,6 +165,11 @@ class Image:
 
     @classmethod
     def from_bytes(cls, data: bytes) -> "Image":
+        if len(data) > MAX_IMAGE_BYTES:
+            raise VisionError(
+                f"image too large ({len(data)} bytes > {MAX_IMAGE_BYTES}); "
+                "downscale client-side before uploading"
+            )
         # If Pillow is installed, use it to support JPEG, WebP, PNG, etc.
         try:
             import io
@@ -168,13 +177,23 @@ class Image:
             with PILImage.open(io.BytesIO(data)) as pimg:
                 rgb_img = pimg.convert("RGB")
                 w, h = rgb_img.size
+                if w * h > MAX_IMAGE_PIXELS:
+                    raise VisionError(
+                        f"image too large ({w}x{h}); downscale client-side"
+                    )
                 px = rgb_img.tobytes()
                 return cls(w, h, 3, px)
         except ImportError:
             pass
+        except VisionError:
+            raise
         except Exception as exc:
-            # Fall back to custom PNG decoder if PIL fails
-            pass
+            # Pillow recognised the header but could not decode (truncated /
+            # corrupt file). Fall through to the stdlib PNG decoder only for
+            # genuine PNGs so the caller gets a precise error, not a silent
+            # mis-decode; anything else surfaces the original failure.
+            if not data.startswith(_PNG_SIG):
+                raise VisionError(f"could not decode image: {exc}") from exc
 
         # Standalone stdlib PNG decoder fallback
         w, h, c, px = decode_png(data)
@@ -554,6 +573,13 @@ class VisionResult:
     verdict: str  # "healthy" | "symptomatic"
     crop: str | None
     candidates: list[VisionCandidate] = field(default_factory=list)
+    # Honest capability flag: the default backend is a colour heuristic, not a
+    # trained disease classifier. API consumers must surface `disclaimer`.
+    is_heuristic: bool = True
+    disclaimer: str = (
+        "Heuristic colour analysis only — not a clinical diagnosis. "
+        "Confirm with an agronomist / lab test before spraying."
+    )
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -565,6 +591,8 @@ class VisionResult:
             "descriptor": self.descriptor,
             "verdict": self.verdict,
             "crop": self.crop,
+            "is_heuristic": self.is_heuristic,
+            "disclaimer": self.disclaimer,
             "candidates": [
                 {
                     "entity_id": c.entity_id,
@@ -601,6 +629,7 @@ def analyze_image(
     descriptor = color_descriptor(img)
     candidates = backend_obj.predict(img, crop=crop)[:top_k]
     verdict = "healthy" if "healthy" in _descriptor_keywords(descriptor) and not candidates else "symptomatic"
+    heuristic = backend_obj.name == "heuristic"
     return VisionResult(
         source=src_label,
         width=img.width,
@@ -611,4 +640,12 @@ def analyze_image(
         verdict=verdict,
         crop=crop,
         candidates=candidates,
+        is_heuristic=heuristic,
+        disclaimer=(
+            "Heuristic colour analysis only — not a clinical diagnosis. "
+            "Confirm with an agronomist / lab test before spraying."
+            if heuristic else
+            f"Model-backend ({backend_obj.name}) prediction — verify against "
+            "ontology provenance before acting."
+        ),
     )
