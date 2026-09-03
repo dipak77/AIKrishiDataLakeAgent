@@ -40,7 +40,9 @@ MIN_PY = (3, 10)
 # Ordered build steps. Each is (name, argv-suffix) executed with the venv python.
 STEPS: list[tuple[str, list[str]]] = [
     ("seed", ["scripts/seed_lake.py"]),
+    ("medallion", ["scripts/build_medallion.py"]),
     ("gold", ["scripts/build_gold.py"]),
+    ("graph", ["scripts/build_graph.py"]),
     ("validate", ["scripts/validate.py"]),
     ("test", ["-m", "pytest", "-q"]),
 ]
@@ -144,8 +146,14 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
     env = collect_environment(probe_net=args.check)
-    print("Agri Intelligence Lake — autonomous build")
+    print("Agri Intelligence Lake - autonomous build")
     print(f"  python {env['python_version']} | {env['config']}")
 
     if not env["python_ok"]:

@@ -25,7 +25,9 @@ IGNORED = {"_seed_sha.txt"}
 
 
 def _hash(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Normalize CRLF to LF so OS checkout line endings don't trip the drift gate
+    data = path.read_bytes().replace(b"\r\n", b"\n")
+    return hashlib.sha256(data).hexdigest()
 
 
 def main() -> int:

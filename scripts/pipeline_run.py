@@ -434,12 +434,18 @@ def main(argv: list[str] | None = None) -> int:
         for source_id in sources
     ]
 
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
     if args.json:
         print(json.dumps(outcomes, indent=2, ensure_ascii=False, default=str))
     else:
         for out in outcomes:
             print(f"\n=== {out['source_id']} [{out.get('status', '?')}] run={out['run_id']} "
-                  f"transport={out['transport']} contract={out.get('contract_version') or '—'} ===")
+                  f"transport={out['transport']} contract={out.get('contract_version') or '-'} ===")
             discovery = out.get("discovery") or {}
             for res in discovery.get("resources", []):
                 status = res.get("status", "ok")
@@ -448,13 +454,13 @@ def main(argv: list[str] | None = None) -> int:
                     f"updated={res.get('updated_at')}"
                     if status in ("ok", "drift") else f"error={res.get('error', '')[:90]}"
                 )
-                print(f"  discover  {res['resource_id'][:12]}… [{status}] {detail}")
+                print(f"  discover  {res['resource_id'][:12]}... [{status}] {detail}")
             if discovery.get("status") == "skipped":
-                print(f"  discover  skipped — {discovery.get('error')}")
+                print(f"  discover  skipped - {discovery.get('error')}")
             collection = out.get("collection") or {}
             for res in collection.get("resources", []):
                 print(f"  collect   [{res.get('status')}] records={res.get('records', 0)} "
-                      f"method={res.get('method') or '—'} bronze={bool(res.get('bronze'))}")
+                      f"method={res.get('method') or '-'} bronze={bool(res.get('bronze'))}")
             quality = out.get("quality") or {}
             card = quality.get("scorecard") or {}
             if card:

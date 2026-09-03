@@ -67,3 +67,14 @@ def test_agromet_advisory_crop_filter():
 
 def test_agromet_advisory_unknown_district():
     assert agromet_advisory("NoSuchDistrict", FIXTURE) is None
+
+
+def test_agromet_advisory_dynamic_all_india():
+    # Calling without explicit fixture triggers dynamic resolution
+    adv = agromet_advisory("Nashik", crop="tomato")
+    assert adv is not None
+    assert "Nashik" in adv.district
+    assert adv.weather
+    assert "temp_max" in adv.weather
+    assert adv.evidence["source"]
+    assert any("Tomato" in c.crop for c in adv.crops)

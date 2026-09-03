@@ -188,3 +188,19 @@ def test_backend_unavailable_stubs():
             get_backend(name).predict(_solid((0, 0, 0)))
     with pytest.raises(BackendUnavailable):
         get_backend("does-not-exist")
+
+
+def test_analyze_jpeg_image():
+    import io
+    from PIL import Image as PILImage
+    img = PILImage.new("RGB", (16, 16), color=(250, 230, 30))
+    buf = io.BytesIO()
+    img.save(buf, format="JPEG")
+    jpeg_bytes = buf.getvalue()
+
+    res = analyze_image(jpeg_bytes, crop="tomato")
+    assert res is not None
+    assert res.width == 16
+    assert res.height == 16
+    assert res.descriptor["yellow"] > 0.5
+

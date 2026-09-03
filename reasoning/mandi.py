@@ -157,11 +157,11 @@ def price_stats(rows: list[dict[str, Any]]) -> list[PriceStat]:
             trend = "flat"
         out.append(
             PriceStat(
-                crop_id=r.get("crop"),
+                crop_id=latest.get("crop") or recs[0].get("crop"),
                 commodity=commodity,
                 market=market,
-                state=r.get("state"),
-                district=r.get("district"),
+                state=latest.get("state") or recs[0].get("state"),
+                district=latest.get("district") or recs[0].get("district"),
                 n_days=len(modal),
                 latest_date=latest.get("price_date") or "",
                 latest_modal=round(float(latest["modal_price"]), 2),
@@ -221,6 +221,7 @@ def market_advisory(
     """Snapshot + trend + season signal for a commodity (optionally one market)."""
     from pipelines.entities import resolve_crop
 
+    rows_was_default = rows is None
     rows = rows if rows is not None else load_price_rows(lake)
     crop_row = resolve_crop(commodity)
     crop_id = crop_row["crop_id"] if crop_row else None
@@ -234,6 +235,22 @@ def market_advisory(
     ]
     if market:
         matches = [r for r in matches if str(r.get("market") or "").lower() == market.lower()]
+
+    if not matches and rows_was_default:
+        from pipelines.storage import FIXTURES_DIR
+        import json
+        fixture = FIXTURES_DIR / "agmarknet_mandi_price.json"
+        if fixture.exists():
+            fixture_rows = _normalize_dates(json.loads(fixture.read_text(encoding="utf-8")))
+            matches = [
+                r for r in fixture_rows
+                if str(r.get("commodity_raw") or "").lower() == commodity.lower()
+                or str(r.get("crop_canonical") or "").lower() == canon.lower()
+                or (crop_id and r.get("crop") == crop_id)
+            ]
+            if market:
+                matches = [r for r in matches if str(r.get("market") or "").lower() == market.lower()]
+
     if not matches:
         return None
 

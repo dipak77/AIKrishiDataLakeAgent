@@ -161,6 +161,22 @@ class Image:
 
     @classmethod
     def from_bytes(cls, data: bytes) -> "Image":
+        # If Pillow is installed, use it to support JPEG, WebP, PNG, etc.
+        try:
+            import io
+            from PIL import Image as PILImage
+            with PILImage.open(io.BytesIO(data)) as pimg:
+                rgb_img = pimg.convert("RGB")
+                w, h = rgb_img.size
+                px = rgb_img.tobytes()
+                return cls(w, h, 3, px)
+        except ImportError:
+            pass
+        except Exception as exc:
+            # Fall back to custom PNG decoder if PIL fails
+            pass
+
+        # Standalone stdlib PNG decoder fallback
         w, h, c, px = decode_png(data)
         return cls(w, h, c, px)
 

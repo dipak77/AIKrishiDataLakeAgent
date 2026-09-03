@@ -82,30 +82,30 @@ class QueryRequest(BaseModel):
 
 
 class DiagnoseRequest(BaseModel):
-    crop: str
-    symptoms: str
-    stage: str | None = None
-    top: int = 5
+    crop: str = Field(..., min_length=1, max_length=100)
+    symptoms: str = Field(..., min_length=1, max_length=1000)
+    stage: str | None = Field(default=None, max_length=100)
+    top: int = Field(default=5, ge=1, le=50)
 
 
 class FertilizerRequest(BaseModel):
-    crop: str
-    stage: str | None = None
+    crop: str = Field(..., min_length=1, max_length=100)
+    stage: str | None = Field(default=None, max_length=100)
     soil: dict[str, Any] | None = None
 
 
 class GatewayRequest(BaseModel):
     query: str = Field(..., min_length=1, max_length=2000)
-    crop: str | None = None
+    crop: str | None = Field(default=None, max_length=100)
     top_k: int = Field(default=5, ge=1, le=20)
 
 
 class VisionRequest(BaseModel):
     image_base64: str | None = None
     image_path: str | None = None
-    crop: str | None = None
-    backend: str = "auto"
-    top_k: int = 5
+    crop: str | None = Field(default=None, max_length=100)
+    backend: str = Field(default="auto", max_length=50)
+    top_k: int = Field(default=5, ge=1, le=20)
 
 
 class NLURequest(BaseModel):
@@ -157,7 +157,10 @@ def fertilizer(req: FertilizerRequest) -> dict[str, Any]:
 
 # ── Mandi ────────────────────────────────────────────────────────────────────
 @app.get("/api/mandi")
-def mandi(commodity: str, market: str | None = None) -> dict[str, Any]:
+def mandi(
+    commodity: str = Query(..., min_length=1, max_length=100),
+    market: str | None = Query(default=None, max_length=100),
+) -> dict[str, Any]:
     from reasoning.mandi import market_advisory
 
     adv = market_advisory(commodity, market=market)
@@ -175,12 +178,15 @@ def markets() -> list[dict[str, Any]]:
 
 # ── Weather ──────────────────────────────────────────────────────────────────
 @app.get("/api/weather")
-def weather(district: str, crop: str | None = None) -> dict[str, Any]:
+def weather(
+    district: str = Query(..., min_length=1, max_length=100),
+    crop: str | None = Query(default=None, max_length=100),
+) -> dict[str, Any]:
     from reasoning.weather import agromet_advisory
 
     adv = agromet_advisory(district, crop=crop)
     if adv is None:
-        raise HTTPException(status_code=404, detail=f"no advisory for '{district}'")
+        raise HTTPException(status_code=404, detail=f"no advisory could be resolved for '{district}'")
     return adv.as_dict()
 
 

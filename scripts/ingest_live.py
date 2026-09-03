@@ -43,9 +43,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--json", action="store_true", help="print summary as JSON")
     args = parser.parse_args(argv)
 
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
     sources = list(CONNECTORS) if args.source == "all" else [args.source]
     summaries = []
     for src in sources:
+        if src == "kcc":
+            import os
+            os.environ.setdefault("AGRILAKE_KCC_ARCHIVE", "1")
         connector = CONNECTORS[src]()
         connector.limit = args.limit
         summary = connector.run()
@@ -62,7 +71,7 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"  [error] {res['resource'].get('description')}: {res['error']}")
                 else:
                     print(
-                        f"  [ok] {res['resource'].get('description')} → "
+                        f"  [ok] {res['resource'].get('description')} -> "
                         f"{res.get('records', 0)} records ({res.get('method', 'live')})"
                     )
     return 0

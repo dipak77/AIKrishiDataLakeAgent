@@ -88,3 +88,35 @@ def test_list_markets_from_lake():
 def test_load_price_rows_falls_back_to_fixture():
     rows = load_price_rows()
     assert rows, "fixture fallback should return rows"
+
+
+def test_price_stats_isolation():
+    mixed_rows = [
+        {
+            "commodity_raw": "Apple",
+            "market": "Shimla",
+            "state": "Himachal Pradesh",
+            "district": "Shimla",
+            "crop": "CROP_APPLE",
+            "modal_price": 8000,
+            "price_date": "2026-09-01",
+        },
+        {
+            "commodity_raw": "Banana",
+            "market": "Jalgaon",
+            "state": "Maharashtra",
+            "district": "Jalgaon",
+            "crop": "CROP_BANANA",
+            "modal_price": 2500,
+            "price_date": "2026-09-01",
+        },
+    ]
+    stats = price_stats(mixed_rows)
+    assert len(stats) == 2
+    by_comm = {s.commodity: s for s in stats}
+    assert by_comm["Apple"].state == "Himachal Pradesh"
+    assert by_comm["Apple"].district == "Shimla"
+    assert by_comm["Apple"].crop_id == "CROP_APPLE"
+    assert by_comm["Banana"].state == "Maharashtra"
+    assert by_comm["Banana"].district == "Jalgaon"
+    assert by_comm["Banana"].crop_id == "CROP_BANANA"

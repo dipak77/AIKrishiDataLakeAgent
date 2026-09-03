@@ -68,6 +68,9 @@ class KccConnector(DataGovConnector, AgricultureSourceConnector):
     def discover(self) -> list[dict[str, Any]]:
         resources = self.configured_resources()
         if not resources:
+            import os
+            if os.environ.get("AGRILAKE_KCC_ARCHIVE", "").lower() in ("1", "true"):
+                return [{"resource_id": "archive", "description": "KCC farmer Q&A (archive)", "limit": self.limit}]
             logger.warning(
                 "GOI_KCC has no resources registered. Add real resource ids to "
                 "metadata/sources/goi_kcc.yaml (acquisition.resources) after running "

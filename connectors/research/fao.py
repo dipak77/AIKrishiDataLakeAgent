@@ -63,6 +63,24 @@ FAO_ITEM_ALIASES = {
 }
 
 
+# FAO item name → FAO numeric code (QCL domain standard)
+FAO_ITEM_CODES: dict[str, int] = {
+    "Wheat": 15,
+    "Rice, paddy": 27,
+    "Maize": 56,
+    "Millet": 79,
+    "Sorghum": 83,
+    "Potatoes": 116,
+    "Sugar cane": 156,
+    "Soybeans": 236,
+    "Groundnuts, with shell": 242,
+    "Seed cotton": 328,
+    "Tomatoes": 388,
+    "Onions, dry": 403,
+    "Bananas": 486,
+}
+
+
 class FaostatConnector(AgricultureSourceConnector):
     source_id = "FAO_FAOSTAT"
     domain = "production"
@@ -72,6 +90,7 @@ class FaostatConnector(AgricultureSourceConnector):
         return [
             {
                 "resource_id": "QCL",
+                "description": "FAOSTAT crop production (India)",
                 "area": INDIA_AREA_CODE,
                 "items": list(FAO_ITEM_ALIASES.items()),
                 "years": [2021, 2022, 2023],
@@ -80,19 +99,24 @@ class FaostatConnector(AgricultureSourceConnector):
 
     def fetch(self, resource: dict[str, Any]) -> Any:
         try:
+            item_codes = [
+                str(FAO_ITEM_CODES[name])
+                for name, _ in resource["items"]
+                if name in FAO_ITEM_CODES
+            ]
             params = {
                 "area": resource["area"],
                 "area_cs": "FAO",
                 "element": f"{ELEMENT_PRODUCTION},{ELEMENT_AREA}",
                 "element_cs": "FAO",
-                "item": ",".join(str(code) for code, _ in resource["items"]),
+                "item": ",".join(item_codes) if item_codes else "27,15,56",
                 "item_cs": "FAO",
                 "year": ",".join(str(y) for y in resource["years"]),
                 "show_codes": "true",
                 "show_unit": "true",
                 "output_type": "csv",
             }
-            resp = requests.get(f"{FAOSTAT_BASE}/en/data/QCL", params=params, timeout=30)
+            resp = requests.get(f"{FAOSTAT_BASE}/en/data/QCL", params=params, timeout=15)
             resp.raise_for_status()
             return {"_method": "live", "csv": resp.text}
         except Exception as exc:  # noqa: BLE001
